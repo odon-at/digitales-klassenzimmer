@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS DATA – Open Data Classroom</title>
+
+  <!-- Fonts (CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Global background layers -->
+  <div id="bg-grid" aria-hidden="true"></div>
+  <div id="bg-scanlines" aria-hidden="true"></div>
+
+  <!-- Persistent controls (top-right) -->
+  <button id="audio-toggle" class="audio-toggle" title="Ton an/aus" aria-label="Ton an/aus">🔊</button>
+
+  <!-- In-game HUD (shown during gameplay) -->
+  <header id="hud" class="hud" hidden>
+    <div class="hud-left">
+      <span class="hud-avatar-chip"><img id="hud-avatar-img" alt="" /> <span id="hud-avatar-name">–</span></span>
+    </div>
+    <div class="hud-right">
+      <span class="hud-stat" title="Gefundene Schlüssel">🔑 <span id="hud-keys">0</span>/4</span>
+      <span class="hud-stat" title="Punkte">⚡ <span id="hud-score">0</span></span>
+    </div>
+  </header>
+
+  <main id="app">
+
+    <!-- ============ START ============ -->
+    <section id="screen-start" class="screen">
+      <div class="corner corner-tl">&gt; OPEN DATA</div>
+      <div class="corner corner-tr">&gt; SYSTEM STATUS: <span class="blink-warn">OFFLINE</span><br />&gt; CITY: OFFLINE<br />&gt; TIME: 03:00</div>
+      <div class="corner corner-bl" id="start-connection">&gt; VERBINDUNG …<br />&gt; NETZWERK: <span class="blink-warn">INSTABIL</span></div>
+      <div class="corner corner-br">&gt; FEIND: UNBEKANNT<br />&gt; ZIEL: OPEN DATA ARCHIV<br />&gt; STATUS: MISSION AKTIV</div>
+
+      <div class="start-inner">
+        <h1 class="logo"><span class="logo-nexus">NEXUS</span><span class="logo-data">DATA</span></h1>
+        <div class="logo-ring" aria-hidden="true"></div>
+        <p class="tagline">Die Stadt ist im digitalen Koma.<br />Hol die Open-Data-Fragmente zurück.</p>
+        <div class="start-buttons">
+          <button id="btn-start" class="btn btn-neon btn-lg">▶ SPIEL STARTEN</button>
+          <button id="btn-continue" class="btn btn-ghost" hidden>⟳ WEITERSPIELEN</button>
+        </div>
+        <p class="credits">Open Data Classroom · von Sarah &amp; Chiara Hamedinger</p>
+      </div>
+    </section>
+
+    <!-- ============ LOGIN ============ -->
+    <section id="screen-login" class="screen">
+      <div class="deco deco-pigeon" aria-hidden="true">🕊️</div>
+      <div class="deco deco-chest" aria-hidden="true">🧰</div>
+      <div class="deco deco-maze" aria-hidden="true">🌀</div>
+      <div class="deco deco-key" aria-hidden="true">🗝️</div>
+
+      <div class="panel login-panel">
+        <div class="panel-title">CLASSCODE PORTAL</div>
+        <p class="login-lead">Bitte gib hier deinen überreichten Code ein:</p>
+        <input id="input-code" class="code-input" type="text" inputmode="text"
+               autocomplete="off" placeholder="X0Y2 Z9W7" aria-label="Klassen-Code" />
+        <input id="input-name" class="name-input" type="text" maxlength="24"
+               autocomplete="off" placeholder="Dein Codename (optional)" aria-label="Codename" />
+        <p id="login-error" class="form-error" hidden></p>
+        <button id="btn-login" class="btn btn-neon">CODE EINGEBEN ✓</button>
+        <p class="hint">Kein Code? Nutze den Demo-Code <code>X0Y2 Z9W7</code>.</p>
+      </div>
+    </section>
+
+    <!-- ============ AVATAR ============ -->
+    <section id="screen-avatar" class="screen">
+      <div class="avatar-head">
+        <h2 class="section-title">&raquo;&raquo;&raquo; WÄHLE DEINEN AVATAR &laquo;&laquo;&laquo;</h2>
+        <p class="section-sub">Jeder Avatar hat einzigartige Fähigkeiten.<br />Wähle weise. Beschütze Nexus.</p>
+      </div>
+      <div class="avatar-layout">
+        <aside class="panel side-panel" id="abilities-panel">
+          <div class="panel-title small">FÄHIGKEITEN</div>
+          <ul id="abilities-list" class="abilities"></ul>
+        </aside>
+
+        <div id="avatar-cards" class="avatar-cards"><!-- cards injected by JS --></div>
+
+        <aside class="panel side-panel" id="info-panel">
+          <div class="panel-title small">INFO</div>
+          <p id="avatar-info" class="avatar-info">Wähle einen Avatar, um mehr zu erfahren.</p>
+        </aside>
+      </div>
+      <div class="avatar-footer">
+        <button id="btn-avatar-back" class="btn btn-ghost">‹ ZURÜCK</button>
+        <button id="btn-avatar-confirm" class="btn btn-neon" disabled>BESTÄTIGEN ✓</button>
+      </div>
+    </section>
+
+    <!-- ============ INTRO ============ -->
+    <section id="screen-intro" class="screen">
+      <div class="panel intro-panel">
+        <div class="panel-title">EINLEITUNG · DER GROSSE NEBEL</div>
+        <p id="intro-text" class="intro-text"></p>
+        <blockquote id="intro-quote" class="intro-quote" hidden>
+          „Wenn das System fällt, vertraut den Open Data Archiven. Sie liegen außerhalb der
+          Kontrolle des Hackers. Holt die Fragmente zurück.“
+        </blockquote>
+        <div class="intro-buttons">
+          <button id="btn-intro-skip" class="btn btn-ghost">Überspringen »</button>
+          <button id="btn-intro-go" class="btn btn-neon" hidden>MISSION STARTEN →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MAP ============ -->
+    <section id="screen-map" class="screen">
+      <div class="map-head">
+        <h2 class="section-title">MISSIONSKARTE</h2>
+        <p class="section-sub">Sammle die 4 Daten-Fragmente und stelle Nexus wieder her.</p>
+        <div class="map-progress">
+          <div class="bar-wrap"><div class="bar-label">FORTSCHRITT</div><div class="bar"><div id="map-progress-fill" class="bar-fill"></div></div><span id="map-progress-pct">0%</span></div>
+        </div>
+      </div>
+      <div id="map-tiles" class="map-tiles"><!-- tiles injected by JS --></div>
+      <div class="map-footer">
+        <button id="btn-map-quit" class="btn btn-ghost">‹ Hauptmenü</button>
+        <button id="btn-to-finale" class="btn btn-neon" hidden>ZUM FINALE →</button>
+      </div>
+    </section>
+
+    <!-- ============ LEVEL HOST ============ -->
+    <section id="screen-level" class="screen">
+      <div class="level-frame">
+        <header class="level-header">
+          <div class="level-eyebrow"><span id="level-num">LEVEL 1</span> · <span id="level-title">–</span></div>
+          <div id="level-subtitle" class="level-subtitle">–</div>
+        </header>
+
+        <p id="level-story" class="level-story"></p>
+
+        <div class="level-meta">
+          <ul id="level-tasks" class="level-tasks"></ul>
+          <div class="level-bars">
+            <div class="bar-wrap"><div class="bar-label">DATENQUALITÄT</div><div class="bar"><div id="quality-fill" class="bar-fill quality"></div></div><span id="quality-pct">–</span></div>
+          </div>
+        </div>
+
+        <div id="level-body" class="level-body"><!-- level mini-task injected here --></div>
+
+        <footer class="level-footer">
+          <button id="btn-level-back" class="btn btn-ghost">‹ Zurück zur Karte</button>
+          <button id="btn-level-info" class="btn btn-ghost">ℹ Info</button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ============ REWARD ============ -->
+    <section id="screen-reward" class="screen">
+      <div class="reward-inner">
+        <div id="certificate" class="certificate">
+          <div class="cert-corner tl"></div><div class="cert-corner tr"></div>
+          <div class="cert-corner bl"></div><div class="cert-corner br"></div>
+          <div class="cert-seal">NEXUS<br />DATA</div>
+          <h2 class="cert-title">AURA-MASTER-ZERTIFIKAT</h2>
+          <p class="cert-sub">Halle der Chronisten</p>
+          <img id="cert-avatar" class="cert-avatar" alt="Avatar" />
+          <p class="cert-line">verliehen an</p>
+          <p id="cert-name" class="cert-name">Agent:in</p>
+          <div class="cert-stats">
+            <div><span id="cert-keys" class="cert-big">0/4</span><label>Schlüssel</label></div>
+            <div><span id="cert-score" class="cert-big">0</span><label>Punkte</label></div>
+            <div><span id="cert-rank" class="cert-big">C</span><label>Rang</label></div>
+          </div>
+          <p id="cert-blurb" class="cert-blurb"></p>
+          <p class="cert-foot"><span id="cert-code">CODE</span> · <span id="cert-date">DATUM</span></p>
+        </div>
+
+        <div class="reward-side no-print">
+          <div class="panel">
+            <div class="panel-title small">HALLE DER CHRONISTEN</div>
+            <ol id="hall-list" class="hall-list"></ol>
+          </div>
+          <div class="panel">
+            <div class="panel-title small">BEWERTUNG &amp; ANREGUNGEN</div>
+            <textarea id="feedback-text" class="feedback" rows="3"
+              placeholder="Probleme, Schwierigkeiten, Anregungen …"></textarea>
+            <button id="btn-feedback-save" class="btn btn-ghost btn-sm">Feedback speichern</button>
+            <span id="feedback-saved" class="saved-note" hidden>gespeichert ✓</span>
+          </div>
+          <div class="reward-buttons">
+            <button id="btn-print" class="btn btn-neon">🖨 Zertifikat drucken</button>
+            <button id="btn-replay" class="btn btn-ghost">Nochmal spielen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Info popup / modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box panel">
+      <div class="panel-title small" id="modal-title">INFO</div>
+      <div id="modal-body" class="modal-body"></div>
+      <button id="modal-close" class="btn btn-neon btn-sm">Verstanden</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- Libraries (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Game (load order matters: plain globals, no ES modules → works via file:// too) -->
+  <script src="js/version.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/data/datasets.js"></script>
+  <script src="js/levels/level1.js"></script>
+  <script src="js/levels/level2.js"></script>
+  <script src="js/levels/level3.js"></script>
+  <script src="js/levels/level4.js"></script>
+  <script src="js/levels/registry.js"></script>
+  <script src="js/screens.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

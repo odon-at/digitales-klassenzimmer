@@ -23,4 +23,5 @@ Siehe [../VERSIONING.md](../VERSIONING.md) (Build-Loop, Schritt 4).
 
 | Version | Datum | Kurzbeschreibung |
 |---------|-------|------------------|
+| v0.2.0  | 2026-07-30 | Level 3 neu: Swipe-Karten über zoomendem Labyrinth (6 Meldungen) |
 | v0.1.0  | 2026-07-29 | MVP-Baseline (Spiel Start→Zertifikat, Level 3 = Karten-Auswahl) |

@@ -9,17 +9,35 @@ Format angelehnt an *Keep a Changelog*; Versionsschema **MAJOR.MINOR.PATCH**
 
 ---
 
-## [Unreleased] – in Arbeit → v0.2.0
+## [Unreleased]
+
+_Noch keine Änderungen._
+
+---
+
+## [0.2.0] – 2026-07-30 – Level 3: Swipe-Karten & Labyrinth-Zoom
+
+Snapshot: [`releases/v0.2.0/`](releases/v0.2.0/).
 
 ### Spec (`story/`)
 - **Level 3** grundlegend überarbeitet: neues **Swipe-Karten-System** (Social-Media-Karten,
   nach links = „richtig", nach rechts = „falsch"), Labyrinth-Zoom-Mechanik und ein
   Fragen-Katalog mit 6 Beispiel-Aussagen (Quelle/Lizenz/Metadaten/Plausibilität).
-  Siehe `story/levels/level-3-labyrinth-der-luegen.md`.
+  Siehe `story/levels/level-3-labyrinth-der-luegen.md`. _(bereits in v0.1.0 → v0.2.0 gepflegt)_
 
 ### Game (`game/`)
-- _Noch offen:_ Umbau von Level 3 auf das Swipe-Karten-System steht aus. Aktuell ist im
-  Spiel weiterhin die MVP-Variante (Karten-Auswahl) aktiv.
+- **Level 3 neu gebaut** gemäß Spec: zoomendes Labyrinth (`media/labyrinth.jpeg`) mit
+  Swipe-Karten davor. Bedienung per **Drag (Maus/Touch)**, zusätzlich **Buttons** und
+  **Pfeiltasten ←/→** (Barrierefreiheit). Richtig → Karte fliegt raus + Zoom tiefer +
+  Erklärungs-Toast; falsch → Shake + Fehlerton, erneuter Versuch. Punkte: 100 − 10 je
+  Fehlversuch (min. 40).
+- Daten: `game/js/data/datasets.js` → `level3.questions` (6 Meldungen, Emoji-Avatare,
+  `taskIndex`-Zuordnung zur Checkliste).
+- Neue Stile in `game/css/style.css` (Abschnitt „Level 3 – Swipe-Karten …").
+
+### Hinweise / Annahmen
+- **Emoji-Avatare** ersetzen die in der Spec genannten `profile_image`-PNGs (nicht als Assets vorhanden).
+- Verifizierungs-Badge aus `is_verified` (Hinweis, nicht allein entscheidend).
 
 ---
 
