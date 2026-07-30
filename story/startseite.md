@@ -54,3 +54,45 @@ Neugier wecken, Atmosphäre („Stadt im digitalen Koma“) etablieren und ins S
 - 💡 Kleine Intro-Animation (Logo-Glitch, „Verbindung wird aufgebaut …“).
 - 💡 Hintergrundmusik ab Startseite (mit Ton-Schalter).
 - 🟡 Anzeige einer Sprach-/Klassenwahl, falls später mehrere Klassen/Sprachen nötig sind.
+
+### Frontend-Spezifikation: Startseite "NEXUS DATA"
+
+---
+
+#### 1. Problemstellung & Bugfix (Titel-Überlappung)
+
+**Fehler auf der aktuellen Webseite:** Der Titel **NEXUS DATA** überlappt sich unschön und wird doppelt gerendert (wirkt wie ein fehlerhafter Schatten/Klon).
+**Soll-Zustand:** * Der Schriftzug NEXUS DATA darf **nur ein einziges Mal** sauber, scharf und exakt zentriert dargestellt werden.
+  * Hinter der Überschrift muss die leuchtende Cyberpunk-Stadtansicht im Hintergrund klar und ohne störende Doppel-Texte sichtbar sein.
+
+---
+
+#### 2. Visueller Aufbau & Layout (Zentriert von oben nach unten)
+
+1. **Hintergrund:**
+   * Eine beeindruckende, leuchtende Cyberpunk-/Neon-Stadtansicht (gut ausgeleuchtet und als klarer Hintergrund sichtbar).
+
+2. **Hauptüberschrift:**
+   * **NEXUS DATA** (einzeln, klar lesbar, zentral platziert).
+
+3. **Game-Icon / Symbol:**
+   * Ein passendes Spiel-Icon direkt unter dem Haupttitel.
+
+4. **Autoren-Credits:**
+   * Text: Ein Spiel von Sarah und Chiara
+
+5. **Story- & Einleitungstext:**
+   * Text: > „Die Stadt ist im digitalen Koma. Hol die Open Data Fragmente zurück!“
+
+6. **Haupt-Interaktion (Start-Button):**
+   * Prominenter Button zum Spielstart: **[ Spiel starten ]**
+
+---
+
+#### 3. Neon-Effekte & Status-Animationen
+
+**Status-Schriftzug:**
+  * Text: VERBINDUNG / NETZWERK INSTABIL
+**Visuelle Effekte:**
+  * Der Schriftzug sowie die zugehörigen Netzwerk-Linien sind im knalligen **Neon-Look** gestaltet.
+  * **Flacker- & Flicker-Animation:** Ein realistisches Cyberpunk-Blinken/Glitchen, das eine instabile Datenverbindung signalisiert.

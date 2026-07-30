@@ -29,17 +29,17 @@ Identifikation mit einer Figur; leichte Personalisierung des Spiels.
 | ID | Name | Rolle | Akzent | Skills (Mockup) |
 |----|------|-------|--------|-----------------|
 | `lyra` | **LYRA** | Die Strategin | Pink | Hacking Expertin · Schnell & Schlau · System-Analyse |
-| `ben`  | **BEN**  | Der Beschützer | Gelb | Nahkampf Experte · Stark & Ausdauernd · Team-Schild |
+| `lennox`  | **LENNOX**  | Der Beschützer | Gelb | Datenschutz Experte · Stark & Ausdauernd · Team-Schild |
 | `zen`  | **ZEN**  | Die Visionär*in | Grün | Support Spezialist*in · Heilung & Boosts · Team Optimierung |
 
 **Info-Texte:**
 - **Lyra:** „Lyra ist Expertin für digitale Infiltration und findet immer einen Weg.“ ✅ (aus Mockup)
-- **Ben:** „Ben hält den Schild hoch, wenn die Firewall bricht. Nichts kommt an ihm vorbei.“ 🟡
+- **Lennox:** „Lennox hält den Schild hoch, wenn die Firewall bricht. Nichts kommt an ihm vorbei.“ 🟡
 - **Zen:** „Zen sieht Muster, wo andere nur Chaos sehen, und bringt das Team nach vorne.“ 🟡
 
 **Fähigkeiten-Icons (Panel „FÄHIGKEITEN“):**
 - Lyra: 📡 Datenping · 🛡 Tarnprotokoll · ⚙ Systembreach ✅ (aus Mockup)
-- Ben: 🛡 Schildwall · 🧱 Datenpanzer · 👁 Overwatch 🟡
+- Lennox: 🛡 Schildwall · 🧱 Datenpanzer · 👁 Overwatch 🟡
 - Zen: ✚ Datenheilung · 🌊 Boost-Welle · 📈 Optimierung 🟡
 
 ## Verhalten / Interaktion
@@ -55,7 +55,7 @@ Identifikation mit einer Figur; leichte Personalisierung des Spiels.
 
 - Die **Portraits** werden aus dem Mockup `avatar.png` **freigestellt** und in `media/`
   als einzelne Bilder abgelegt (`avatar-lyra/ben/zen.png`). 🟡
-- Für **Ben** und **Zen** waren im Mockup nur die Skills sichtbar; **Info-Texte und die
+- Für **Lennox** und **Zen** waren im Mockup nur die Skills sichtbar; **Info-Texte und die
   Fähigkeiten-Icons wurden ergänzt** (Lyra war vollständig vorgegeben). 🟡
 - Die Fähigkeiten sind im MVP **narrativ/dekorativ** und haben **keinen Spieleffekt**. 🟡
 
@@ -68,7 +68,19 @@ Identifikation mit einer Figur; leichte Personalisierung des Spiels.
 
 ## Offene Punkte & Iterationsideen
 
-- 💡 **Fähigkeiten mit echtem Effekt** (z. B. Lyra: ein Gratis-Tipp; Ben: ein Fehlversuch ohne
+- 💡 **Fähigkeiten mit echtem Effekt** (z. B. Lyra: ein Gratis-Tipp; Lennox: ein Fehlversuch ohne
   Abzug; Zen: kleiner Punkte-Boost) – als sanfte Differenzierung.
 - 💡 Avatar-Vorschau/„Emote“-Animation wie im Mockup unten angedeutet.
 - 🟡 Diversere Avatar-Auswahl / Umbenennung, falls didaktisch gewünscht.
+
+
+
+## Avatar-Auswahl – Korrektur des Auswahl-Banners ("AUSGEWÄHLT")
+
+### 1. Problemstellung
+Bei der Auswahl des Avatars ist das diagonale Textband (Ribbon) oben rechts in der Ecke des Bildes zu schmal.
+Dadurch wird das Wort **"AUSGEWÄHLT"** am Anfang abgeschnitten – die ersten beiden Buchstaben **"AU"** sind verdeckt oder fehlen vollständig.
+
+### 2. Anweisung zur Korrektur
+Die Breite des diagonalen Textbandes muss vergrößert werden, damit das gesamte Wort Platz hat.
+Der Textabstand und die Schriftgröße sollen so eingestellt werden, dass das Wort **"AUSGEWÄHLT"** vollständig sichtbar, zentriert und ohne abgeschnittene Buchstaben auf dem Band liegt.

@@ -54,3 +54,32 @@ Orientierung geben, Fortschritt sichtbar machen, Level starten.
 - 💡 „Karte“ visuell als Stadtplan/Netzwerk mit Verbindungslinien statt reiner Kacheln.
 - 💡 Pro Kachel Bestleistung/Sterne anzeigen; „Neuer Rekord“-Feedback.
 - 💡 Optionaler nicht-linearer Zugang (mehrere Levels gleichzeitig offen).
+
+## Anpassungen Missionskarte (Level-Auswahl)
+
+## 1. Avatar-Platzierung & Layout
+**Avatar-Position:**
+  * Der aktuell gewählte Avatar befindet sich **links neben der gesamten Missionskarte** (außerhalb der einzelnen Kacheln).
+  * Innerhalb der vier Kacheln wird kein Avatar angezeigt.
+**Freiraum innerhalb der Kacheln verkleinern / nutzen:**
+  * Der unnötige Leerraum innerhalb der einzelnen Missionskacheln soll verringert bzw. optimal genutzt werden.
+  * Das Design der Kacheln soll kompakter wirken, ohne die Lesbarkeit zu beeinträchtigen.
+**Lesbarkeit gewährleisten:**
+  * Sämtliche Texte und Inhalte auf den Kacheln müssen weiterhin gut und klar lesbar sein.
+
+
+## 2. Typografie & Farbschema
+**Unterüberschriften anpassen:**
+  * Die Schriftgröße der Unterüberschriften in den Kacheln wird vergrößert.
+  * Die Farbe der jeweiligen Unterüberschrift orientiert sich exakt am Farbschema der entsprechenden Kachel:
+    * **Kachel 1 (Das Schatten-Archiv):** Grün
+    * **Kachel 2 (Flug der Cyber-Tauben):** Lila
+    * **Kachel 3 (Das Labyrinth der Lügen):** Gelb
+    * **Kachel 4 (Das Prisma der Stadt):** Grün / Cyan
+
+
+## 3. Buttons & Statusanzeige
+**Textänderung:**
+  * Der Text neben dem Dreieck-Symbol wird von bereit auf **Start** geändert.
+**Sichtbarkeit:**
+  * Der Button bzw. die Statusanzeige muss gut und deutlich sichtbar gestaltet sein.

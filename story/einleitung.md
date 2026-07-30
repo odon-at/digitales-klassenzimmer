@@ -24,7 +24,7 @@ Motivation aufbauen: Warum retten wir Open Data? Der Text liefert das „Warum�
 
 **Hervorgehobenes Zitat:**
 > „Wenn das System fällt, vertraut den Open Data Archiven. Sie liegen außerhalb der
-> Kontrolle des Hackers. Holt die Fragmente zurück.“
+> Kontrolle des Hackers. Hole die Fragmente zurück.“
 
 ## Layout & Elemente
 

@@ -11,9 +11,9 @@
 
 ## Story (Vorlage) ✅
 
-> Die Glasfaserkabel der Stadt sind vom Feind besetzt. Jedes Bit, das wir senden, wird
+> Die Glasfaserkabel der Stadt ist vom Hacker besetzt. Jedes Bit, das wir senden, wird
 > abgefangen. Es gibt nur einen Weg vorbei an der Firewall: Die Cyber-Tauben. Diese
-> mechanischen Boten fliegen über die Funklöcher hinweg. Wir müssen sie programmieren,
+> mechanischen Boten fliegen über die Funklöcher hinweg. Du musst sie programmieren,
 > damit sie die Rettungspakete direkt ins Herz der Stadtverwaltung tragen.
 
 ## Lernziel
@@ -68,3 +68,39 @@ Erklärt **API**, **API-Token** (Fehler 401 ohne gültigen Token) und **JSON** (
 - Query-Parameter zusammenbauen (Filter/Bezirk), Antwort abhängig von Parametern.
 - JSON-Felder gezielt auslesen lassen („Welcher Bezirk hat PM10 = 57?“).
 - Mehrere Tauben/Pakete, Reihenfolge/Timing als kleines Geschicklichkeitselement.
+
+## Flug der Cyber-Tauben – Anforderung & Ablauf
+
+Dieses Dokument beschreibt die Interaktions-Mechanik und den visuellen Ablauf für **Level 2 ("Flug der Cyber-Tauben")**.
+
+## 1. Bildreferenzen / Design-Vorgaben
+**Design der Cyber-Taube:**
+  * Als visuelle Vorlage dient die Datei Cybertaube.png.
+  * Das Aussehen der Taube im Spiel soll sich **exakt nach diesem Bild** richten.
+  ![Cybertaube](Cybertaube.png)
+
+**Design der Pergamentrolle:**
+  * Als visuelle Vorlage für die Nachricht im Schnabel dient die Datei Pergamentrolle.png.
+  * Die Darstellung der Rolle sowie die spätere Entfaltungs-Animation basieren auf dieser Grafik.
+  ![Pergamentrolle](Pergamentrolle.png)
+
+
+## 2. Anflug der Taube
+Eine sehr große Cyber-Taube (Cybertaube.png) fliegt von **rechts nach links** über den Bildschirm.
+Die Taube bedeckt dabei den Bildschirm kurzzeitig großflächig, um volle Aufmerksamkeit zu erzeugen.
+
+
+## 3. Landung & Interaktion
+Die Taube landet zentriert in der **Mitte des Bildschirms**.
+Sie hält eine Nachricht in Form der Pergamentrolle (Pergamentrolle.png) im Schnabel.
+Der Spieler muss auf die Taube bzw. die Pergamentrolle **klicken**, um fortzufahren.
+
+## 4. Wegflug & Token-Reveal
+Sobald der Klick erfolgt:
+  * Die Taube fliegt wieder vom Bildschirm weg.
+  * Die Pergamentrolle (Pergamentrolle.png) öffnet sich zentriert in der Mitte des Bildschirms.
+  * Auf der geöffneten Pergamentrolle wird der **API-Token** sichtbar angezeigt.
+
+## 5. Token-Übertragung
+Der angezeigte API-Code fliegt animiert von der Pergamentrolle direkt auf den dafür vorgesehenen Button mit dem bereitgestellten Token (gelbes Feld).
+Der Token wird dort automatisch eingetragen.
