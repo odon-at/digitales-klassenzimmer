@@ -1,6 +1,6 @@
 # Level 1: Das Schatten-Archiv – Spielkonzept
 
-### **1. Kopfbereich & Einleitung**
+## **1. Kopfbereich & Einleitung**
  **Tief im Schatten-Archiv liegen die ersten Datenfragmente. Auch der Nebel hat Datensätze beschädigt. Prüfe die offenen Datensätze, finde die unmöglichen Werte, korrigiere sie, nur saubere Daten öffnen das Schloss.**
 
 **Checkliste (Fortschritt):**
@@ -9,52 +9,60 @@
   * [ ] Falschen Wert korrigieren
   * [ ] Schlüssel finden
 **Anleitung ganz oben:**
-  * "Vergleiche die Daten in der Tabelle mit den Werten bei den Brunnen. Tippe die Brunnen an, um den wahren Wert zu sehen, und korrigiere die falschen Einträge in der Tabelle!"
+  * "Das Problem: Alle geschützten, internen Systemdaten wurden vom Hacker verändert – sie sind nicht mehr vertrauenswürdig!
+ Die einzige Rettung: Öffentlich zugängliche Daten (Open Data). Da Open-Data-Archive unabhängig und frei zugänglich gespeichert sind, konnte der Hacker sie nicht verfälschen.
+ Deine Mission: > Begib dich sofort zur öffentlichen Datenbehörde. Suche dort im Schattenarchiv nach den unverfälschten Open-Data-Datensätzen. Nur mit diesen echten, öffentlichen Daten kannst du die gefälschten Angaben abgleichen, die Stadt retten und die Kontrolle zurückholen!
+ [ MISSION STARTEN → ]"
 
 ---
 
-### **2. Visuelle Bezirks-Stationen (Individuelle Neon-Brunnen)**
-**5 einzigartige Brunnen:** Jeder Bezirk besitzt sein ganz eigenes, farbenfrohes Design im Neon-/Cyberpunk-Stil:
-  * **Zentrum:** Futuristischer High-Tech-Brunnen.
-  * **Hafen:** Maritimer Industriepumpen-Brunnen.
-  * **Altstadt:** Historischer Steinbrunnen mit leuchtenden Neon-Adern.
-  * **Nordpark:** Organischer Brunnen umgeben von Neon-Pflanzen.
-  * **Industrie:** Robuster, mechanischer Mess-Brunnen mit Zahnrädern.
-**Messen per Klick/Tipp:**
-  1. Der Spieler **tippt den jeweiligen Brunnen an**.
-  2. Es startet eine kurze Mess-Animation (z. B. mit der Pipette).
-  3. Der **wahre Messwert** vor Ort wird enthüllt und angezeigt.
+
 
 ---
 
-### **3. Datenqualitäts-Balken & Datentabelle**
+## 🎨 2. DESIGN-SYSTEM & VISUELLER STIL
 
-#### **Datenqualitäts-Anzeige (Progress Bar)**
-**Regenbogen-Balken:** Ein farbiger Verlaufsbalken (von Rot über Gelb nach Grün) zeigt den aktuellen Stand der Datenqualität visuell an.
-**Prozent-Anzeige:** Startet bei **80 %** und steigt erst auf **100 %**, wenn alle unmöglichen Werte korrigiert wurden.
-
-#### **Datentabelle (Stadt Nexus – Trinkbrunnen)**
-**Unmögliche Werte:** Die Tabelle enthält extreme Ausreißer und Messfehler (z. B. **2000 °C** oder **-300 °C**, was unter dem absoluten Nullpunkt liegt).
-
-| ID | Bezirk | pH-Wert | Temperatur °C | Status |
-| :--- | :--- | :---: | :---: | :---: |
-| **BR-01** | Zentrum | 7.2 | **2000.0** (Fehler) | aktiv |
-| **BR-02** | Hafen | 7.5 | 12.1 | aktiv |
-| **BR-03** | Altstadt | 6.9 | **-300.0** (Fehler) | aktiv |
-| **BR-04** | Nordpark | 7.0 | 11.0 | aktiv |
-| **BR-05** | Industrie | 7.1 | 12.6 | aktiv |
+**Hintergrund:** Dunkles Midnight-Blue / Slate (#0a0e17) mit dezentem Cyber-Gitter (rgba(0, 243, 255, 0.05)) und sehr feinen Platinen-Linien (PCB Traces) im Hintergrund.
+**Haupt-Farbe (Vordergrund & UI):** Neonblau / Cyan (#00f3ff).
+**Akzent-Glow:** Äußeres Leuchten (box-shadow: 0 0 15px rgba(0, 243, 255, 0.4)).
+**Schriftart:** Monospace (Fira Code, Roboto Mono, Courier New).
 
 ---
 
-### **4. Interaktives Korrektur-System**
-1. **Vergleichen:** Den wahren Messwert am Brunnen ablesen (z. B. per Pipette) und mit dem Eintrag in der Datentabelle vergleichen.
-2. **Wert anklicken:** Direkt auf den fehlerhaften Temperaturwert in der Tabelle tippen.
-3. **Eingabefeld (Pop-up):** Es öffnet sich ein Pop-up-Fenster mit der Beschriftung "Korrigierter Temperaturwert (°C):".
-4. **Bestätigen:** Den echten Messwert eintippen und auf den Button **[ Korrigieren ]** drücken.
-5. **Erfolg:** Bei korrekter Eingabe springt die Datenqualität auf **100 %**, der Regenbogen-Balken leuchtet voll grün, der Haken bei "Falschen Wert korrigieren" wird grün aktiviert und der Schlüssel schaltet sich frei.
+## 🔄 3. INTERAKTIONS-LOGIK & FEHLER-SPEZIFIKATION
+
+### Zustand 1: Initialer Zustand (Spielstart)
+**Oben:** Nur die zentrierte, weiße URL-Eingabezeile (URL: ...) ist sichtbar.
+**Mitte:** Das Open-Data-Portal der **Datenbehörde Nexus** mit den 7 Kategorien ist noch **vollständig ausgeblendet / unsichtbar**.
+**Unten:** Die untere Tabelle mit den gehackten Systemdaten ist bereits von Anfang an sichtbar und enthält folgende konkrete Manipulationen/Fehler:
+  1. **Strom & Energie:** Der Wert ist fälschlicherweise auf 1 kWh manipuliert (Kritischer Unterverbrauch/Systemausfall).
+  2. **Sicherheit & Standortdaten:** Die Notrufzentralen stehen fälschlicherweise auf 0 (Kritischer Sicherheitsausfall).
+  3. **Demografie:** Die Einwohnerzahl steht fälschlicherweise auf 15 Einwohner (Falschwert).
+  4. **Verkehrs- & Lichtsignale:** Die Ampelsteuerung steht auf Manuell / Ausfall statt Automatisch.
+  5. **Trinkwasser:** Der Zustand ist auf Gefährliche Chemikalien manipuliert (Falschalarm).
+
+### Zustand 2: Nach Klick auf "Abschicken"
+1. Schülerin klickt auf die URL-Zeile ➔ Vorschlag `https://datenbehoerde-nexus.gv.at/stadt-open-data` erscheint.
+2. Schülerin klickt auf den Button [ Senden ].
+3. Das obere Open-Data-Behördenfenster der **Datenbehörde Nexus** **poppt/klappt unterhalb der URL-Zeile auf** und zeigt die 7 Kategorien.
+4. **LAYOUT-REGEL:** Das Aufklappen geschieht oberhalb der unteren Tabelle. Die untere Tabelle wird **niemals verdeckt, verkleinert oder verschoben**!
 
 ---
 
-### **5. Bottom-Bar (Rechts unten)**
-**[ TIPP ]-Button:** Hilft mit konkreten Hinweisen zum aktuellen Spielschritt weiter, falls man feststeckt.
-**[ INFO ]-Button:** Öffnet ein reines Fach-Lexikon zur Begriffs-Erklärung (z. B. Open Data, Datenqualität), **ohne** Spielhinweise oder Lösungen zu verraten.
+### 📐 4. UI-LAYOUT & SCREEN-AUFBAU (ZUSTAND 2)
+
+text+-----------------------------------------------------------------------------------+
+|  URL: [ [https://datenbehoerde-nexus.gv.at/stadt-open-data](https://datenbehoerde-nexus.gv.at/stadt-open-data)      ]  [  SENDEN  ]   |  <-- Immer oben zentriert
++-----------------------------------------------------------------------------------+
+|  🌐 OBERE HÄLFTE: Datenbehörde Nexus Portal (Ploppt erst nach "Senden" auf!)      |
+|  * Fixed Height / Feste Höhe                                                      |
+|  * Zeigt die 7 wählbaren Kategorien (Strom, Wasser, etc.)                         |
+|  * Beim Klick auf eine Kategorie öffnet sich die Detail-Box im selben Bereich!     |
++-----------------------------------------------------------------------------------+
+|  🌈 DATENQUALITÄT: [ Rosa ========= Gelb ========= Grün ] ( 35% )                 |  <-- Regenbogen-Balken
++-----------------------------------------------------------------------------------+
+|  🖥️ UNTERE HÄLFTE: Internes Stadt-System (FORMULAR / TABELLE)                      |
+|  * Von Anfang an dauerhaft sichtbar!                                              |
+|  * Enthält gehackte Daten mit konkreten Systemfehlern/Abweichungen                |
+|  * Eingabefelder STRENG OHNE Autocomplete & OHNE gespeicherte Lösungen!           |
++-----------------------------------------------------------------------------------+
