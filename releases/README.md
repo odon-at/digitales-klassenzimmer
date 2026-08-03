@@ -23,6 +23,7 @@ Siehe [../VERSIONING.md](../VERSIONING.md) (Build-Loop, Schritt 4).
 
 | Version | Datum | Kurzbeschreibung |
 |---------|-------|------------------|
+| v0.4.0  | 2026-08-03 | Level 1 neu: Open-Data-Portal (Datenbehörde Nexus) statt geratener Werte (Feedback-Umsetzung) |
 | v0.3.0  | 2026-07-31 | Level 1 (Neon-Brunnen + Temperatur-Fehler), Level 2 (Cyber-Tauben-Intro), UI-Politur (Startseite/Avatar/Karte) |
 | v0.2.0  | 2026-07-30 | Level 3 neu: Swipe-Karten über zoomendem Labyrinth (6 Meldungen) |
 | v0.1.0  | 2026-07-29 | MVP-Baseline (Spiel Start→Zertifikat, Level 3 = Karten-Auswahl) |

@@ -1,0 +1,68 @@
+# Level 1: Das Schatten-Archiv – Spielkonzept
+
+## **1. Kopfbereich & Einleitung**
+ **Tief im Schatten-Archiv liegen die ersten Datenfragmente. Auch der Nebel hat Datensätze beschädigt. Prüfe die offenen Datensätze, finde die unmöglichen Werte, korrigiere sie, nur saubere Daten öffnen das Schloss.**
+
+**Checkliste (Fortschritt):**
+  * [ ] Verständnis: Open Data
+  * [ ] Datensatz prüfen
+  * [ ] Falschen Wert korrigieren
+  * [ ] Schlüssel finden
+**Anleitung ganz oben:**
+  * "Das Problem: Alle geschützten, internen Systemdaten wurden vom Hacker verändert – sie sind nicht mehr vertrauenswürdig!
+ Die einzige Rettung: Öffentlich zugängliche Daten (Open Data). Da Open-Data-Archive unabhängig und frei zugänglich gespeichert sind, konnte der Hacker sie nicht verfälschen.
+ Deine Mission: > Begib dich sofort zur öffentlichen Datenbehörde. Suche dort im Schattenarchiv nach den unverfälschten Open-Data-Datensätzen. Nur mit diesen echten, öffentlichen Daten kannst du die gefälschten Angaben abgleichen, die Stadt retten und die Kontrolle zurückholen!
+ [ MISSION STARTEN → ]"
+
+---
+
+
+
+---
+
+## 🎨 2. DESIGN-SYSTEM & VISUELLER STIL
+
+**Hintergrund:** Dunkles Midnight-Blue / Slate (#0a0e17) mit dezentem Cyber-Gitter (rgba(0, 243, 255, 0.05)) und sehr feinen Platinen-Linien (PCB Traces) im Hintergrund.
+**Haupt-Farbe (Vordergrund & UI):** Neonblau / Cyan (#00f3ff).
+**Akzent-Glow:** Äußeres Leuchten (box-shadow: 0 0 15px rgba(0, 243, 255, 0.4)).
+**Schriftart:** Monospace (Fira Code, Roboto Mono, Courier New).
+
+---
+
+## 🔄 3. INTERAKTIONS-LOGIK & FEHLER-SPEZIFIKATION
+
+### Zustand 1: Initialer Zustand (Spielstart)
+**Oben:** Nur die zentrierte, weiße URL-Eingabezeile (URL: ...) ist sichtbar.
+**Mitte:** Das Open-Data-Portal der **Datenbehörde Nexus** mit den 7 Kategorien ist noch **vollständig ausgeblendet / unsichtbar**.
+**Unten:** Die untere Tabelle mit den gehackten Systemdaten ist bereits von Anfang an sichtbar und enthält folgende konkrete Manipulationen/Fehler:
+  1. **Strom & Energie:** Der Wert ist fälschlicherweise auf 1 kWh manipuliert (Kritischer Unterverbrauch/Systemausfall).
+  2. **Sicherheit & Standortdaten:** Die Notrufzentralen stehen fälschlicherweise auf 0 (Kritischer Sicherheitsausfall).
+  3. **Demografie:** Die Einwohnerzahl steht fälschlicherweise auf 15 Einwohner (Falschwert).
+  4. **Verkehrs- & Lichtsignale:** Die Ampelsteuerung steht auf Manuell / Ausfall statt Automatisch.
+  5. **Trinkwasser:** Der Zustand ist auf Gefährliche Chemikalien manipuliert (Falschalarm).
+
+### Zustand 2: Nach Klick auf "Abschicken"
+1. Schülerin klickt auf die URL-Zeile ➔ Vorschlag `https://datenbehoerde-nexus.gv.at/stadt-open-data` erscheint.
+2. Schülerin klickt auf den Button [ Senden ].
+3. Das obere Open-Data-Behördenfenster der **Datenbehörde Nexus** **poppt/klappt unterhalb der URL-Zeile auf** und zeigt die 7 Kategorien.
+4. **LAYOUT-REGEL:** Das Aufklappen geschieht oberhalb der unteren Tabelle. Die untere Tabelle wird **niemals verdeckt, verkleinert oder verschoben**!
+
+---
+
+### 📐 4. UI-LAYOUT & SCREEN-AUFBAU (ZUSTAND 2)
+
+text+-----------------------------------------------------------------------------------+
+|  URL: [ [https://datenbehoerde-nexus.gv.at/stadt-open-data](https://datenbehoerde-nexus.gv.at/stadt-open-data)      ]  [  SENDEN  ]   |  <-- Immer oben zentriert
++-----------------------------------------------------------------------------------+
+|  🌐 OBERE HÄLFTE: Datenbehörde Nexus Portal (Ploppt erst nach "Senden" auf!)      |
+|  * Fixed Height / Feste Höhe                                                      |
+|  * Zeigt die 7 wählbaren Kategorien (Strom, Wasser, etc.)                         |
+|  * Beim Klick auf eine Kategorie öffnet sich die Detail-Box im selben Bereich!     |
++-----------------------------------------------------------------------------------+
+|  🌈 DATENQUALITÄT: [ Rosa ========= Gelb ========= Grün ] ( 35% )                 |  <-- Regenbogen-Balken
++-----------------------------------------------------------------------------------+
+|  🖥️ UNTERE HÄLFTE: Internes Stadt-System (FORMULAR / TABELLE)                      |
+|  * Von Anfang an dauerhaft sichtbar!                                              |
+|  * Enthält gehackte Daten mit konkreten Systemfehlern/Abweichungen                |
+|  * Eingabefelder STRENG OHNE Autocomplete & OHNE gespeicherte Lösungen!           |
++-----------------------------------------------------------------------------------+

@@ -15,6 +15,39 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.4.0] – 2026-08-03 – Level 1 neu: Open-Data-Portal statt geratener Werte
+
+Snapshot: [`releases/v0.4.0/`](releases/v0.4.0/). Setzt einen zentralen Punkt aus dem
+Experten-Feedback um: fehlerhafte Daten werden **nicht geraten**, sondern aus einer
+vertrauenswürdigen **Originalquelle** übernommen.
+
+### Spec (`story/`)
+- **Level 1** neu konzipiert (`story/levels/level-1-schatten-archiv.md`): interne Systemdaten
+  wurden gehackt; die echten Werte kommen aus dem **Open-Data-Portal der Datenbehörde Nexus**
+  (URL eingeben → senden → 7 Kategorien). Layout: URL oben, Portal (klappt auf), Datenqualitäts-
+  Balken, internes Stadt-System unten (immer sichtbar). Eingaben ohne Autocomplete/gespeicherte Lösungen.
+
+### Game (`game/`)
+- **Level 1** komplett neu gebaut (`game/js/levels/level1.js`, `datasets.js` → `level1`):
+  URL-Zeile (Klick füllt Portal-URL vor) → **SENDEN** öffnet das Open-Data-Portal mit 7 Kategorien;
+  Kategorie anklicken zeigt den **echten Wert** inkl. Herausgeber/Lizenz/Stand. Das interne
+  Stadt-System zeigt 5 gehackte Einträge (Strom 1 kWh, Notrufzentralen 0, Einwohner 15,
+  Ampel „Manuell/Ausfall", Trinkwasser „Gefährliche Chemikalien"); Korrektur durch Übernahme des
+  echten Werts. Datenqualität steigt 35 % → 100 %. Korrektur erst nach Öffnen des Portals möglich.
+- Neuer „Data-Terminal"-Look (Cyan/Monospace) für Portal & System (`game/css/style.css`);
+  alte Neon-Brunnen-Styles ersetzt.
+
+### Umgesetztes Feedback
+- **Kein „plausibler" Ersatzwert mehr** — der Wert wird aus der Open-Data-Originalquelle übernommen
+  (Feedback-Punkt zu Level 1).
+- Fiktive Stelle „**Datenbehörde Nexus**" statt realer Namen.
+
+### Offen / nächste Schritte
+- Der größere Level-3-Umbau (dreistufiger Belegstand, getrennte Prüffragen, echter Quellencheck)
+  aus dem Feedback ist **noch nicht** umgesetzt — separate Entscheidung/Runde.
+
+---
+
 ## [0.3.0] – 2026-07-31 – Story-Feinschliff: Level 1, Level 2 & UI-Politur
 
 Snapshot: [`releases/v0.3.0/`](releases/v0.3.0/).
