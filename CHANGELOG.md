@@ -15,6 +15,36 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.5.0] – 2026-08-03 – Level-Umbau: Cyber-Tauben (neu L1) ↔ Schattenarchiv (L2) + Pause
+
+Snapshot: [`releases/v0.5.0/`](releases/v0.5.0/). **Level 1 und 2 wurden getauscht.**
+
+### Spec (`story/`)
+- **Level 1 = „Die Cyber Tauben"** (`level-1-cyber-tauben.md`, stark ausgebaut): Terminal mit
+  3-stufigem Ausrüstungs-Regal (URL → Methode → Token), Live-Code-Vorschau, Tauben-Kartenflug,
+  Fehler-Matrix (404/401/405), Papierrollen-Chaos → SCAN → JSON + Human-Dashboard.
+- **Level 2 = „Das Schattenarchiv"** (`level-2-schatten-archiv.md`): Open-Data-Portal-Korrekturspiel
+  (bisher Level 1) **+ 10-Minuten-„Real-Life-Break"** am Ende.
+- Level 3 & 4: Spec unverändert.
+
+### Game (`game/`)
+- **Level 1 (Cyber-Tauben) neu gebaut** (`level1.js`, `datasets.js` → `level1`): progressive
+  Freischaltung URL→Methode→Token (+ Tooltips), Live-HTTP-Vorschau, Start → Kartenflug → Fehler-
+  Matrix **404** (falsche URL) / **401** (falscher/kein Token) / **405** (POST) → bei Erfolg
+  Papierrollen-Stream → **[SCAN → JSON]** → Maschinen-JSON (`ui.highlightJSON`) + Human-Dashboard +
+  „Warum JSON?"-Erklärung. Punkte 100 − 10 je Fehlversuch. Nutzt `cybertaube.png`.
+- **Level 2 (Schattenarchiv)** = bisheriges Portal-Level, jetzt `id 2`; bei Lösung ein
+  **überspringbarer Real-Life-Break** (Countdown 10:00 + Pausen-Vorschläge + „Weiter").
+- Datentausch in `datasets.js` (`level1` = Cyber-Tauben inkl. Stadt-JSON + Dashboard, `level2` =
+  Portal-Daten). Neuer Terminal-/Karten-/Scan-/Dashboard-Look + Break-Overlay in `style.css`.
+- Level 3 & 4: Code unverändert. *(Missionskarten-Kachelfarben folgen jetzt: L1 Lila, L2 Grün.)*
+
+### Offen (aus Experten-Feedback, nicht Teil dieses Schritts)
+- Großer **Level-3-Umbau** (dreistufiger Belegstand, getrennte Prüffragen, echter Quellencheck) –
+  Level-3-Spec wurde nicht geändert.
+
+---
+
 ## [0.4.0] – 2026-08-03 – Level 1 neu: Open-Data-Portal statt geratener Werte
 
 Snapshot: [`releases/v0.4.0/`](releases/v0.4.0/). Setzt einen zentralen Punkt aus dem
