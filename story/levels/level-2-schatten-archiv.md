@@ -64,5 +64,29 @@ text+---------------------------------------------------------------------------
 |  🖥️ UNTERE HÄLFTE: Internes Stadt-System (FORMULAR / TABELLE)                      |
 |  * Von Anfang an dauerhaft sichtbar!                                              |
 |  * Enthält gehackte Daten mit konkreten Systemfehlern/Abweichungen                |
-|  * Eingabefelder STRENG OHNE Autocomplete & OHNE gespeicherte Lösungen!           |
+|  * Eingabefelder STRENG OHNE Autocomplete & OHNE gespeicherte Lösungen!  
+         |
 +-----------------------------------------------------------------------------------+
+
+### Ende vom Level 2 nach erfolgreicher Mission
+
+ **System-Break: Chill-Out-Phase (10 Minuten)**
+
+Die gehackten Daten wurden erfolgreich abgeglichen und korrigiert. Die Server laufen wieder stabil. Zeit für einen kurzen Reality-Check und eine Pause, um den Kopf freizukriegen.
+
+text+---------------------------------------------------+
+|               REAL-LIFE BREAK (10 MIN)            |
+|                                                   |
+|  [████████████░░░░░░░░] Bildschirm-Pause...        |
+|                                                   |
+|  Verbleibende Zeit: 10:00 Minuten                 |
+|  Status: Offline-Modus aktiv                       |
+|                                                   |
+|  Was du in diesen Minuten machen kannst:          |
+|  1. Lüften (Fenster auf, frische Luft reinlassen) |
+|  2. Trinken (Schluck Wasser gegen den Durst)      |
+|  3. Bewegung (Aufstehen, rumlaufen, strecken)     |
+|  4. Kurzer Blick raus (Augen entspannen lassen)   |
+|  5. Screen-Detox (Weg vom Monitor, Augenruhe)     |
+|  6. Mini-Snack (Energiekick für den Kopf holen)   |
++---------------------------------------------------+
