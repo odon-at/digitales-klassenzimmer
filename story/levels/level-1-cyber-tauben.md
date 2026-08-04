@@ -1,66 +1,51 @@
-# Level 1: Die Cyber Tauben – Spielkonzept
+# Level 1 – Flug der Cyber-Tauben
 
-## 📜 MISSION STORY & LERNZIELE
-
- ### 🛰️ Flug der Cybertauben
- Das digitale Hauptnetzwerk ist komplett blockiert – normale Internet-Leitungen oder direkte URLs sind für uns abgeschnitten. Der Hacker hat jede Verbindung überwacht.
- 
- Um an die sicheren Open Data Archive heranzukommen, nutzen wir unsere geheimen Boten: die Cybertauben. Sie fliegen unbemerkt zu den externen Servern der Stadt, laden die sauberen JSON-Daten herunter und bringen sie direkt zu unserem Terminal zurück.
- 
- System-Upload läuft... > Verbindung wird aufgebaut... Cybertauben gestartet! > Alles bereit. Mission Start!
+**Untertitel:** Die lautlosen Boten
+**Akzentfarbe:** Violett (#8A2BE2)
+**Lernfokus:** API-Abfrage, API-Token, JSON-Datenformat
 
 ---
 
-### 🎓 Was die Schülerinnen & Schüler in diesem Spiel lernen:
-**API (Application Programming Interface):** Verstehen, wie Schnittstellen genutzt werden, um Daten von externen Servern abzurufen.
-**URL / Endpoint (Zieladresse):** Lernen, wie eine Internet-Adresse als genauer Zielort für Datenabfragen funktioniert.
-**HTTP-Methoden (GET / POST):** Den Unterschied begreifen zwischen Daten anfordern (GET) und Daten senden (POST).
-**API-Token (Authentifizierung):** Erkennen, warum man einen digitalen Passierschein/Schlüssel braucht, um geschützte Server zu betreten.
-**JSON-Format (Daten-Transformation):** Verstehen, warum Computer strukturierte Schlüssel-Wert-Paare ("Schlüssel": Wert) brauchen, um unleserliche Datenströme blitzschnell zu verarbeiten.
-**HTTP-Fehlercodes:** Fehler wie 404 Not Found, 401 Unauthorized und 405 Method Not Allowed spielerisch interpretieren und beheben.
+## 1. Visuelles Konzept: Das Flughafen-Kontrollzentrum (Tower-Ansicht)
+
+Das gesamte Interface verwandelt sich in ein authentisches **Fluglotsen-Kontrollzentrum (Control Tower)**:
+**Die Umgebung:** Dunkle, matte Bedienpulte im schicken Dark-Mode mit glühenden violetten Neon-Akzenten, leuchtenden Status-Displays und großen Panoramafenstern mit Blick auf das digitale Stadtnetz.
+**Das Hauptterminal (Links):** Der API-Request-Builder ist nahtlos in ein futuristisches Steuerpult eingebettet.
+**Der Ausrüstungs-Hangar (Rechts):** Rechts neben den Konsolen befindet sich eine große Andockstation. Hier sitzt die Cyber-Taube in Übergröße bereit. Vor dem Absenden sieht der Spieler live, wie die Pergamentrolle mit dem API-Token in den Schnabel der Taube geladen und fixiert wird.
 
 ---
 
+## 2. Story (Vorlage) & Intro-Ablauf ✅
 
-## 🎨 DESIGN & VISUELLES SYSTEM (ASSETS)
+ Die Glasfaserkabel der Stadt sind vom Hacker besetzt. Jedes Bit, das wir senden, wird abgefangen. Es gibt nur einen Weg vorbei an der Firewall: Die **Cyber-Tauben**. Diese mechanischen Boten fliegen über die Funklöcher hinweg. Du musst sie programmieren, damit sie die Rettungspakete direkt ins Herz der Stadtverwaltung tragen.
 
-**Stil:** Cyberpunk / Sci-Fi Terminal / Retro-Hacker-Konsole.
-**Farbschema:**
-  * Hauptakzent: Neon-Lila / Violett (#9D00FF)
-  * Zweitakzent: Neon-Cyan / Türkis (#00F0FF)
-  * Hintergrund: Midnight Black / Tiefschwarz (#0D0D11)
-**Hauptfigur-Asset (Cybertaube.png):**
-  * Verwendet wird die Bilddatei **Cybertaube.png**.
-  * **Freistellung:** Nur die Cybertaube selbst wird aus dem Bild entnommen (ohne den schwarzen Hintergrund).
-  * **Einsatz:** Die Taube wird als transparentes Sprite/Image-Element auf der Benutzeroberfläche und über der Vektor-Landkarte gerendert.
-  * **Dynamisches Greif-System an den Krallen:**
-    * In der Vorbereitungsphase im Terminal bleiben die Krallen leer/unbelegt.
-    * Sobald am Ziel-Server Daten abgeholt werden, wird das Daten-Paket (Zylinder/Icon) dynamisch unter das Sprite an die Krallen geheftet.
+### Animierter Intro-Ablauf:
+1. **Ausstattungs-Phase:** Die Pergamentrolle mit dem freigeschalteten Token gleitet animiert in den Schnabel der großen Cyber-Taube im rechten Hangar.
+2. **Anflug der Taube:** Eine sehr große Cyber-Taube (Cybertaube.png) hebt ab und fliegt von rechts nach links über den Bildschirm, um volle Aufmerksamkeit zu erzeugen.
+3. **Landung & Interaktion:** Die Taube landet zentriert auf dem Kontrollpult. Der Spieler klickt auf die Taube oder die Rolle (Pergamentrolle.png), um fortzufahren.
+4. **Token-Reveal:** Die Taube fliegt in Richtung des Stadtpanoramas ab, während sich die Pergamentrolle zentriert öffnet und den API-Token (NX-TOKEN-7F3A-9K2D) preisgibt.
+5. **Token-Übertragung:** Der API-Code fliegt animiert direkt in das vorgesehene Eingabefeld des Request-Builders.
 
 ---
 
-## 🎬 ANIMATIONS-ZUSTÄNDE & MAP-FLUG (STATE MACHINE)
+## 3. Lernziel & Aufgaben (Checkliste) ✅
 
-1. STATE_TERMINAL_IDLE (Ausrüstungs-Phase):
-   * Das Tauben-Sprite (Cybertaube.png) schwebt/sitzt ruhig im Terminal-Dock.
-   * Beim Auswählen der Regal-Items docken UI-Module animiert an der Taube an.
-2. STATE_MAP_TRANSITION (Szenenwechsel):
-   * Das Terminal-Interface klappt oder schiebt sich zur Seite.
-   * Eine interaktive Vektor-Landkarte öffnet sich im Hintergrund.
-3. STATE_IN_FLIGHT (Flug auf der Landkarte):
-   * **Trigger:** Aktiviert sich erst, wenn alle 3 Regal-Ebenen gewählt wurden und der Start-Button gedrückt wird.
-   * **Flug-Animation:** Das freigestellte Sprite Cybertaube.png bewegt sich programmatisch (z. B. via CSS/JS-Animation/Tweening) entlang einer Flugroute flüssig über die Landkarte zum Ziel-Server.
-   * Ein leichter Schwebesystem-Effekt (sanftes Auf- und Ab-Wippen/Pulsieren der Neon-Schaltkreise) simuliert die Flugbewegung.
-4. STATE_FAIL_FLIGHT (Fehler-Zustand):
-   * Die Flugbahn gerät ins Stottern/Kippen. Die Taube landet ratlos auf einem toten Masten oder Baum auf der Karte.
-5. STATE_RETURN_FLIGHT (Rückflug):
-   * Das Cybertaube.png-Sprite bewegt sich mit dem untergehängten Daten-Paket in den Krallen über die Landkarte zurück ins Hauptterminal.
+Verstehen, wie man Daten über eine **API** abfragt: **Endpunkt** wählen, **API-Token** einsetzen, Antwort als **JSON** empfangen.
+
+**Boten programmieren:** API-Abfrage im Tower-Terminal konfigurieren.
+**API-Token nutzen:** Den freigeschalteten Schlüssel korrekt einbinden.
+**Paket empfangen:** Strukturierte Daten im JSON-Format einlesen.
 
 ---
 
-## 🖥️ INTERFACE-LAYOUT (DAS TERMINAL)
+## 4. Die detaillierte Stadtkarte & Flug-Animation
 
-Der Startbildschirm besteht aus drei Hauptbereichen:
+Nach dem Klick auf „🕊 Anfrage senden“ verlagert sich das Geschehen auf die interaktive **Vektor-Stadtkarte (Live-Karten-Monitor)**:
+**Die Stadtlandschaft:** Eine isometrische 2D-Ansicht im Cyber-Look mit detailreichen Elementen wie markanten Towers/Hochhäusern, Brücken über Flüsse, leuchtenden Straßenschluchten, Server-Knotenpunkten und kleinen Parkanlagen (Bäume).
+**Der Flugweg:** Die voll ausgestattete Cyber-Taube startet aus dem rechten Hangar und fliegt quer über die echte Stadtkarte, zieht eine digitale Daten-Spur hinter sich her und manövriert vorbei an den Gebäuden und Brücken direkt zum Ziel.
+
+---
+
 
 ### 1. Linkes Panel: Das Ausrüstungs-Regal (Schritt-für-Schritt Freischaltung)
 **Ebene 1 (URL / Zieladresse):** Von Beginn an freigeschaltet.
