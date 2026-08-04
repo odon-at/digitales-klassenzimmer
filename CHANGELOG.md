@@ -15,6 +15,66 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.7.0] – 2026-08-04 – Level 4 „Die Daten-Metropole", 360°-Stadt & Großes Finale
+
+Snapshot: [`releases/v0.7.0/`](releases/v0.7.0/). Holt erneut einen **Spec-Rückstand** nach:
+Commit „Version 8.0" hatte ausschließlich `story/levels/level-4-prisma-der-stadt.md` geändert
+(+145/−35), während das Spiel auf v0.6.0 stand.
+
+### Spec (`story/`)
+- **Level 4 komplett neu konzipiert** (`level-4-prisma-der-stadt.md`, aus „Version 8.0"):
+  Bürger-Portal mit Diagramm-Auswahl und Drag & Drop, anschließend ein **360°-Erkundungs-Modul**
+  mit 10 Szenarien (5× Open Data / 5× DSGVO) und ein **Großes Finale** mit Zeremonie,
+  Cyber-Pokal und „Open-Data-Hero-Award". Primärfarbe **Neon-Blau (#00BFFF)**.
+- **Doku-Korrekturen:** Kopfzeile („Akzent: Grün" → Neon-Blau), Tippfehler „Datenkompetentz",
+  Tipp-Kosten (−10 statt „–10 oder –15"), sowie die **Level-Zuordnung im Finale**
+  (die Liste nannte noch die Reihenfolge vor v0.5.0). Ergänzt: `levels/README.md`,
+  `allgemein.md` (Farbtabelle, roter Faden), `overview.md` (Bildschirm-Tabelle + `awards`),
+  `belohnung.md` (vorgeschaltete Zeremonie, Pokal, Badge), `game/README.md`.
+
+### Game (`game/`)
+- **Level 4 komplett neu gebaut** (`level4.js`, `datasets.js` → `level4`). Das alte Dropdown +
+  Textfeld ist ersetzt durch zwei Phasen:
+  - **Phase 1 · Bürger-Dashboard:** drei Datensätze (Feinstaub 24 h → Linie · Restmüll
+    5 Stadtteile → Säule · Budget 100 % → Kreis). Erst den Typ **wählen** (bewertet, −6 je
+    Fehlversuch, blauer Glitch + Bürger-KI-Hinweis), dann den Daten-Chip per **Drag & Drop**
+    ins freigeschaltete Feld ziehen. Pointer Events (Maus **und** Touch) mit gleichwertigem
+    Klick-/Tastaturpfad. Chart.js im neuen Blau, offline ersetzt eine **CSS-Mini-Grafik** das Chart.
+  - **Phase 2 · Die lebendige Cyber-Stadt:** nahtlos drehbares 360°-Panorama aus vier
+    Parallax-Ebenen (Streifen-Technik, Inhalt mehrfach gerendert), generierte Kulisse als
+    Inline-SVG, animierte Bienen/Vögel/Bürger, Kompass und ‹›-Steuerung. 10 Hotspots, je eine
+    Entscheidung **[🟢 FREIGEBEN] / [🔴 SPERREN]** (−5 je Fehlentscheidung). **Jedes** Objekt
+    wird erklärt – bei den privaten erscheint der DSGVO-Bezug auch bei richtiger Sperrung.
+    Alle 10 entschieden → **Open-Data-Hero-Award**.
+- **Großes Finale** (neuer Bildschirm `#screen-finale`): Zeremonie mit Bürger-KI-Ansprache,
+  Level-Übersicht mit Punkten, rotierendem Cyber-Pokal, Badge und Schlusssatz.
+  **Überspringbar und beliebig wiederholbar**; der Halle-Eintrag bleibt einmalig.
+  Danach wie bisher das **druckbare Zertifikat** – jetzt ergänzt um Pokal, Badge und
+  Level-Übersicht (alles wird mitgedruckt, die Zeremonie nicht).
+- **Neuer Akzent** `blue` (#00BFFF) in `registry.js`; neues Feld `awards: []` in `state.js`
+  (migrationssicher über den bestehenden `Object.assign`-Merge).
+- **Terminologie vereinheitlicht:** das Info-Glossar sagte „Balken"/„Torte", das Level sagt
+  „Säule"/„Kreis" – jetzt durchgehend **Linien- / Säulen- / Kreisdiagramm** (`infos.js`,
+  Level-4-`tips`, UI). Die Zen-Definitionen folgen dem Wortlaut der Spec.
+- Kleinigkeit: `.level-help` (seit v0.6.0 im Markup, aber ungestylt) hat jetzt CSS.
+
+### Bewusste Abweichungen von der Spec
+- **Der Drag wird nicht bewertet, die Typ-Wahl schon.** Wäre der Drag die eigentliche Prüfung,
+  ließe sich die Antwort durch Herüberziehen erraten (die Hover-Hervorhebung verrät das
+  passende Feld vor dem Loslassen) – und ein Drag hat kein Tastatur-Äquivalent. So sind
+  Maus- und Tastaturpfad punktgleich; ein Drop ins gesperrte Feld kostet nichts.
+- **Diagrammfarben:** `#00BFFF` bleibt UI-Akzent und Farbe der einreihigen Linien-/Säulen-
+  Diagramme. Für das **Kreisdiagramm** (5 Kategorien) wäre es zu hell und eine Blau-Rampe
+  würde Rangfolge statt Identität kodieren – dort kommt eine gegen den dunklen Hintergrund
+  geprüfte kategoriale Palette zum Einsatz, erstes Segment weiterhin blau.
+- **„Medienkompetenz" hakt bei *bewerteten*, nicht bei *fehlerfrei* bewerteten Open-Data-
+  Szenarien ab.** Sonst wäre der Checklisten-Punkt nach einem einzigen Fehler dauerhaft
+  unerreichbar; die anderen Level markieren ebenfalls Fortschritt, nicht Fehlerfreiheit.
+- **Level-Zuordnung im Finale korrigiert** (L1 API/JSON, L2 Open Data, L3 Quellenprüfung) –
+  die Spec listete noch die Reihenfolge vor dem Level-Tausch in v0.5.0.
+
+---
+
 ## [0.6.0] – 2026-08-04 – Level-3-Umbau, Info-/Tipp-System & Level-1-Intro
 
 Snapshot: [`releases/v0.6.0/`](releases/v0.6.0/). Diese Version holt den **Spec-Rückstand**
