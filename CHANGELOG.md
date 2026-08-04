@@ -15,6 +15,70 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.6.0] – 2026-08-04 – Level-3-Umbau, Info-/Tipp-System & Level-1-Intro
+
+Snapshot: [`releases/v0.6.0/`](releases/v0.6.0/). Diese Version holt den **Spec-Rückstand**
+nach: Die Commits „Version 6.0" und „Version 7.0" hatten ausschließlich `story/` geändert –
+das Spiel stand weiterhin auf v0.5.0. Löst außerdem den unter v0.5.0 offen gelassenen Punkt
+**„Großer Level-3-Umbau"**.
+
+### Spec (`story/`)
+- **Level 3** (`level-3-labyrinth-der-luegen.md`, +302 Zeilen, aus „Version 7.0"): dreistufiger
+  Belegstand **BELEGT / UNKLAR / WIDERLEGT**, 6 neue Meldungen mit vierteiligem Fakten-Check
+  (Quelle · Metadaten · Lizenz/Rohdaten · Plausibilität), 2-stufiges Hilfesystem,
+  Avatar-Navigation durchs Labyrinth, Schatztruhen-Finale.
+- **`info.md`** (neu, aus „Version 7.0"): strikte Trennung ℹ Info (0 Punkte, nur Fachbegriff)
+  vs. 💡 Tipp (kostet Punkte), avatar-spezifische Info-Formate, Bonusfrage.
+  Jetzt ergänzt um Abschnitt 4 (Umsetzung) und die korrigierte Level-Nummerierung.
+- **Level 1** (`level-1-cyber-tauben.md`, aus „Version 6.0"): fünfstufige Intro-Sequenz mit
+  Pergamentrolle und Token-Reveal, isometrische Vektor-Stadtkarte.
+- **Doku-Korrekturen:** `levels/README.md` (defekte Links auf die vor v0.5.0 benannten Dateien),
+  `overview.md`, `allgemein.md`, `missionskarte.md` (überall noch die alte Level-Reihenfolge
+  1 = Schatten-Archiv / 2 = Cyber-Tauben), `game/README.md`. `info.md` ist jetzt verlinkt.
+
+### Game (`game/`)
+- **Level 3 komplett neu gebaut** (`level3.js`, `datasets.js` → `level3`): Das binäre
+  Swipe-Deck ist ersetzt. Drei Urteils-Buttons, vierteiliger Fakten-Check je Meldung,
+  frageweise **ℹ Info** (0 Pkt.) und **💡 Tipp**. Der gewählte Avatar läuft durch eine
+  generierte **7×7-Mini-Map** (Laser-Spur als SVG-Polyline über `stroke-dashoffset`) und eine
+  **CSS-3D-Korridor-Ansicht**; im Zentrum öffnet sich die **Schatztruhe** mit dem Golden Record.
+  Tastatur: `1/2/3` Urteil, `i` Info, `t` Tipp, `Enter` weiter. Keine neuen Assets.
+- **Info-/Tipp-System** (neu: `js/data/infos.js`, `js/infosystem.js`, `#infoscreen` in
+  `index.html`): eigenes Overlay mit drei Darstellungen je nach Avatar –
+  **Lyra** interaktive Hologramm-Mindmap · **Lennox** Funk-Kanal mit **Sprachausgabe über
+  `speechSynthesis`** (de-DE, ohne Audiodateien; Watchdog schaltet nach 1,2 s auf das
+  Funk-Transkript um) · **Zen** seitenweises Hacker-Terminal. Wer den Inhalt vollständig
+  durchgesehen hat, bekommt eine **Bonusfrage** (+15). `lv.info` bleibt als Fallback.
+- **Level 1 Intro-Sequenz** (`level1.js`): Rolle → Schnabel, Anflug rechts→links, Landung +
+  Klick, Token-Reveal, Token fliegt in den neuen **Token-Speicher**. Der bislang tote CSS-Block
+  aus einer früheren Fassung wurde dafür wiederbelebt statt neu geschrieben; das seit v0.3.0
+  verwaiste `media/pergamentrolle.png` ist wieder in Gebrauch. Dazu eine **isometrische
+  Vektor-Stadtkarte** (Inline-SVG: Türme, Brücken, Flüsse, Straßen, Server-Knoten, Parks)
+  statt des Verlaufskastens mit 🛰️-Emoji. Token laut Spec jetzt `NX-TOKEN-7F3A-9K2D`.
+- **Level 2** (`level2.js`): neuer **Plausibilitäts-Zusatzfall** (pH-Wert ohne Vergleichsquelle) –
+  als ungültig markieren, dann **[A]** raten (falsch) oder **[B]** als „Fehlend (NULL)"
+  markieren und Nachmessung anfordern (richtig). Der lokale Tipp-Button entfällt zugunsten
+  des zentralen.
+- **Punkte & Ränge** (`state.js`, `screens.js`): neues Feld `bonuses` im Spielstand
+  (migrationssicher über den bestehenden `Object.assign`-Merge). Tipp-Kosten liegen jetzt
+  **zentral** im Level-Host (`TIP_COST = 10`), Abzug an genau einer Stelle. HUD zeigt `✨ Bonus`.
+
+### Bewusste Abweichungen von der Spec
+- **Tipp-Abzug −10 statt −50** (Level-3-Spec): Die −50 beziehen sich auf ein Budget von
+  6 × 100 = 600 Punkten (≈ 8,3 %). Das Spiel rechnet mit 100 Punkten je Level – verhältnisgleich
+  sind das ≈ −10. Wörtlich −50 hätte den Tipp-Button nach zwei Klicks unbrauchbar gemacht.
+  Ein bereits bezahlter Tipp ist erneut kostenlos.
+- **Token-Übergabe** (Level-1-Spec): Der Token fliegt nicht in ein Eingabefeld, sondern in einen
+  **Token-Speicher** über den Auswahl-Buttons. Ein Vorauswählen der richtigen Option hätte
+  Ebene 3 entwertet und die **401-Zeile der Fehler-Matrix derselben Spec unerreichbar** gemacht.
+- **Rang-Schwellen jetzt prozentual** (90/70/50 % statt fix 360/280/200). Nötig, weil die
+  erreichbare Gesamtpunktzahl mit den Boni von 400 auf 460 steigt – feste Schwellen hätten
+  Rang S verschenkt. *Nebeneffekt:* Ein fehlerfreier Durchlauf **ohne** Info-Bonusfragen ergibt
+  400/460 = 87 % und damit Rang A. Rang S setzt jetzt voraus, dass man die (kostenlosen)
+  Info-Inhalte nutzt – genau der Anreiz, den `info.md` beschreibt.
+
+---
+
 ## [0.5.0] – 2026-08-03 – Level-Umbau: Cyber-Tauben (neu L1) ↔ Schattenarchiv (L2) + Pause
 
 Snapshot: [`releases/v0.5.0/`](releases/v0.5.0/). **Level 1 und 2 wurden getauscht.**
