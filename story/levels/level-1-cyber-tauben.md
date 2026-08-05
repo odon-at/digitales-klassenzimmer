@@ -141,3 +141,18 @@ json{
     "status": "gefaehrliche_chemikalien"
   }
 }
+
+## Wichtige Verbesserung zu Beginn des Level 1:
+
+ Story & Vorbereitung im Tower (Kein Intro-Einflug)
+
+Die Glasfaserkabel der Stadt sind vom Hacker besetzt. Jedes Bit, das wir senden, wird abgefangen. Es gibt nur einen Weg vorbei an der Firewall: Die **Cyber-Tauben**. Diese mechanischen Boten fliegen über die Funklöcher hinweg. Du musst sie programmieren, damit sie die Rettungspakete direkt ins Herz der Stadtverwaltung tragen.
+
+**Ausstattung & Ablauf im Kontrollzentrum:**
+**Kein automatisches Start-Intro:** Die Taube fliegt zu Beginn **nicht** unaufgefordert mit dem API-Token über den Bildschirm. 
+**Ausstattung am Hangar:** Das Tower-Panorama mit Blick auf die Stadt ist sofort da. Der Spieler wählt Schritt für Schritt die URL, die Methode und das API-Token aus. Dabei sieht man, wie die Pergamentrolle mit dem Token in den Schnabel der Cyber-Taube geladen und sie im Hangar **ausgestattet** wird.
+**Der echte Missions-Flug:** Erst wenn alles bereit ist und der Spieler auf den Button **[ TAUBE LOSSCHICKEN! ]** klickt, hebt die fertig ausgestattete Taube ab und fliegt animiert über die Vektor-Stadtkarte zum Ziel!
+
+## 🖼️ ÄNDERUNG: BILD-AKTUALISIERUNG
+
+* Das Bild der Cyber-Taube in Level 1 (`cybertaube.png`) wird durch die neue Version der cybertaube.png ersetzt.

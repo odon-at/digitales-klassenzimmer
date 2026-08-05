@@ -51,3 +51,7 @@
 
 **Markup:** game/index.html → section#screen-start (mit eingebundenem Cyberpunk-Stadt-Hintergrundbild images/startseite.jpeg und fixer Flexbox-Zentrierung ohne Text-Duplikate).
 **Logik:** game/js/screens.js → renderStart(), Button-Verkabelung in init().
+
+## 🎨 ÄNDERUNG: HINTERGRUND DER STARTSEITE
+
+Als Hintergrund für die Startseite wird ab sofort exakt das Bild aus Startseite.jpeg verwendet (kein leerer, schwarzer Hintergrund).

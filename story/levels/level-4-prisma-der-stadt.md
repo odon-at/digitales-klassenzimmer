@@ -187,3 +187,195 @@ Als episches Finale wird dem Avatar die höchste Auszeichnung der Metropole verl
 Zum Abschied öffnet sich das voll funktionsfähige Bürger-Portal, durch das die virtuellen Bürger nun friedlich, informiert und sicher in die Zukunft blicken. 
 **Der letzte Satz im Spiel:** „Transparenz schafft Vertrauen – und du hast gezeigt, wie eine smarte Stadt von morgen aussieht!“
 
+# Verbesserung 
+
+## 1. Problemstellung & Optimierungsbedarfe
+
+### Usability & Lesbarkeit
+**Zu kleine Handlungsanweisungen:** Der zentral wichtige Hinweis „Ziehe den Chip ins leuchtende Feld – oder klicke ihn an.“ ist im bisherigen UI zu klein und dünn dargestellt. Er geht optisch zwischen den umliegenden Buttons und Kontrollelementen unter.
+**Fehlende Benutzerführung:** Nutzer übersehen häufig den aktuellen Zustand, in dem ein Diagrammtyp ausgewählt ist und der Datenchip (z. B. Feinstaub-Messreihe) verschoben oder angeklickt werden muss.
+
+### Visuelles Setting & Atmosphäre
+**Tageslicht-Modus statt Nachtkulisse:** Die 360°-Stadtansicht ist derzeit zu dunkel. Für eine signifikant bessere Lesbarkeit, eine freundlichere Optik und geringere visuelle Ermüdung wird die Cyber-Stadt auf ein **helles Tageslicht-Setting** umgestellt.
+
+### Gameplay & Interaktionsfluss
+**Direkt-Klick statt Avatar-Laufwegen:** Im 360°-Erkundungsmodus muss der Avatar **nicht** mehr physisch zum Datenpunkt laufen. Ein direkter Klick auf ein Objekt oder Icon öffnet **sofort** den zugehörigen Entscheidungs-Dialog – unabhängig von der aktuellen Position des Avatars.
+
+### Barrierefreiheit (Accessibility) & Status-Visualisierung
+**Symbol-Ergänzung für Buttons:** Die Entscheidungs-Buttons erhalten eindeutige Icons (Haken / Kreuz), um Farbfehlsichtigkeiten optimal zu unterstützen (das bewährte Grün/Blau-Farbschema bleibt erhalten).
+**Visueller „Erledigt“-Zustand:** Bereits geprüfte Datenpunkte im 360°-Panorama werden klar als abgehakt bzw. deaktiviert gekennzeichnet.
+
+---
+
+## 2. Visuelle Überarbeitung: Tag-Modus für die Stadt (360°-Ansicht)
+
+### 2.1 Visual Design Requirements
+**Hintergrund & Beleuchtung:**
+  * Vollständiger Wechsel von der nächtlichen Cyber-Optik zu einer **hellen Tagansicht**.
+  * Die Skyline, der Himmel und die Gebäudefronten sind gut ausgeleuchtet und in klaren, hellen Tönen gehalten.
+**Kontrast & Lesbarkeit:**
+  * Interaktive Icons und Buttons (z. B. Umweltsensor, Privater Chat) heben sich durch deutliche Konturen, Schlagschatten oder dunklere Ränder prägnant vom hellen Hintergrund ab.
+
+---
+
+## 3. Anforderungen an Hinweistexte & UI-Banner
+
+### 3.1 Instruktions-Banner (Zentral)
+**Typografie:** Schriftgröße erhöht auf **1.1rem bis 1.25rem**, fett gedruckt (font-weight: bold), optisch deutlich hervorgehoben.
+**UI-Container:** Platzierung in einem eigenen, farblich akzentuierten Badge/Banner (abgerundete Ecken, dezenter Glow-Effekt passend zum Sci-Fi-Stil).
+**Dynamischer Status-Text:**
+  * **Status 1 (Vor Auswahl):** „Wähle zuerst den passenden Diagrammtyp aus.“
+  * **Status 2 (Nach Auswahl):** „Ziehe den Chip 'Feinstaub-Messreihe' ins leuchtende Feld oder klicke ihn an!“
+
+---
+
+## 4. UI-Komponenten & Interaktionsablauf
+
+### Phase A: Diagrammwahl & Chip-Zuordnung (Aufgabe 1/3)
+
+1. **Szenario:** Der Atem der Stadt – Feinstaub (PM10) über 24 Stunden (fortlaufende Zeitreihe).
+2. **Diagramm-Auswahl:**
+   * [x] **Liniendiagramm** (Korrekt für Zeitreihenverläufe)
+   * [ ] Säulendiagramm
+   * [ ] Kreisdiagramm
+3. **Dropzone & Target-Verhalten:**
+   * Nach Auswahl des Liniendiagramms leuchtet die Ziel-Dropzone visuell auf.
+   * Der Datenchip **[ Feinstaub-Messreihe ]** wird aktiv geschaltet und lässt sich per Drag-and-Drop oder einfachem Klick zuweisen.
+
+---
+
+### Phase B: 360°-Erkundung – Direct-Click & Entscheidungs-Overlay
+
+Nach erfolgreicher Dashboard-Befüllung wechselt das System nahtlos in die **helle 360°-Stadtansicht**.
+
+#### Aufgabenstellung & UI-Formulierung
+ **Erkunden & Entscheiden:** Drehe dich mit den Pfeiltasten oder per Maus-Drag um 360° und klicke einen leuchtenden Datenpunkt direkt an.
+ Entscheide für jeden Datenpunkt: Darf er als **offene Daten (FREIGEBEN)** bereitgestellt werden oder muss er als **private Daten (SPERREN)** geschützt bleiben?
+
+#### Interaktions-Logik & UX-Spezifikation
+
+| Bereich | Spezifikation & Verhalten |
+| :--- | :--- |
+| **Direct-Click** | Klick auf ein beliebiges leuchtendes Icon öffnet unmittelbar das Entscheidungs-Modal (keine Avatar-Laufzeit). |
+| **Accessibility Buttons** | **[ ✓ FREIGEBEN ]** – Grünes UI-Element mit sichtbarem Häkchen-Symbol.<br>**[ ✖ SPERREN ]** – Blaues/Dunkles UI-Element mit sichtbarem X-Symbol. |
+| **Erledigt-Status** | Bereits entschiedene Punkte wechseln im 360°-Panorama in einen ausgegrauten Zustand mit grünem Haken-Badge. Bei Hover/Klick erscheint: „Bereits entschieden“. |
+| **Touch & Mobile UX** | Klickbare Punkte im 360°-Raum besitzen eine unsichtbare Trefferfläche von mindestens **44 × 44 Pixel**. |
+
+---
+
+## 5. Feature-Spezifikation: Leaderboard & Ranking-System (Automatischer Login)
+
+### 5.1 Übersicht & Zielsetzung
+Um den Ablauf für Schülerinnen und Schüler so einfach wie möglich zu gestalten, erfolgt die Eingabe von **Name / Nickname** und **Klassencode** einmalig **vor dem Start des Spiels**. Die gesammelten Punkte werden während des Spiels (inkl. Level 4) automatisch im Hintergrund erfasst. Am Ende des Spiels wird direkt die Bestenliste (Leaderboard) angezeigt, ohne dass erneut Daten eingegeben werden müssen.
+
+### 5.2 Ablauf & Session-Handling (UX-Flow)
+**Schritt 1:** Spiel-Start aufrufen
+**Schritt 2:** Eingabe von Name + Klassencode
+**Schritt 3:** Spielverlauf durchspielen & Punkte im Hintergrund sammeln
+**Schritt 4:** Spiel-Ende mit automatischer Anzeige des Klassen-Rankings
+
+#### Detailbeschreibung:
+1. **Spielstart (Onboarding):**
+   * Nach dem Klick auf „Spiel starten“ öffnet sich das Eingabefenster.
+   * **Pflichtfelder:**
+     * Klassencode (z. B. 4B-2026 oder ein 6-stelliger PIN)
+     * Name / Nickname (max. 15 Zeichen)
+   * Klick auf [ SPIEL BEGINNEN ].
+2. **Hintergrund-Speicherung (Session):**
+   * Name und Klassencode werden in der Spiel-Session gespeichert.
+   * Alle erreichten Punkte werden laufend automatisch an das Schülerprofil gekoppelt.
+3. **Spiel-Ende (Automatischer Highscore-Eintrag):**
+   * Nach Abschluss von Level 4 werden die finalen Punkte automatisch an die Datenbank übermittelt.
+   * Der Endscreen zeigt direkt die **Klassen-Bestenliste** an, ohne dass die Schüler nochmals etwas tippen müssen.
+
+---
+
+### 5.3 Punkte- & Scoring-Mechanik
+
+#### Level 4 – Die Daten-Metropole
+**Richtige Entscheidung (DSGVO vs. Open Data):** +100 Punkte
+**Erster Versuch richtig:** +50 Bonuspunkte
+**Falsche Entscheidung:** -30 Punkte (Punkte können nicht unter 0 fallen)
+**Zeit-Bonus:** Bonus basierend auf der verbleibenden Zeit / Schnelligkeit nach Abschluss des Levels.
+
+#### Dashboard- & Diagramm-Aufgabe (Phase A)
+**Korrektes Diagramm gewählt (z. B. Liniendiagramm):** +100 Punkte
+**Korrektes Zuordnen des Datenchips (z. B. Feinstaub-Messreihe):** +100 Punkte
+
+---
+
+### 5.4 UI-Komponenten & Visualisierung
+
+#### Registrierungs-Pop-up (Am Anfang)
+**Titel:** „Willkommen in der Daten-Metropole“
+**Eingabefelder:**
+  * Klassencode: Eingabefeld (z. B. für Lehrer-Auswertung)
+  * Dein Name / Nickname: Eingabefeld
+**Button:** [ JETZT STARTEN 🚀 ]
+
+#### Endscreen / Leaderboard (Am Ende)
+**Titel:** „Ergebnis für Klasse [Klassencode]“
+**Eigener Rang:** Bunte Hervorhebung der Zeile des aktuellen Schülers (z. B. „Du belegst Platz 3 von 25!“).
+**Spalten der Ranking-Tabelle:**
+  1. Rang (Platzierung, z. B. #1, #2, #3 mit Medaillen-Icons 🥇 🥈 🥉)
+  2. Name / Nickname
+  3. Punkte Gesamt
+  4. Gefundene Open Data Sets
+
+---
+
+## 6. Technische Design- & Style-Vorgaben (Spezifikation)
+
+### 6.1 Farb- & Themenwelt (Daytime Theme)
+**Hintergrund-Verlauf:** Hellblau bis Sanft-Cyan (Skyline-Erleuchtung).
+**Textfarben:** Dunkler Kontrast (#1a1a1a) auf hellem Grund; helle Schrift ausschließlich in dunklen Modal-Bannern.
+**Banner-Stil:** Dunkelblauer/Halbtransparenter Container mit cyan-farbenem Rahmen und leichtem Glow.
+
+### 6.2 Element-Zustände & Feedback
+**Hover-Effekt (Datenpunkte):** Leichtes Skalieren (ca. +15%) und leuchtende Umrandung (Grün/Cyan-Glow).
+**Geprüfter Zustand:** Reduzierte Deckkraft (60%), Graustufen-Filter (80%) sowie Anzeige des Status-Badges.
+**Buttons:** Vorangestelltes Text-Symbol (✓ bzw. ✖) für barrierefreie Unterscheidbarkeit unabhängig von der Farbwahrnehmung.
+
+---
+
+## 7. QA & Checkliste für Entwickler
+[ ] **Start-Screen:** Spiel startet erst, wenn Klassencode und Name eingegeben wurden.
+[ ] **Session-Persistence:** Name und Klassencode bleiben beim Wechsel der Level / Phasen erhalten.
+[ ] **Auto-Submit:** Kein zusätzlicher Button zum Absenden des Highscores am Spielende erforderlich – Übermittlung erfolgt vollautomatisch.
+[ ] **Klassen-Filter:** Das Leaderboard filtert am Ende automatisch nach dem eingegebenen Klassencode, sodass Schüler nur ihre eigenen Mitschüler im Ranking sehen.
+
+#### Endscreen / Leaderboard & Zertifikat (Am Ende)
+**Titel:** „Ergebnis für Klasse [Klassencode]“
+**Abschluss-Nachricht:** „Herzlichen Glückwunsch! Du hast die Cyber-Tauben erfolgreich programmiert und die Stadtverwaltung gerettet!“
+**Eigener Rang:** Bunte Hervorhebung der Zeile des aktuellen Schülers (z. B. „Du belegst Platz 3 von 25!“).
+**Spalten der Ranking-Tabelle:**
+  1. Rang (Platzierung, z. B. #1, #2, #3 mit Medaillen-Icons 🥇 🥈 🥉)
+  2. Name / Nickname
+  3. Punkte Gesamt
+  4. Gefundene Open Data Sets
+**Zertifikat-Druckfunktion:** Button [ 🖨️ ZERTIFIKAT DRUCKEN ] zum Generieren/Drucken der persönlichen Urkunde.
+
+---
+
+## 7. Technische Design- & Style-Vorgaben (Spezifikation)
+
+### 7.1 Farb- & Themenwelt (Daytime Theme)
+**Hintergrund-Verlauf:** Hellblau bis Sanft-Cyan (Skyline-Erleuchtung).
+**Textfarben:** Dunkler Kontrast (#1a1a1a) auf hellem Grund; helle Schrift ausschließlich in dunklen Modal-Bannern.
+**Banner-Stil:** Dunkelblauer/Halbtransparenter Container mit cyan-farbenem Rahmen und leichtem Glow.
+
+### 7.2 Element-Zustände & Feedback
+**Hover-Effekt (Datenpunkte):** Leichtes Skalieren (ca. +15%) und leuchtende Umrandung (Grün/Cyan-Glow).
+**Geprüfter Zustand:** Reduzierte Deckkraft (60%), Graustufen-Filter (80%) sowie Anzeige des Status-Badges.
+**Buttons:** Vorangestelltes Text-Symbol (✓ bzw. ✖) für barrierefreie Unterscheidbarkeit unabhängig von der Farbwahrnehmung.
+
+---
+
+## 8. QA & Checkliste für Entwickler
+[ ] **Start-Screen:** Spiel startet erst, wenn Klassencode und Name eingegeben wurden.
+[ ] **Session-Persistence:** Name und Klassencode bleiben beim Wechsel der Level / Phasen erhalten.
+[ ] **Auto-Submit:** Kein zusätzlicher Button zum Absenden des Highscores am Spielende erforderlich – Übermittlung erfolgt vollautomatisch.
+[ ] **Klassen-Filter:** Das Leaderboard filtert am Ende automatisch nach dem eingegebenen Klassencode, sodass Schüler nur ihre eigenen Mitschüler im Ranking sehen.
+[ ] **Statischer Tauben-Start:** Kein automatischer Einflug der Cyber-Taube; Hangar-Ansicht ist von Beginn an statisch.
+[ ] **Flug-Trigger:** Animation zur Vektor-Stadtkarte startet erst nach Klick auf [ TAUBE LOSSCHICKEN! ].
+[ ] **Zertifikat-Druck:** Am Endscreen steht ein funktionsfähiger Button zum Ausdrucken der Urkunde mit allen Schülerdaten bereit.
