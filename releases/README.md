@@ -26,6 +26,7 @@ Siehe [../VERSIONING.md](../VERSIONING.md) (Build-Loop, Schritt 4).
 | v0.5.0  | 2026-08-03 | Level 1↔2 getauscht: Cyber-Tauben (Terminal/Flug/JSON) als L1, Schattenarchiv + Pause als L2 |
 | v0.6.0  | 2026-08-04 | Level 3 neu (belegt/unklar/widerlegt + Labyrinth-Navigation), Info-/Tipp-System mit Bonusfragen, Level-1-Intro-Sequenz |
 | v0.7.0  | 2026-08-04 | Level 4 neu (Diagrammwahl + Drag & Drop, 360°-Stadt mit Open Data vs. DSGVO), Großes Finale mit Zeremonie, Pokal und Badge |
+| v0.9.0  | 2026-08-05 | Stimme der Bürger-KI (MP3 + Vorlesen per Sprachsynthese), nummerierte Aufgabenübersicht mit Hilfe daneben, Info-Knoten der Reihe nach, Finale-Button repariert (Stacking-Context) und hervorgehoben |
 | v0.8.0  | 2026-08-05 | Neues Punktesystem für alle Level (+100/+50/−30 + Zeit-Bonus), Klassen-Leaderboard mit Export/Import, Level 1 ohne Start-Intro, Tag-Modus in der 360°-Stadt, sichtbare Startseite |
 | v0.4.0  | 2026-08-03 | Level 1 neu: Open-Data-Portal (Datenbehörde Nexus) statt geratener Werte (Feedback-Umsetzung) |
 | v0.3.0  | 2026-07-31 | Level 1 (Neon-Brunnen + Temperatur-Fehler), Level 2 (Cyber-Tauben-Intro), UI-Politur (Startseite/Avatar/Karte) |

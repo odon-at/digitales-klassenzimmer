@@ -15,6 +15,92 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.9.0] – 2026-08-05 – Stimme der Bürger-KI, Aufgabenübersicht & der tote Finale-Button
+
+Snapshot: [`releases/v0.9.0/`](releases/v0.9.0/). Setzt die Spec-Commits „Version 9.0"
+(`belohnung.md`, `levels/level-1-cyber-tauben.md`) und „Neue Stimme" (`audio/`) um.
+
+### Spec (`story/`)
+- **`audio/stimme.md`** (neu, mit MP3) – eine 35-Sekunden-Aufnahme soll die offizielle
+  Stimme der Bürger-KI werden und bei Hinweisen, Tipps und im Info-Bereich spielen.
+- **`belohnung.md`** – der „Zum Finale"-Button ist nicht klickbar, sitzt im Textblock
+  des Open-Data-Hero-Awards und ist zu unauffällig.
+- **`level-1-cyber-tauben.md`** – klar strukturierte, nummerierte Aufgabenübersicht;
+  Info- und Tipp-Knopf neben der Aufgabenstellung; Hinweis auf die Extrapunkte; die
+  fünf Info-Knoten sollen der Reihe nach freigeschaltet werden.
+- Ergänzt: Umsetzungsvermerke in allen drei Dateien, `tasks`-Contract in
+  `levels/README.md`, Sprachausgabe in `info.md` / `overview.md` / `allgemein.md`.
+  **Korrigiert:** Die Rang-Tabelle in `belohnung.md` nannte noch „max. 400" – seit
+  v0.8.0 sind es 5800 Punkte bei prozentualen Schwellen.
+
+### Game (`game/`)
+- **Die Bürger-KI hat eine Stimme** – zwei Quellen mit klarer Aufgabenteilung
+  (`js/audio.js`, neues Untermodul `NX.audio.clip`):
+  **(a)** die gelieferte Aufnahme als `media/buerger-ki-stimme.mp3` – sie meldet sich
+  **einmal je Sitzung** beim ersten Tipp und beim ersten Info-Öffnen von selbst,
+  danach auf Knopfdruck; **(b)** **„🔊 Vorlesen"** auf jedem Tipp, jeder Info und jeder
+  Seite des Info-Fensters, gesprochen per Browser-Sprachsynthese (`de-DE`), die damit
+  **beliebige** Texte lesen kann. Beide teilen sich den Stumm-Schalter und schließen
+  sich gegenseitig aus. Fehlt die MP3, verschwindet der Knopf – sonst ändert sich nichts.
+  Neu in `js/ui.js`: `plainText()`, `toLines()`, `voiceBar()`, `showModal(…, {speak})`.
+- **Aufgabenübersicht für alle vier Level** (`index.html`, `js/screens.js`): nummerierte
+  Schritte in einer eigenen Karte, der **erste offene Schritt ist hervorgehoben**,
+  erledigte tragen einen grünen Haken. Ein Eintrag darf jetzt `{ text, goal: true }`
+  sein – Ziel-Einträge bekommen 🎯 statt einer Nummer. **Info- und Tipp-Knopf stehen
+  direkt daneben** statt im Footer unter dem ganzen Level.
+- **Hinweis auf die Extrapunkte** unter den Aufgaben, **bevor** man die Info öffnet;
+  nach dem Beantworten wechselt er auf „✓ Wissens-Bonus gesichert".
+- **Level 1 führt Schritt für Schritt**: großes Instruktions-Banner (`.instr-banner`)
+  über der Bühne, das immer genau die anstehende Aufgabe ansagt – von „Aufgabe 1:
+  Wähle unter (1) URL / Zieladresse …" bis „🎯 Ziel: … in sauberes JSON umwandeln".
+  Die vier Aufgaben heißen jetzt wie in der Spec-Checkliste.
+- **Info-Knoten der Reihe nach** (`js/infosystem.js`): nur der hervorgehobene Knoten
+  ist offen („Klick mich an!"), spätere sind sichtbar gesperrt – auch für die Tastatur.
+  Bereits erkundete bleiben zum Nachlesen offen, die Verbindungslinien leuchten
+  fortschreitend auf, die Bonusfrage öffnet erst nach dem letzten Knoten.
+- **Der Finale-Button war wirklich tot.** `.city-finale` (z-index 12) und
+  `.level-success` (5) lagen im **selben** Stacking-Context, weil keiner ihrer
+  Vorfahren einen eigenen erzeugte – das Award-Panel deckte den Knopf zu. Behoben an
+  der Wurzel: `.level-body` erzeugt jetzt einen eigenen Stacking-Context, damit **jedes**
+  level-interne Overlay unter dem Erfolgs-Overlay bleibt; zusätzlich räumt
+  `level4.js → cityFinale()` das Award-Panel ab, bevor der Abschluss feuert.
+- **Der Knopf sieht jetzt aus wie ein Knopf**: eigener Aktionsbereich, links das
+  Avatar-Porträt, rechts daneben der Knopf mit **pulsierendem Neon-Glühen**
+  (`.btn-cta`, akzentgefärbt, mit `prefers-reduced-motion`-Ausnahme) und der Zeile
+  „Zeremonie & Aura-Master-Zertifikat". Er bekommt beim Einblenden den Fokus.
+  Dieselbe Klasse trägt auch „ZUM FINALE →" auf der Missionskarte.
+- **Rückweg**: „‹ Zurück zur Zeremonie" auf dem Zertifikat – vorher war die Zeremonie
+  eine Einbahnstraße, erneut erreichbar nur über „Nochmal spielen".
+- Aufgeräumt: rund 90 Zeilen totes CSS des in v0.8.0 entfernten Level-1-Intros
+  (`.ct-intro*`) und `game/shotmini.js`, ein Screenshot-Hilfsskript, das in v0.8.0
+  versehentlich mitcommittet wurde.
+
+### Bewusste Abweichungen von der Spec
+- **Die Aufnahme ersetzt das Vorlesen nicht, sie ergänzt es.** Ein einzelnes
+  35-Sekunden-Stück kann die über 30 Tipp- und Info-Texte des Spiels nicht sprechen.
+  Deshalb spricht die Browser-Sprachsynthese die Inhalte und die MP3 ist die
+  wiedererkennbare Stimme der Figur. **Der gesprochene Text der Aufnahme ist im Repo
+  nicht dokumentiert** und ließ sich hier nicht abhören – die Beschriftung bleibt
+  neutral („BÜRGER-KI · KI-Stimme"). Liegt das Transkript vor, lässt sich die
+  Platzierung schärfen (z. B. als Finale-Ansprache, falls es eine Rede ist).
+- **Nicht bei jedem Öffnen automatisch.** 35 Sekunden bei jedem Tipp wären ein
+  Hinterhalt; einmal je Sitzung erfüllt „die echte KI-Stimme hören", ohne zu bremsen.
+- **Die Aufgabenübersicht gilt für alle vier Level**, obwohl die Spec sie nur für
+  Level 1 fordert: Sie ist gemeinsame Level-Hülle, und eine je Level unterschiedliche
+  Bedienung wäre schlechter als die Einheitlichkeit.
+- **„die 5 Knoten" heißt im Spiel „alle Stationen".** Fünf Knoten hat nur die
+  Lyra-Variante des Info-Fensters; Lennox hört acht Funk-Zeilen, Zen liest drei
+  Terminal-Seiten. Die neutrale Formulierung stimmt für alle drei Avatare.
+- **Knoten-Reihenfolge sachlich statt wörtlich.** Die Spec nummeriert „4. JSON,
+  5. Server"; umgesetzt ist **Programm → Anfrage → API → Server → JSON**, denn das
+  JSON ist die Antwort, die vom Server zurückkommt – so sind die Verbindungslinien
+  im Hologramm auch gezeichnet. Mit dem Auftraggeber abgestimmt.
+- **Der Rückweg zum Finale stand nicht in der Spec**, ergänzt ihn aber sinngemäß: die
+  Anweisung nennt als Ziel den reibungslosen Weg „zur finalen Zeremonie und dem
+  anschließenden Zertifikat", und der war bisher nur in eine Richtung begehbar.
+
+---
+
 ## [0.8.0] – 2026-08-05 – Punktesystem, Klassen-Leaderboard, Level-1-Umbau & Tag-Modus
 
 Snapshot: [`releases/v0.8.0/`](releases/v0.8.0/). Setzt den Spec-Commit „Version 8.0" um
