@@ -173,3 +173,92 @@ Die Glasfaserkabel der Stadt sind vom Hacker besetzt. Jedes Bit, das wir senden,
   Statuszeile im Hangar führt durch die drei Schritte.
 * Der Flug über die Vektor-Stadtkarte startet **ausschließlich** über
   **[ TAUBE LOSSCHICKEN! ]**.
+
+  Verbesserung für Userbility:
+
+  ## 📋 Aufgabenübersicht für Level 1
+
+Arbeite die folgenden 3 Aufgaben exakt in dieser Reihenfolge von oben nach unten ab: Die Aufgaben sollten übersichtlicher und klarer strukturiert werden, damit die Spieler sofort wissen, was nacheinander zu tun ist. 
+
+---
+
+### 1️⃣ Aufgabe 1: Ziel-URL / Adresse auswählen
+**Was zu tun ist:** Wähle unter der Kategorie **(1) URL / Zieladresse** die korrekte Ziel-Adresse aus.
+**Mögliche Optionen:**
+  - opendata.nexus.city/v1/stadtsystem (Empfohlen)
+  - intranet.nexus.local/system (internes, gehacktes Netz)
+  - daten-download.fog/paket (verdächtig)
+**Ziel:** Die Zieladresse im HTTP-Request-Feld festlegen.
+
+---
+
+### 2️⃣ Aufgabe 2: HTTP-Methode festlegen
+(Erst durchführen, wenn Aufgabe 1 erledigt ist)
+
+**Was zu tun ist:** Wähle unter der Kategorie **(2) HTTP-Methode** die passende Aktion aus.
+**Mögliche Optionen:**
+  - GET (zum Abrufen und Holen von Daten)
+  - POST (zum Senden von Daten)
+**Ziel:** Die Methode GET aktivieren, um Daten aus dem Daten-Nest abzufragen.
+
+---
+
+### 3️⃣ Aufgabe 3: API-Token / Passierschein einsetzen & Taube losschicken
+(Erst durchführen, wenn Aufgabe 1 & 2 erledigt sind)
+
+**Was zu tun ist:** 1. Wähle aus dem **Token-Speicher (3)** einen gültigen Passierschein aus (z. B. NX-TOKEN-7F3A-9K2D).
+  2. Überprüfe die Vorschau im **HTTP-REQUEST (Vorschau)**.
+  3. Klicke auf den Button **TAUBE LOSSCHICKEN!**.
+**Ziel:** Das Datenpaket abrufen und den unlesbaren Rohdaten-Strom erfolgreich in sauberes **JSON** umwandeln.
+
+---
+
+## ✅ Checkliste für Spieler
+
+[ ] **Schritt 1:** URL opendata.nexus.city/v1/stadtsystem ausgewählt
+[ ] **Schritt 2:** HTTP-Methode GET gewählt
+[ ] **Schritt 3:** Gültiges API-Token zugewiesen & Button **"TAUBE LOSSCHICKEN!"** gedrückt
+
+## Info-Button und Tipp-Button
+
+Info-Button und Tipp-Button sollte neben der Aufgabenstellung stehen, damit es direkt sichtbar ist. 
+
+### Hinweis auf der Hauptseite (vor dem Oeffnen der Info)
+
+Hinweis fuer Extrapunkte:
+Klicke auf INFO und gehe die 5 Knoten nacheinander durch! Sobald du alle Knoten der Reihe nach angeklickt hast, wird eine Bonusfrage freigeschaltet, mit der du dir zusaetzliche Punkte sichern kannst.
+
+---
+
+# Info-Fenster: Was ist eine API?
+
+## HOLOGRAMM - DER WEG EINER DATEN-ANFRAGE
+
+Folge dem Pfad der Reihe nach: Tippe immer den aktuell hervorgehobenen Knoten an.
+
+[ 1. Programm ] - (Klick mich an!)
+  (Nach dem Klick schaltet sich der naechste Knoten frei)
+
+[ 2. Anfrage ] - (Gesperrt -> wird zu: Klick mich an!)
+  (Nach dem Klick schaltet sich der naechste Knoten frei)
+
+[ 3. API ] - (Gesperrt -> wird zu: Klick mich an!)
+  (Nach dem Klick schaltet sich der naechste Knoten frei)
+
+[ 4. JSON ] - (Gesperrt -> wird zu: Klick mich an!)
+  (Nach dem Klick schaltet sich der naechste Knoten frei)
+
+[ 5. Server ] - (Gesperrt -> wird zu: Klick mich an!)
+  (Nach dem Klick wird die Bonusfrage freigeschaltet)
+
+---
+
+## Bonusfrage (Freigeschaltet nach dem 5. Knoten)
+
+Super! Du hast den gesamten Weg schrittweise erkundet. Beantworte jetzt die Bonusfrage fuer deine Extra-Punkte:
+
+Frage: Welche Aufgabe hat die API bei einer Daten-Anfrage?
+
+[ ] Antwort A: Sie dient als Schnittstelle/Schalter, nimmt die Anfrage vom Programm entgegen und leitet sie an den Server weiter.
+[ ] Antwort B: Sie schaltet den Computer aus.
+[ ] Antwort C: Sie speichert dauerhaft das gesamte Internet.

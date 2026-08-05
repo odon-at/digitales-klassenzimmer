@@ -94,3 +94,18 @@ Ablauf in Beats: Stadt erstrahlt in Neon-Blau → Avatar betritt die Bühne →
 - 💡 Zertifikat als PDF/Bild zum Download + personalisiertes Design.
 - 💡 Feedback strukturierter erfassen (Skala + Kategorien) und exportierbar machen.
 - 💡 Detail-Auswertung je Level (Fehlversuche, genutzte Tipps) auf dem Zertifikat/Bericht.
+
+## Anweisung zur Korrektur: „Zum Finale“-Button & Zertifikats-Weiterleitung
+
+### Ziel
+Der „Zum Finale“-Button (#screen-finale) im Reward-Screen muss funktionsfähig gemacht, korrekt positioniert und visuell auffällig gestaltet werden, damit Nutzer problemlos zur finalen Zeremonie und dem anschließenden **Aura-Master-Zertifikat** weitergeleitet werden.
+
+### Technische Änderung!!
+1. **Klickbarkeit & Event-Listener sicherstellen:**
+   - Der Button muss im DOM aktiv sein und darf nicht durch andere CSS-Ebenen (z. B. fehlerhaftes z-index oder verdeckende Elemente wie auf dem Screenshot) blockiert werden.
+   - Beim Klick muss die Logik greifen, die den Übergang zum Finale und zur Belohnungs-Ansicht (#screen-reward mit Zertifikat, Rängen und Halle der Chronisten) auslöst.
+
+2. **Visuelles Redesign & Positionierung:**
+   - Den Button aus dem Textbereich des Open-Data-Hero-Awards herausnehmen.
+   - Den Button stattdessen klar sichtbar – beispielsweise **rechts neben dem Avatar** oder in einem separaten Aktionsbereich – platzieren.
+   - Einen **pulsierenden Neon-Blink-Effekt** hinzufügen, damit sofort ersichtlich ist, dass man hier klicken kann.
