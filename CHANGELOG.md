@@ -15,6 +15,72 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.8.0] – 2026-08-05 – Punktesystem, Klassen-Leaderboard, Level-1-Umbau & Tag-Modus
+
+Snapshot: [`releases/v0.8.0/`](releases/v0.8.0/). Setzt den Spec-Commit „Version 8.0" um
+(nur `story/`: Level 1, Level 4 „Verbesserung", Startseite).
+
+### Spec (`story/`)
+- **Level 1** – „Wichtige Verbesserung zu Beginn": **kein** automatischer Intro-Einflug mehr;
+  der Hangar steht von Anfang an, die Taube wird schrittweise ausgerüstet, der Flug startet
+  erst per Knopfdruck. Dazu der Hinweis auf eine neue `cybertaube.png`.
+- **Level 4** – neuer Abschnitt „Verbesserung": größeres Instruktions-Banner, Tageslicht-Modus,
+  Direct-Click, barrierefreie Buttons, Erledigt-Status, 44-px-Trefferflächen, Leaderboard mit
+  automatischem Login und eine neue Punkte-Mechanik.
+- **Startseite** – der Hintergrund soll sichtbar das Stadtbild zeigen, keinen schwarzen Grund.
+- Ergänzt: Umsetzungsvermerke in allen drei Dateien, neuer Level-Contract in
+  `levels/README.md`, Punktemodell in `allgemein.md`, Zustandsmodell in `overview.md`,
+  Leaderboard in `belohnung.md`, Tipp-Kosten in `info.md`.
+
+### Game (`game/`)
+- **Neues Punktesystem für ALLE Level** (neu: `js/score.js`): **+100** je richtig gelöster
+  Teilaufgabe, **+50** wenn sie im Erstversuch saß, **−30** je Fehlversuch, dazu ein
+  **Zeit-Bonus** bis **+100** pro Level. Nie unter 0. Ein Tipp kostet jetzt **−30**.
+  Erreichbar: L1 700 · L2 1000 · L3 1000 · L4 2500 = **5200**, plus **600** Wissens-Bonus
+  (je Bonusfrage 150 statt 15) → **5800**. Die Rang-Schwellen sind weiterhin prozentual und
+  rechnen automatisch mit.
+- **Level-Contract erweitert:** Level melden `ctx.complete({ units, firstTry, wrong })`;
+  Zeit-Bonus und Tipp-Abzug rechnet der Host. Eine blanke Zahl wird weiter akzeptiert.
+- **Level 1 ohne Start-Intro** (`level1.js`): Die Intro-Sequenz ist entfernt. Stattdessen ein
+  **Ausrüstungs-Hangar**, der sich mit jeder Wahl sichtbar füllt – beim Token gleitet die
+  Pergamentrolle in den Schnabel, der Token-Speicher füllt sich, eine Statuszeile führt durch
+  die drei Schritte. Der Flug startet ausschließlich über **[ TAUBE LOSSCHICKEN! ]**.
+- **Level 4 · Bedienbarkeit:** großes **Instruktions-Banner** mit drei Zuständen statt der
+  kleinen Hinweiszeile; **Tageslicht-Modus** für die 360°-Stadt (heller Himmel, helle Gebäude
+  mit dunkler Kontur, grüne Wiese, HUD auf dunklem Grund); Entscheidungs-Buttons mit
+  **✓/✖-Symbol** in Grün/Blau statt Grün/Rot; **Erledigt-Status** (ausgegraut + grünes
+  Haken-Badge + „Bereits entschieden"); **48-px-Trefferflächen** für die Hotspots.
+- **Klassen-Leaderboard** (`state.js`, `screens.js`): Klassencode **und** Name sind beim Start
+  Pflicht (max. 15 Zeichen, Button „JETZT STARTEN 🚀"). Das Ergebnis wird beim Betreten des
+  Endscreens **automatisch** eingetragen – kein Absende-Button. Die Tabelle zeigt
+  Rang (🥇🥈🥉), Name, Punkte und **Gefundene Open Data Sets**, gefiltert nach Klassencode,
+  eigene Zeile hervorgehoben („Du belegst Platz X von Y!"). Neu im Spielstand: `openDataSets`.
+- **Startseite:** `media/startseite.jpeg` ist jetzt deutlich sichtbar – Skyline links und
+  rechts, nasse Straße unten, nur leicht abgedunkelt statt stark weichgezeichnet.
+- Kleinigkeiten: Zertifikat mit Abschluss-Nachricht; `.level-help`-Tipp-Label auf −30.
+
+### Bewusste Abweichungen von der Spec
+- **Punkte gelten für alle Level, nicht nur Level 4.** Die Spec nennt +100/+50/−30 nur für
+  Level 4; allein dort angewandt hätte Level 4 rund 80 % der Gesamtwertung gestellt und die
+  Ränge faktisch bestimmt. Jetzt zählt dieselbe Mechanik überall; Level 4 kommt über seine
+  16 Teilaufgaben auf 43 % der erreichbaren Punkte.
+- **Leaderboard ohne Server.** Die Spec spricht von einer „Datenbank". Das Spiel ist eine
+  Statik-Seite ohne Backend – das Ranking liegt lokal im Browser und ist nach Klassencode
+  gefiltert. Für mehrere Geräte gibt es **Export/Import** auf dem Endscreen. Ein echtes
+  Backend bräuchte Hosting und ein Datenschutzkonzept für Schülerdaten.
+- **Zeit-Bonus großzügig ausgelegt** (voll bis 2:30 min, linear fallend bis 10:00 min).
+  Scharfer Zeitdruck widerspricht dem Lernziel – Info-Texte, Fakten-Checks und Tipps sollen
+  gelesen werden.
+- **Startseite: Zielkonflikt in der Spec selbst.** Im Bild sind Titel, Zielring, Button und
+  alle vier HUD-Ecktexte fest eingebrannt, Abschnitt 1 derselben Spec verbietet aber doppelte
+  Titel. Gelöst über Bildausschnitt plus weiche Abdunklung der Mittelspalte: Stadt sichtbar,
+  eingebrannte Mitte verdeckt, echte HTML-Elemente nur einmal. Ein Bild **ohne** eingebrannte
+  UI wäre die sauberere Lösung.
+- **Neue `cybertaube.png` lag nicht bei.** Der Code lädt unverändert
+  `game/media/cybertaube.png`; eine neue Datei gleichen Namens greift automatisch.
+
+---
+
 ## [0.7.0] – 2026-08-04 – Level 4 „Die Daten-Metropole", 360°-Stadt & Großes Finale
 
 Snapshot: [`releases/v0.7.0/`](releases/v0.7.0/). Holt erneut einen **Spec-Rückstand** nach:
