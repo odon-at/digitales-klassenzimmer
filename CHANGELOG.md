@@ -15,6 +15,90 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.10.0] – 2026-08-06 – Ein Vorlese-Knopf, Lerntypen, Level-1-Begriffe & Level-2-Ansage
+
+Snapshot: [`releases/v0.10.0/`](releases/v0.10.0/). Setzt den Spec-Commit
+„Stimmme wurde verbessert bzw. Usability verbessert" um (`stimme.md` neu,
+`avatar.md`, `levels/level-1-cyber-tauben.md`, `levels/level-2-schatten-archiv.md`).
+
+### Spec (`story/`)
+- **`stimme.md`** (neu) – Lennox' Info über die MP3 statt Live-Stimme · Vorlesen nur
+  auf Knopfdruck · **nur ein** Vorlese-Knopf je Person · nur Tipps und Infos, **nicht**
+  die Story.
+- **`avatar.md`** – Lerntyp-Bezeichnung über jedem Avatarnamen (Visuell/Auditiv/
+  Kognitiv) mit ⓘ-Knopf und Erklärung, in der Avatarfarbe.
+- **`level-1-cyber-tauben.md`** – neue Story (private Datenbanken gehackt → Open Data)
+  · Begriffe umbenennen · Hilfe-**Knöpfe** statt Hover-Tooltips · „kostet keine Punkte"
+  sichtbar machen · Glossar mit 7 Begriffen · Vergleichstabelle JSON ⇄ Dashboard.
+- **`level-2-schatten-archiv.md`** – große Ansage über der URL-Zeile, klarerer
+  Kategorie-Hinweis.
+- Ergänzt: Umsetzungsvermerke in allen vier Dateien; `audio/stimme.md` verweist als
+  überholt auf `stimme.md`; `info.md`, `overview.md`, `allgemein.md`, `game/README.md`
+  nachgezogen.
+
+### Game (`game/`)
+- **Ein einziger Vorlese-Knopf** (`js/ui.js → voiceBar`): „🔊 Vorlesen" ⇄ „⏹ Stopp",
+  im Tipp-Fenster, in jedem Hilfe-Fenster und im Info-Fenster – bei **allen drei**
+  Avataren. Lennox' Funk-Kanal verliert `▶ ABSPIELEN`, `⏸ PAUSE` und `⏹ STOPP`;
+  **„Transkript gelesen ✓" bleibt**, weil es der einzige Weg zur Bonusfrage ist, wenn
+  gar kein Ton verfügbar ist.
+- **Nichts startet mehr von selbst.** Die Automatik aus v0.9.0 („die KI meldet sich
+  einmal je Sitzung") ist ersatzlos entfallen.
+- **Zuordnungstabelle Text → Aufnahme** (neu: `js/data/voice.js`). Beim Vorlesen gilt:
+  Eintrag vorhanden → die **MP3** spielt; kein Eintrag → die **Browser-Stimme** liest
+  vor; Eintrag da, Datei fehlt → stiller Rückfall auf die Stimme. Eine Aufnahme
+  nachliefern heißt: Datei ablegen, **eine Zeile** eintragen – kein Code, kein
+  Neustart. Schlüssel: `tip-<level>-<index>`, `info-<level>-<avatar>`,
+  `help-<level>-<station>`, `avatar-learn-<avatar>`, `l3-tip-…`/`l3-info-…`.
+- **Avatar-Lerntypen**: Plakette **VISUELL** · **AUDITIV** · **KOGNITIV** zwischen
+  Porträt und Name, in der Farbe des Avatars, daneben ein ⓘ-Knopf mit der Erklärung.
+  Der Knopf stoppt den Klick, sonst hätte er nebenbei den Avatar ausgewählt.
+- **Band „AUSGEWÄHLT ✓" repariert**: Das 190 px breite Band schwang durch die
+  35°-Drehung mit dem linken Ende über die obere Kartenkante – die Karte hat
+  `overflow: hidden`, also fehlte das „AUS". Es sitzt jetzt tiefer, weiter innen und
+  ist größer gesetzt; ein Test prüft die Geometrie.
+- **Level 1 · Begriffe**: „AUSRÜSTUNG" → **REQUEST-KONFIGURATOR**,
+  „AUSRÜSTUNGS-HANGAR" → **TAUBEN-STATION**, „Passierschein" → **Zugangsschlüssel**,
+  „TOKEN-SPEICHER" → **SCHLÜSSEL-SPEICHER**. Dazu die neue Story.
+- **Level 1 · Hilfe-Knöpfe** statt Hover-Tooltips: an jeder Station ein echter Knopf
+  **[ ? Was bedeutet das? ]** – auf Touchgeräten treffbar, per Tastatur erreichbar.
+  Vier Fenster (URL · Methode · Token · JSON), jedes mit dem Satz „Das Lesen der Hilfe
+  kostet dich **KEINE Punkte!**".
+- **Level 1 · Glossar & Vergleich** im Ergebnis-Bildschirm nach dem Scan, **neben**
+  Maschinen- und Menschen-Ansicht: sieben Begriffe zum Aufklappen (0 Punkte) sowie die
+  Tabelle JSON ⇄ Dashboard mit Zielgruppe, Darstellung, Hauptaufgabe und Beispiel.
+- **Level 2 · Ansage** über der URL-Zeile: „DIE INTERNEN SYSTEMDATEN WURDEN
+  MANIPULIERT!" mit drei nummerierten Schritten und der Zeile „FOLGE DEN ANWEISUNGEN
+  UND GIB DIE DATEN UNTEN EIN". Der Kategorie-Platzhalter sagt jetzt konkret, was zu
+  tun ist.
+
+### Bewusste Abweichungen von der Spec
+- **Die eine Aufnahme kann nicht alle Texte sprechen.** Die Spec verlangt, dass Tipps
+  „bei allen Personen zwingend über die jeweils hinterlegte MP3-Datei" vorgelesen
+  werden – geliefert wurde aber genau **eine** 35-Sekunden-Datei für über 30 Textstellen.
+  Umgesetzt ist deshalb die Zuordnungstabelle: Sie erfüllt „die **jeweils hinterlegte**
+  MP3" wörtlich und lässt die Browser-Stimme nur dort einspringen, wo noch keine
+  Aufnahme existiert.
+- **Die gelieferte Aufnahme ist noch nicht zugeordnet.** Ihr gesprochener Text ist
+  nirgends dokumentiert und war hier nicht feststellbar; an der falschen Stelle würde
+  sie etwas anderes sagen, als auf dem Bildschirm steht. Sie liegt weiterhin unter
+  `game/media/buerger-ki-stimme.mp3` und wird mit **einer Zeile** aktiv, sobald der
+  Text bekannt ist (für Abschnitt 1 wäre das der Schlüssel `info-1-lennox`).
+- **„Transkript gelesen ✓" ist geblieben**, obwohl die Spec nur einen Knopf nennt: Es
+  ist kein Audio-Knopf, sondern der einzige Weg zur Bonusfrage ohne Ton – ihn zu
+  streichen hätte stumme Geräte und Rechner ohne deutsche Stimme ausgesperrt.
+- **Glossar in Level 1 statt im Info-Fenster** – so ausdrücklich gewünscht: es steht
+  nach dem Scan neben Maschinen- und Menschen-Ansicht.
+- **Das URL-Beispiel des Glossars wurde ausgetauscht.** Die Spec nennt
+  `https://opendata.nexus.city/v1/stadtsystem` – das ist die **Lösung** dieses Levels
+  und steht auf der Spoiler-Sperrliste. Im Spiel steht eine neutrale Beispiel-Adresse.
+- **CSS-Klassen und interne Bezeichner behalten ihre alten Namen** (`ct-hangar`,
+  `hangarText`): Umbenannt wurde nur, was Spielende zu sehen bekommen.
+- **„nicht die Story vorlesen" war bereits erfüllt** – Einleitung, Level-Story und
+  Finale-Ansprache hatten nie einen Vorlese-Knopf.
+
+---
+
 ## [0.9.0] – 2026-08-05 – Stimme der Bürger-KI, Aufgabenübersicht & der tote Finale-Button
 
 Snapshot: [`releases/v0.9.0/`](releases/v0.9.0/). Setzt die Spec-Commits „Version 9.0"
