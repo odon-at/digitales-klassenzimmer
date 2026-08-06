@@ -488,3 +488,11 @@ entfernt; dazu die undokumentierte `Home`-Taste. In der 360°-Ansicht wirken dam
   Level 3). In der 360°-Ansicht bleiben Zifferntasten wirkungslos.
 * Die unsichtbare 48×48-Trefferfläche der Hotspots hing an der Oberkante und deckte das
   Tag-Label darunter nicht ab. Sie ist jetzt über die ganze Schaltfläche zentriert.
+
+### Verbesserung bei der Cyber-City!!!!:
+
+# 🖱️ Reines Maus-Verhalten (Keine Tastatur / Keine Shortcuts)
+
+**Ausschließlich mit der Maus:** Die Bedienung erfolgt zu 100 % per Mausklick. Tastatur-Shortcuts, Tastenkombinationen oder Tasten-Tools sind komplett deaktiviert und funktionieren hier nicht.
+**Direktes Öffnen:** Ein einfacher Klick mit der linken Maustaste auf die leuchtenden Punkte öffnet sofort die Frage.
+**Seitliche Pfeile:** Auch die Steuerung über die seitlichen Pfeile wird ausschließlich mit der Maus bedient.
