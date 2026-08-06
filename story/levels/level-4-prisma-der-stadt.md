@@ -496,3 +496,11 @@ entfernt; dazu die undokumentierte `Home`-Taste. In der 360°-Ansicht wirken dam
 **Ausschließlich mit der Maus:** Die Bedienung erfolgt zu 100 % per Mausklick. Tastatur-Shortcuts, Tastenkombinationen oder Tasten-Tools sind komplett deaktiviert und funktionieren hier nicht.
 **Direktes Öffnen:** Ein einfacher Klick mit der linken Maustaste auf die leuchtenden Punkte öffnet sofort die Frage.
 **Seitliche Pfeile:** Auch die Steuerung über die seitlichen Pfeile wird ausschließlich mit der Maus bedient.
+
+### Verbesserung der Sichtbarkeit von den Fragen bei der Cyber-City:
+
+# 🎛️ Gestaltung der Frage nach dem Mausklick
+
+**Fett und deutlich sichtbar:** Sobald man mit der Maus auf den Punkt geklickt hat, öffnet sich die Frage und wird in einem **fetten, sehr gut lesbaren Text** auf dem Bildschirm angezeigt.
+**Farbliche Anpassung (Orange):** Die Darstellung der Frage ändert sich farblich und wird in einem **deutlichen Orangeton** hervorgehoben, damit sie sofort ins Auge springt.
+**Vollständig abgeschlossen:** Die Aufgabe ist dadurch klar lesbar und optisch perfekt für die Bearbeitung vorbereitet.
