@@ -150,3 +150,30 @@ Damit die KI-Iteration weiß, was fix ist und was zur Diskussion steht:
   [avatar.md](avatar.md) · [einleitung.md](einleitung.md) ·
   [missionskarte.md](missionskarte.md) · [belohnung.md](belohnung.md)
 - Levels → [levels/README.md](levels/README.md)
+
+### Hintergrundmusik & Sound-Anforderungen
+
+## 1. Verwendetes Audio-Asset & Lizenz
+**Track-Name:** Loopix (ID: 849265)
+**Datei-Referenz:** Music_Musik.md
+**Künstler:** fonoskop (Freesound.org)
+**Lizenz:** Creative Commons Attribution 4.0 International (CC BY 4.0)
+**Credits (Im Abspann des Spiels einzubauen):**
+  > "Loopix" by fonoskop (https://freesound.org/s/849265/) licensed under CC BY 4.0
+
+---
+
+## 2. Anforderungen für die Umsetzung im Spiel
+
+### A. Wiedergabe im Hintergrund (Loop / Dauerschleife)
+Die Musik **Loopix** dient als allgemeine Hintergrundmusik.
+Die Musik soll in einer **Endlosschleife (Loop)** ohne Lücken im Hintergrund durchlaufen.
+
+### B. Lautstärke-Abstimmung
+Die Musik darf angenehm leise sein und das Spiel **nicht übertönen**.
+Andere Sounds (z. B. Effekte, Menü-Klicks, Geräusche) müssen immer klar und deutlich zu hören sein.
+
+### C. Musik-Button (Ein- und Ausschalten)
+**Platzierung:** Ein eigener Button befindet sich **ganz oben** im Spielbereich (Header/Kopfzeile).
+**Funktion:** Der Button ermöglicht das einfache Ein- und Ausschalten (Stummschalten) der Hintergrundmusik.
+**Visuelles Feedback:** Am Button muss zu erkennen sein, ob die Musik aktuell an oder aus ist (z. B. durch ein Ton-Symbol oder Text).

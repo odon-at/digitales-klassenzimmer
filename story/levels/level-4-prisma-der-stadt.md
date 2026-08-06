@@ -418,7 +418,40 @@ Zeit-Bonus bis +100. Erreichbar sind 5200 Punkte + 600 Wissens-Bonus.
 bis 10:00 min. Ein scharfer Zeitdruck würde dem Lernziel widersprechen – Info-Texte,
 Fakten-Checks und Tipps sollen gelesen werden.
 
-### Verbesserungen zu der Cyber-Stadt:
+=======
+### Verbesserung für die Cyber-Stadt
 
+# Verbesserungsvorschlag für Level 4: Cyberstadt (360°-Ansicht)
 
+## 1. Übersicht & Zielsetzung
+In Level 4 ("Cyberstadt - 360° Stadt") soll die Steuerung für die Bearbeitung der pädagogischen Konflikte intuitiver gestaltet werden. Statt umständlicher Tastatureingaben für Menüs oder Auswahlpunkte wird ein immersives Erkunden per Pfeiltasten und ein ! gezielter Mausklick ! auf Hotspots eingeführt.
 
+---
+
+## 2. Neues Steuerungs- und Interaktionskonzept
+
+### A. 360°-Umschau mit den Pfeiltasten
+* **Funktionalität:** Der Spieler bewegt sich frei in der 360°-Panorama-Ansicht der Cyberstadt.
+* **Tastenbelegung:**
+  * **Pfeiltaste links ($\leftarrow$):** Dreht die Ansicht nach links.
+  * **Pfeiltaste rechts ($\rightarrow$):** Dreht die Ansicht nach rechts.
+* **Hinweis:** Andere Tastenbefehle zur direkten Menü- oder Objektanwahl sind in dieser Ansicht deaktiviert, um Fehlbedienungen zu vermeiden.
+
+### B. Maus-Interaktion mit den Stations-Kreisen
+* **Visualisierung:** In der 360°-Ansicht sind verschiedene Stationen (z. B. *Fitness*, *Statistik*, *Smart Home*) durch interaktive **Kreise / Marker** direkt im Stadtraum gekennzeichnet.
+* **Aktion:** 1. Der Spieler dreht sich mit den Pfeiltasten so lange, bis der gewünschte Kreis im Sichtfeld erscheint.
+  2. Der Spieler bewegt den Mauszeiger auf diesen Kreis und **klickt mit der linken Maustaste** darauf.
+* **Ergebnis:** Direkt nach dem Klick öffnet sich das dazugehörige Frage-Fenster oder Pop-up mit der spezifischen Aufgabe / dem pädagogischen Konflikt zu diesem Bereich.
+
+---
+
+## 3. Technische / Logische Struktur (Pseudo-Code)markdown
+[Level 4 State: 360_View]
+Camera_Control = Key_Left | Key_Right (Rotate Viewport)
+Hotspot_Interaction = Mouse_Click (ON Circle_Marker)
+
+[Trigger Event]
+IF User_Clicks(Circle_Marker) THEN
+    Open_Question_Popup(Topic: "Fitness" / "Statistik" / "Smart Home")
+END IF
+>>>>>>> 9fe7f02404b686598c8fe464343d1bd4f1bf7281
