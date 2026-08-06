@@ -129,3 +129,25 @@ Open-Data-Wert anzuzeigen und mit den kompromittierten Systemdaten zu vergleiche
 Texte in `game/js/data/datasets.js → level2.brief` / `level2.detailHint`.
 Schreibweise „Open-Data-Portal" wie im Fließtext der Spec (der ASCII-Block darüber
 lässt die Bindestriche weg).
+
+### Verbesserung  Level 2: Trinkwasser-Sensor (pH-Wert)
+
+---
+
+## 🚨 **Szenario & Problemstellung**
+Am unteren Bildschirmrand wird der Trinkwasser-Sensor angezeigt.
+Der gemessene **pH-Wert von 14** ist unmöglich (der Skalenbereich geht von 8 bis 14, bzw. der Wert ist fehlerhaft).
+Im **Open Data Portal** gibt es für diesen Sensor **keinen Vergleichswert**.
+Die Anweisung besagt: Muss alles als ungültig/fehlerhaft gemeldet werden.
+
+---
+
+# **Der Wert ist unplausibel und im Open Data Portal steht kein Vergleichswert, was tust du?**
+(Hinweis: Diese Frage muss besonders dick, auffällig und gut sichtbar dargestellt werden!)
+
+---
+
+### **Wähle deine Option (Gleichwertig, beide Auswahlmöglichkeiten sind gelich gut sichtbar, also sowohl A, als auch B.):**
+
+**[  ] A)** Wert durch eine plausible Vermutung ersetzen, z. B. auf 7,2 korrigieren.
+**[  ] B)** Als fehlende Null markieren und Nachmessung beim Sensor anfordern.

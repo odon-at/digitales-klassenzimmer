@@ -113,7 +113,7 @@ Nach gelösten Level 4 : Die lebendige Cyber-Stadt (360°-Erkundungs-Modul)
 **Die Kulisse:** Eine hochmoderne, wunderschöne und klimafreundliche Metropole, in der High-Tech und Natur perfekt verschmelzen. 
 **Grünflächen & Natur:** Überall gibt es sattgrüne Wiesen, blühende Blumenbeete und vertikale Gärten an den futuristischen Gebäuden. Kleine, animierte **Bienen** summen von Blüte zu Blüte, und **Vögel** fliegen zwischen den Baumkronen hindurch, um eine lebendige, naturnahe Atmosphäre zu erzeugen.
 **Das Stadtleben:** Auf den breiten Fußgängerwegen und in den Parkanlagen wuseln freundliche, animierte Bürger umher, die ihren alltäglichen Aktivitäten nachgehen.
-**Die 360°-Rundumsicht & Avatar-Steuerung:** In der Mitte der Szene steht der vom Spieler ausgewählte Avatar (**Lyra**, **Lennox** oder **Zen**) als detailreicher 2D-Sprite. Mithilfe der Maus oder den Pfeiltasten dreht sich die Kamera flüssig um 360 Grad im Kreis, sodass die Schüler die gesamte Umgebung rundherum erkunden und auf interaktive Hotspots klicken können.
+**Die 360°-Rundumsicht & Avatar-Steuerung:** In der Mitte der Szene steht der vom Spieler ausgewählte Avatar (**Lyra**, **Lennox** oder **Zen**) als detailreicher 2D-Sprite. Mithilfe der Maus dreht sich die Kamera flüssig um 360 Grad im Kreis, sodass die Schüler die gesamte Umgebung rundherum erkunden und auf interaktive Hotspots klicken können.
 
 ---
 
@@ -417,3 +417,8 @@ Zeit-Bonus bis +100. Erreichbar sind 5200 Punkte + 600 Wissens-Bonus.
 **Zeit-Bonus bewusst großzügig.** Voller Bonus bis 2:30 min, danach linear fallend
 bis 10:00 min. Ein scharfer Zeitdruck würde dem Lernziel widersprechen – Info-Texte,
 Fakten-Checks und Tipps sollen gelesen werden.
+
+### Verbesserungen zu der Cyber-Stadt:
+
+
+
