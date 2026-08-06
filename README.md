@@ -9,4 +9,4 @@ An open education project by ODON: a browser-based learning game that teaches st
 - **Versionierung** – wie Spec- und Game-Änderungen je Version festgehalten und verglichen werden:
   [`VERSIONING.md`](VERSIONING.md) · Änderungshistorie: [`CHANGELOG.md`](CHANGELOG.md).
 
-Aktuelle Version: **v0.10.0** (siehe `game/js/version.js`).
+Aktuelle Version: **v0.11.0** (siehe `game/js/version.js`).

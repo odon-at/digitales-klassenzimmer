@@ -125,7 +125,8 @@ freigeschaltet. Details siehe [overview.md](overview.md).
 - Bilder liegen in `story/images/`. **Mockups** (Design-Vorgabe) und **Screens**
   (`images/screens/`, aktueller Ist-Zustand) sind getrennt abgelegt.
 - Umsetzung: `game/` – siehe `game/README.md` (Struktur & Erweiterung).
-- Persistenz (localStorage): `nexusdata.save`, `nexusdata.hall`, `nexusdata.muted`.
+- Persistenz (localStorage): `nexusdata.save`, `nexusdata.hall`, `nexusdata.muted`,
+  `nexusdata.music`.
 
 ## 11. Tech-Stack (Kurz)
 
@@ -170,3 +171,19 @@ Andere Sounds (z. B. Effekte, Menü-Klicks, Geräusche) müssen immer klar und d
 **Platzierung:** Ein eigener Button befindet sich **ganz oben** im Spielbereich (Header/Kopfzeile).
 **Funktion:** Der Button ermöglicht das einfache Ein- und Ausschalten (Stummschalten) der Hintergrundmusik.
 **Visuelles Feedback:** Am Button muss zu erkennen sein, ob die Musik aktuell an oder aus ist (z. B. durch ein Ton-Symbol oder Text).
+
+---
+
+## ✅ Umsetzung v0.11.0
+
+Die Technik ist vollständig gebaut; **die Musikdatei fehlt aber noch** (siehe
+[levels/musik.md](levels/musik.md)). Solange sie fehlt, bleibt der Musik-Knopf
+ausgeblendet und es erscheint keine Namensnennung. Datei nach
+`game/media/musik-loop.mp3` legen – mehr ist nicht nötig.
+
+Kurzfassung: `<audio loop>` bei Lautstärke 0,22 (Effekte liegen bei 0,08–0,18 und
+bleiben klar darüber; während vorgelesen wird, sinkt die Musik auf 0,07). Eigener
+🎵-Knopf oben rechts neben dem Ton-Knopf, auf allen Bildschirmen, Zustand über
+Symbol **und** `aria-pressed`. **🔊 bleibt der Hauptschalter** und schaltet die Musik
+mit stumm. Einstellung in `localStorage` unter `nexusdata.music`. Start erst nach der
+ersten Nutzeraktion (Autoplay-Regel der Browser).

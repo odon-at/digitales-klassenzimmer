@@ -15,6 +15,76 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.11.0] – 2026-08-06 – Die pH-Frage, ehrliche Tastenkürzel & Hintergrundmusik
+
+Snapshot: [`releases/v0.11.0/`](releases/v0.11.0/). Setzt den Merge-Commit
+„Konflikt in Level 4 behoben" um (`levels/level-2-schatten-archiv.md`,
+`levels/level-4-prisma-der-stadt.md`, `allgemein.md`).
+
+### Spec (`story/`)
+- **Level 2** – die pH-Frage muss „besonders dick, auffällig und gut sichtbar" sein,
+  die Optionen A und B **gleich gut sichtbar**.
+- **Level 4** – 360°-Drehung mit den Pfeiltasten, Klick auf die Kreis-Marker; andere
+  Tastenbefehle zur Objektanwahl deaktiviert.
+- **`allgemein.md`** – Hintergrundmusik „Loopix" (CC BY 4.0) in Endlosschleife, leise,
+  mit **eigenem Knopf oben** und Credits im Abspann.
+- Aufgeräumt: **zwei Konfliktmarker** (`=======`, `>>>>>>> 9fe7f02…`), die der Merge
+  mitten in der Level-4-Spec hinterlassen hatte – der Inhalt dazwischen blieb
+  vollständig erhalten. `levels/musik.md` war 0 Byte und beschreibt jetzt die
+  Musik-Umsetzung samt offenem Punkt.
+
+### Game (`game/`)
+- **Level 2 verriet die Lösung – behoben.** Die Button-Klasse hing am Richtig-Flag
+  (`o.ok ? 'btn-neon' : 'btn-ghost'`): Die **richtige** Antwort leuchtete als
+  Hauptknopf, die falsche war blass ausgegraut. Jetzt tragen beide dieselbe Klasse
+  `.choice-btn` – gleiche Farbe, Größe und Rahmen, unterschieden nur durch das Badge
+  **(A)** / **(B)** und den Text. Das Flag wertet ausschließlich der Klick-Handler aus.
+- **Die Frage ist jetzt das Auffälligste auf dem Bildschirm** (`.instr-question`:
+  1,15 rem, fett, ⚠, Rahmen und Glow, `role="status"`); vorher stand sie in `.hint`,
+  der kleinsten und blassesten Textklasse. Die Begründung darüber ebenfalls in
+  Lesegröße. Eine falsch probierte Option wird markiert, die Frage bleibt bedienbar.
+  **Punkte unverändert.**
+- **Level 4 versprach Tasten, die es nicht gab – behoben.** Die Entscheidungs-Knöpfe
+  trugen `aria-keyshortcuts="f"` / `"s"`, ohne dass je ein Handler existierte;
+  Screenreader lasen sie vor, gedrückt passierte nichts. Entfernt, ebenso die
+  undokumentierte `Home`-Taste. In der 360°-Ansicht wirken damit **nur noch die
+  Pfeiltasten**.
+- **„Taste 1/2/3" in Phase A wirkt jetzt wirklich** – die Beschriftung stand sichtbar
+  an den Diagramm-Knöpfen, die Tasten taten nichts. Implementiert wie die Verdikte in
+  Level 3; in der 360°-Ansicht bleiben Zifferntasten wirkungslos.
+- Nebenbei: Die unsichtbare 48×48-Trefferfläche der Hotspots hing an der Oberkante und
+  deckte das Label darunter nicht ab – jetzt zentriert.
+- **Hintergrundmusik** (neu: `NX.audio.music`): `<audio loop>` bei Lautstärke **0,22**
+  (Effekte liegen bei 0,08–0,18); während vorgelesen wird, sinkt die Musik auf 0,07 und
+  steigt danach wieder. Eigener **🎵-Knopf** oben rechts neben dem Ton-Knopf, auf allen
+  Bildschirmen; Zustand über Dimmung, Schrägstrich **und** `aria-pressed`. **🔊 bleibt
+  Hauptschalter** und schaltet die Musik mit stumm. Einstellung in `nexusdata.music`.
+  Start erst nach der ersten Nutzeraktion (Autoplay-Regel).
+- **CC-BY-Namensnennung** im Abspann und auf der Startseite – **nur**, wenn die
+  Musikdatei tatsächlich vorhanden ist.
+- `app.js` ist gegen doppelte Verdrahtung abgesichert: Zwei Klick-Listener auf demselben
+  Schalter hätten ihn zweimal umgelegt, also gar nicht.
+- Der Ecktext der Startseite weicht jetzt bei allen Bildschirmbreiten an den beiden
+  Knöpfen vorbei (vorher überdeckte der zweite Knopf „SYSTEM STATUS: OFFLINE").
+
+### Bewusste Abweichungen von der Spec
+- **Die Musikdatei liegt nicht bei.** „Loopix" ist benannt, aber weder im Repo noch
+  über die genannte `Music_Musik.md` auffindbar; Freesound verlangt für den Download
+  ein Konto. Gebaut ist die komplette Technik – Datei nach
+  `game/media/musik-loop.mp3` legen genügt, kein Code-Eingriff. Bis dahin bleibt der
+  Knopf aus und es erscheint keine Namensnennung.
+- **Tabulator und Enter bleiben in der 360°-Stadt.** Wörtlich genommen würde „andere
+  Tastenbefehle sind deaktiviert" auch sie treffen – dann wäre das Level nur noch mit
+  der Maus spielbar und für Kinder ohne Maus gesperrt. Tabulator ist kein Kürzel zur
+  Objektanwahl, sondern der normale Browser-Weg.
+- **Der Loop kann eine winzige Lücke haben.** Ein lückenloser Loop bräuchte
+  WebAudio-Buffer und damit `fetch()`, das unter `file://` scheitert – das Spiel muss
+  aber auch per Doppelklick auf `index.html` laufen.
+- **pH-Skala:** Die Spec schreibt „der Skalenbereich geht von 8 bis 14". Sie reicht von
+  **0 bis 14**; der Spieltext nennt weiterhin den korrekten Bereich.
+
+---
+
 ## [0.10.0] – 2026-08-06 – Ein Vorlese-Knopf, Lerntypen, Level-1-Begriffe & Level-2-Ansage
 
 Snapshot: [`releases/v0.10.0/`](releases/v0.10.0/). Setzt den Spec-Commit
