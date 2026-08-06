@@ -314,3 +314,185 @@ fünften Knoten öffnet die Bonusfrage.
 **Vorlesen:** Tipps und Info-Texte haben einen 🔊-Knopf und werden per
 Browser-Sprachausgabe gesprochen; dazu meldet sich einmal je Sitzung die Aufnahme der
 Bürger-KI. Siehe [../audio/stimme.md](../audio/stimme.md).
+
+### Usability & Story Refactoring: Level "Datenübertragung & Open Data"
+
+Dieses Dokument beschreibt die Anpassungen an UI, Metaphern, Erklärungen und Interaktionskonzepten zur Verbesserung der Verständlichkeit und Benutzerfreundlichkeit (Usability) des Lernspiels.
+
+---
+
+## 1. Story & Context Update (Hintergrundgeschichte)
+
+### Problem
+Die bisherigen Bezeichnungen (wie "Ausrüstung") passten nicht optimal zur Metapher der Datenübertragung in der modernen Welt.
+
+### Neue Story-Einbindung
+ **Hintergrund:** > Die zentralen, privaten Datenbanken der Stadt wurden gehackt und sind blockiert oder unsicher. Um die städtische Infrastruktur aufrechtzuerhalten, müssen wir auf **Open Data (offene Daten)** zurückgreifen, die öffentlich und sicher bereitgestellt werden. 
+ 
+ Da die normalen Netzwerke gestört sind, nutzen wir digitale **Cyber-Tauben**, um Datenanfragen (HTTP-Requests) sicher zu transportieren. Die Spieler schicken die Taube mit genauen Befehlen los, damit sie die gewünschten Open-Data-Pakete abholt.
+
+---
+
+## 2. Anpassung der Metaphern & Begriffe
+
+| Alter Begriff | Neuer Begriff | Begründung / Ziel |
+| :--- | :--- | :--- |
+| **Ausrüstung / Ausrüstungs-Hangard** | **Request-Konfigurator** / **Anfrage-Befehle** | "Ausrüstung" klingt nach Videospiel-Inventar (Schwert/Rüstung). "Anfrage-Befehle" macht klar, dass hier ein technischer Request aufgebaut wird. |
+| **Passierschein** (API-Token) | **Zugangsschlüssel** (API-Schlüssel / Token) | "Schlüssel" ist ein vertrauterer Begriff aus dem Alltag und erklärt die Schutzfunktion eines Tokens besser. |
+
+---
+
+## 3. UI/UX-Änderungen für Hilfe-Texte (Info-System)
+
+### Problem
+Das aktuelle **Tooltip-Hover-System** (Fahren über das (i)-Icon) ist auf Mobilgeräten/Touchscreens schwer nutzbar und wird von Schülern oft übersehen oder versehentlich ausgelöst.
+Unklarheit bezüglich Punkteabzug.
+
+### Neues Konzept
+1. **Button statt Hover:** Neben jedem Schritt (1. URL/Zieladresse, 2. HTTP-Methode, 3. API-Token) befindet sich ein gut sichtbarer Klick-Button: **[ ? Info ]** oder **[ Was bedeutet das? ]**.
+2. **Klick-Verhalten:** Ein Klick öffnet ein klares Infofeld / Modal direkt neben der Aufgabe oder klappt einen Erklärungstext aus.
+3. **Punkte-Transparenz:** Im UI wird explizit hervorgehoben:  
+   "Das Lesen der Hilfe kostet dich KEINE Punkte!"
+
+---
+
+## 4. Inhaltliche Überarbeitung der Stationen & Erklärungen
+
+### Station 1: URL / Zieladresse
+**Konzept:** Die Web-Adresse der Open-Data-Schnittstelle.
+**Erklärung im Spiel (Info-Button):** > "Eine URL ist wie die Postadresse eines Servers. Damit die Cyber-Taube weiß, wo genau sie die offenen Daten abholen soll, muss die korrekte Zieladresse ausgewählt werden."
+
+---
+
+### Station 2: HTTP-Methode (Aktion festlegen)
+**Konzept:** Verständliche Differenzierung der HTTP-Methoden.
+**Erklärung im Spiel (Info-Button):** > **Was ist eine HTTP-Methode?** > Die HTTP-Methode bestimmt die **Art der Aktion**, die die Taube am Zielserver ausführen soll:  
+  > * **GET (Abholen):** Du möchtest Daten vom Server anfordern und lesen (z. B. aktuelle Busfahrpläne oder Wetterdaten).  
+  > * **POST (Senden):** Du möchtest neue Daten an den Server übertragen und dort speichern (z. B. ein Formular abschicken).  
+  >  
+  > In diesem Level nutzen wir **GET**, um die freien Daten aus dem Stadt-System abzurufen.
+
+---
+
+### Station 3: API-Token / Zugangsschlüssel
+**Konzept:** Autorisierung bei Schnittstellen.
+**Erklärung im Spiel (Info-Button):** > **Was ist ein API-Token (Zugangsschlüssel)?** > Ein API-Token ist ein digitaler **Schlüssel**. Viele Open-Data-Server sind zwar öffentlich, verlangen aber einen Schlüssel, damit sie nachvollziehen können, wer Daten anfordert, und um Überlastung durch Missbrauch zu verhindern.  
+  > Wähle den gültigen Schlüssel aus, damit der Server der Taube die Daten anvertraut.
+
+---
+
+### Station 4: Rohdaten-Strom in sauberes JSON umwandeln
+**Konzept:** Datenformatierung verstehen.
+**Erklärung im Spiel (Info-Button):** > **Warum JSON?** > Die Taube bringt die Daten als unstrukturierte Text-Kette (Rohdaten) zurück. Damit Computer die Daten weiterverarbeiten und anzeigen können, wandeln wir sie in das Format **JSON** um. JSON ordnet die Daten übersichtlich in Schlüssel-Wert-Paare (z. B. Stadt: "Nexus City").
+
+---
+
+## 5. Zusamenfassung des Gameplay-Ablaufs (Workflow)
+
+1. **Kontext verstehen:** Die Stadt-Datenbank wurde gehackt $\rightarrow$ Open Data nutzen.
+2. **Zieladresse (URL) wählen:** Wo liegen die offenen Daten?
+3. **HTTP-Methode festlegen:** Aktion wählen (hier: GET zum Abrufen).
+4. **Zugangsschlüssel (API-Token) beilegen:** Authentifizierung anfügen.
+5. **Taube losschicken:** Den HTTP-Request absenden.
+6. **JSON verarbeiten:** Empfangene Rohdaten in lesbares JSON konvertieren.
+
+### ## 7. Erweiterung des Info-Systems (Begriffs-Glossar)
+
+### Grundprinzip
+Die Schüler können **jederzeit** auf den Info-Button [ ? Info / Glossar ] klicken.
+Das Aufrufen von Informationen kostet **keine Punkte**.
+Neben den spezifischen Aufgaben werden hier alle Kernbegriffe rund um Schnittstellen (APIs) und Datenübertragung kurz, knackig und verständlich erklärt.
+
+---
+
+### Inhalts-Spezifikation für das Info-Fenster
+
+#### 1. Was ist eine URL?
+ **URL (Uniform Resource Locator):** > Die URL ist die **Webadresse** einer Datenquelle im Internet (z. B. `https://opendata.nexus.city/v1/stadtsystem`). Sie funktioniert wie die Straßenadresse eines Hauses: Sie sagt der Cyber-Taube genau, wo auf der Welt sie die Daten suchen muss.
+
+---
+
+#### 2. Was ist eine HTTP-Methode?
+ **HTTP-Methode (Aktions-Befehl):** > Die HTTP-Methode bestimmt, **was** die Taube am Zielort tun soll.  
+ * **GET:** "Hole mir Daten von dort ab!" (z. B. Fahrpläne lesen)  
+ * **POST:** "Bringe diese neuen Daten dorthin und speichere sie!" (z. B. Formular abschicken)
+
+---
+
+#### 3. Was ist eine API?
+ **API (Schnittstelle):** > Eine API (Application Programming Interface) ist wie ein **digitaler Schalter** oder Restaurant-Kellner. Sie nimmt deine Anfrage entgegen, bringt sie zum Server, holt die passenden Daten und liefert sie dir zurück – ohne dass du direkt im Bauplan des Servers suchen musst.
+
+---
+
+#### 4. Was ist ein API-Token (Zugangsschlüssel)?
+ **API-Token (Zugangsschlüssel):** > Ein digitaler **Schlüssel**, den du deiner Anfrage beilegst. Er zeigt dem Server, wer die Daten anfordert. So stellt der Server sicher, dass nur berechtigte Personen zugreifen und das System nicht durch zu viele Anfragen überlastet wird.
+
+---
+
+#### 5. Was ist JSON?
+ **JSON (JavaScript Object Notation):** > Ein einfaches **Textformat zum Datenaustausch**. Wenn die Taube die Rohdaten zurückbringt, sind diese oft ungeordnet. JSON strukturiert die Daten übersichtlich in Schlüssel-Wert-Paaren (z. B. "Temperatur": "21°C"), damit Computer sie leicht lesen und anzeigen können.
+
+---
+
+#### 6. Was ist ein HTTP-Status-Code?
+ **HTTP-Status-Code (Antwort-Signal):** > Eine dreistellige Zahl, die der Server der Taube als **Rückmeldung** mitgibt, damit du weißt, ob die Anfrage erfolgreich war:  
+ * **200 OK:** "Alles super! Hier sind deine Daten." > * **404 Not Found:** "Zieladresse nicht gefunden – die URL stimmt nicht." > * **401 / 403 Unauthorized:** "Fehler! Du hast keinen gültigen Zugangsschlüssel (API-Token) mitgeschickt." > * **500 Internal Server Error:** "Der Server hat gerade ein technisches Problem."
+
+---
+
+#### 7. Was ist die Checkliste?
+ **Die API-Checkliste (Schritt-für-Schritt-Anleitung):** > Deine Kontrollliste vor dem Absenden der Taube! Ein funktionierender HTTP-Request braucht immer:  
+ 1. [x] **URL:** Wo soll es hingehen?  
+ 2. [x] **HTTP-Methode:** GET oder POST?  
+ 3. [x] **API-Token:** Schlüssel beigelegt?  
+ 4. [x] **Antwort verarbeiten:** Status-Code prüfen & Rohdaten in JSON umwandeln.
+
+##### Spezifikation: Maschinenansicht (JSON) vs. Menschenansicht (Dashboard)
+
+## 1. Übersicht & Lernziel
+
+Nachdem die Cyber-Taube ihre Anforderung erfolgreich erledigt hat, bringt sie die Daten vom Server zurück. 
+An dieser Stelle im Spiel lernen die Schüler den Unterschied zwischen der **technischen Rohstruktur für Computer** (JSON) und der **grafischen Aufbereitung für Menschen** (Dashboard) kennen.
+
+---
+
+## 2. Inhalts-Spezifikation für den Info-Bereich [ ? Info ]
+
+Dieser Info-Text kann von den Schülern jederzeit **ohne Punkteabzug** aufgerufen werden.
+
+### A) Warum JSON? (Maschinenansicht)
+ **Maschinenansicht (JSON):**
+ Computer und Server sprechen eine eigene Sprache. Das Format **JSON** ordnet Daten so an, dass Programme sie extrem schnell lesen, durchsuchen und verarbeiten können. 
+ 
+ * **Vorteil:** Es verbraucht sehr wenig Speicherplatz und ist universell von allen Programmiersprachen nutzbar.
+ * **Nachteil:** Für Menschen ist es unübersichtlich, wenn es viele verschachtelte Daten sind.
+
+---
+
+### B) Warum ein Dashboard? (Menschenansicht)
+ **Menschenansicht (Dashboard):**
+ Ein Dashboard übersetzt die "unleserlichen" JSON-Daten in eine grafische Oberfläche mit Diagrammen, Icons, bunten Anzeigetafeln oder Tabellen.
+ 
+ * **Warum brauchen wir das?** Menschen können lange Text- und Zahlenreihen nur schwer auf einen Blick erfassen. Ein Dashboard bereitet die Informationen so auf, dass wir sofort erkennen, was wichtig ist (z. B. eine rote Warnleuchte bei Systemausfall oder eine grüne Temperaturanzeige).
+ * **Vorteil:** Schnell verständlich, übersichtlich und benutzerfreundlich.
+
+---
+
+## 3. Gegenüberstellung im Spiel (Vergleichstabelle)
+
+Um den Unterschied im Spiel visuell und inhaltlich klar zu unterstreichen, wird folgende Übersicht eingebunden:
+
+| Kriterium | JSON (Maschinenansicht) | Dashboard (Menschenansicht) |
+| :--- | :--- | :--- |
+| **Zielgruppe** | Computer, Server, Programme | Menschen, Anwender, Schüler |
+| **Darstellung** | Text, Klammern { }, Schlüssel-Wert-Paare | Grafiken, Buttons, Farben, Diagramme |
+| **Hauptaufgabe** | Sichere & schnelle Datenübertragung | Schnelle & einfache Informationsaufnahme |
+| **Beispiel** | "status": "aktiv", "temperatur": 22.5 | 🟢 System aktiv \| 🌡️ 22.5 °C |
+
+---
+
+## 4. Ablauf im Spiel (Gameplay-Logik)
+
+1. **Taube kommt an:** Der Server sendet das Ergebnis im **JSON-Format** zurück (Maschinenansicht).
+2. **Datenumwandlung:** Der Spieler wandelt die empfangenen Rohdaten per Klick/Befehl um.
+3. **Ergebnis visualisieren:** Das Spiel schaltet auf die **Dashboard-Ansicht** um. Die Schüler sehen sofort, wie aus abstracten Code-Zeilen eine fertige, nutzbare App-Oberfläche entsteht.

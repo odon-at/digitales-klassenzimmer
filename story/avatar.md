@@ -84,3 +84,35 @@ Dadurch wird das Wort **"AUSGEWÄHLT"** am Anfang abgeschnitten – die ersten b
 ### 2. Anweisung zur Korrektur
 Die Breite des diagonalen Textbandes muss vergrößert werden, damit das gesamte Wort Platz hat.
 Der Textabstand und die Schriftgröße sollen so eingestellt werden, dass das Wort **"AUSGEWÄHLT"** vollständig sichtbar, zentriert und ohne abgeschnittene Buchstaben auf dem Band liegt.
+
+### Verbesserung mit Lerntypen
+
+Upgrade-Anforderungen: Avatar-Auswahlbereich
+
+## 1. Lerntyp-Kennzeichnung über den Avataren
+Direkt über dem Namen jedes Avatars soll der jeweilige Verarbeitungs- bzw. Lerntyp platziert werden:
+
+**Lyra:** Visuell
+**Lennox:** Auditiv
+**Zen:** Kognitiv
+
+---
+
+## 2. Info-Button & Erklärungs-Popups
+Neben oder über der neuen Lerntyp-Bezeichnung soll ein **Info-Button** (z. B. ein ⓘ-Icon) eingefügt werden.
+
+Beim Klicken auf diesen Info-Button soll sich ein Fenster oder eine Erklärung öffnen, welche die jeweilige Funktion beschreibt:
+
+| Avatar | Lerntyp | Beschreibung / Erklärung |
+| :--- | :--- | :--- |
+| **Lyra** | **Visuell** | Die Informationen und Lerninhalte werden vorrangig grafisch und visuell aufbereitet. |
+| **Lennox** | **Auditiv** | Die Informationen können angehört werden (Sprachausgabe / Audio-Funktion). |
+| **Zen** | **Kognitiv** | Die Informationen werden in geschriebener Textform zum Selbstlesen bereitgestellt. |
+
+---
+
+## 3. Positionierung & Design
+Die Beschriftung (Visuell / Auditiv / Kognitiv) steht direkt oberhalb des Avatarnamens.
+Der Info-Button befindet sich rechts oder direkt neben der Lerntyp-Bezeichnung.
+Das Farbschema des Info-Buttons und der Beschriftung soll sich an die jeweilige Avatar-Farbe anpassen (Pink für Lyra, Gelb für Lennox, Grün für Zen).
+

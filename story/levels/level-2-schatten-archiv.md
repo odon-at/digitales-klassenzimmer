@@ -90,3 +90,19 @@ text+---------------------------------------------------+
 |  5. Screen-Detox (Weg vom Monitor, Augenruhe)     |
 |  6. Mini-Snack (Energiekick für den Kopf holen)   |
 +---------------------------------------------------+
+
+Verbesserung für Usability:
+
+Statt dem Satz , lieber das oberhalb der URL-Adresse schreiben, es sollte offensichtlicher und klar von den Spieler erkennbar sein: Die internen Systemdaten wurden manipuliert. Öffne das Open-Data-Portal der Datenbehörde Nexus, vergleiche die echten Werte und korrigiere die gefälschten Einträge unten.
+
+## DIE INTERNEN SYSTEMDATEN WURDEN MANIPULIERT!
+
+# 1. Öffne das Open Data Portal der Datenbehörde Nexus
+# 2. Vergleiche die echten Werte
+# 3. Korrigiere die gefälschten Einträge unten
+
+--------------------------------------------------
+>> FOLGE DEN ANWEISUNGEN UND GIB DIE DATEN UNTEN EIN <<<
+--------------------------------------------------
+
+Statt Wähle eine Kategorie, um den echten Open-Data-Wert zu sehen. , sollte das stehen: Klicke oben auf eine Kategorie-Schaltfläche (zum Beispiel Strom und Energie), um den echten Open-Data-Wert anzuzeigen und mit den kompromittierten Systemdaten zu vergleichen.
