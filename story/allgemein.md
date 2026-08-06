@@ -153,15 +153,8 @@ Damit die KI-Iteration weiß, was fix ist und was zur Diskussion steht:
 
 ### Hintergrundmusik & Sound-Anforderungen
 
-## 1. Verwendetes Audio-Asset & Lizenz
-**Track-Name:** Loopix (ID: 849265)
-**Datei-Referenz:** Music_Musik.md
-**Künstler:** fonoskop (Freesound.org)
-**Lizenz:** Creative Commons Attribution 4.0 International (CC BY 4.0)
-**Credits (Im Abspann des Spiels einzubauen):**
-  > "Loopix" by fonoskop (https://freesound.org/s/849265/) licensed under CC BY 4.0
-
----
+## 1. Verwendete Musik 
+- von der Datei musik.md
 
 ## 2. Anforderungen für die Umsetzung im Spiel
 

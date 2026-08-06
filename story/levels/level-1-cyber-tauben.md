@@ -549,3 +549,44 @@ nicht im Info-Fenster:
 ### Vorlesen
 Tipps, Hilfe-Fenster und Info-Fenster haben **einen** Vorlese-Knopf, der nur auf
 Knopfdruck startet – siehe [../stimme.md](../stimme.md).
+
+### Übersicht als Buch
+Glossar, sowie sollten nicht einfach so mehr da stehen, sollte in einem Buch lesbar sein, sodass die Spieler erkenn können, dass es sich nicht mehr um eine Aufgabe handelt. 
+"Nach  Geschafft – die Daten sind lesbar", Sollte ein Buch erscheinen, indem auf dem Cover des Buchs stehen soll:  Dieses Buch dient deinem Verständnis. Hier musst du KEINE Aufgabe mehr lösen.
+
+Nachdem aufklappen des Buches sollte man lesen können: Das Glossar, die Maschinen-Ansicht (JSON),  Menschen-Ansicht (Dashboard), die Tabelle und jeweils dessen Inhalt. 
+
+  # Konzept und Prompt: Wissensbuch fuer Level 1 (Nexus Data)
+
+## Uebersicht
+Dieses Dokument enthaelt die fertige Formulierung und Struktur, um einer KI, einem Web-Designer oder einem Entwickler genau zu erklaeren, wie das Wissensbuch nach Level 1 umgesetzt werden soll.
+
+---
+
+## Kopiervorlage / Prompt fuer die KI und Entwicklung
+
+Auftrag:
+Erstelle fuer Level 1 ein interaktives Wissensbuch, das sich aufklappt, sobald die Meldung "Geschafft - die Daten sind lesbar" erscheint.
+
+Wichtig fuer die UX (User Experience):
+Die Spieler muessen sofort auf den ersten Blick verstehen, dass hier keine neue Aufgabe geloest werden muss, sondern der Inhalt nur zum Verstaendnis dient.
+
+---
+
+### Aufbau und Inhalt des Buches:
+
+1. Kopfzeile (ueber dem Buch):
+   WISSENSBUCH GEÖFFNET: Aufmerksam durchlesen! (Nur fuer dein Verstaendnis - keine Aufgabe).
+
+2. Linke Buchseite (Seite 1: Vergleich der Ansichten):
+   - Einleitung: "Beide Ansichten zeigen dieselben Daten - aber fuer ganz verschiedene Augen:"
+   - Eine saubere Vergleichstabelle:
+     * Kriterien: Zielgruppe, Darstellung, Hauptaufgabe, Beispiel
+     * JSON (Maschine): Computer/Server | Text, Klammern { } | Sichere Uebertragung | "status": "aktiv"
+     * Dashboard (Mensch): Menschen/Schueler | Grafiken, Farben, Icons | Schnelle Info-Aufnahme | System aktiv
+
+3. Rechte Buchseite (Seite 2: Warum JSON?):
+   - Das Problem: Im unstrukturierten Rohtext (...Tagesverbrauch1Notrufzentrale0...) weiss der Computer nicht, wo eine Zahl endet und ein Begriff beginnt.
+   - Die Loesung: JSON beschriftet jede Information eindeutig als "Schluessel": Wert.
+   - Das Ergebnis: Dadurch liest und verarbeitet der Computer die Daten innerhalb
+
