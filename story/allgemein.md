@@ -154,15 +154,6 @@ Damit die KI-Iteration weiß, was fix ist und was zur Diskussion steht:
 
 ### Hintergrundmusik & Sound-Anforderungen
 
-## 1. Verwendete Musik 
-- von der Datei musik.md
-
-## 2. Anforderungen für die Umsetzung im Spiel
-
-### A. Wiedergabe im Hintergrund (Loop / Dauerschleife)
-Die Musik **Loopix** dient als allgemeine Hintergrundmusik.
-Die Musik soll in einer **Endlosschleife (Loop)** ohne Lücken im Hintergrund durchlaufen.
-
 ### B. Lautstärke-Abstimmung
 Die Musik darf angenehm leise sein und das Spiel **nicht übertönen**.
 Andere Sounds (z. B. Effekte, Menü-Klicks, Geräusche) müssen immer klar und deutlich zu hören sein.
@@ -172,18 +163,7 @@ Andere Sounds (z. B. Effekte, Menü-Klicks, Geräusche) müssen immer klar und d
 **Funktion:** Der Button ermöglicht das einfache Ein- und Ausschalten (Stummschalten) der Hintergrundmusik.
 **Visuelles Feedback:** Am Button muss zu erkennen sein, ob die Musik aktuell an oder aus ist (z. B. durch ein Ton-Symbol oder Text).
 
----
-
-## ✅ Umsetzung v0.11.0
-
-Die Technik ist vollständig gebaut; **die Musikdatei fehlt aber noch** (siehe
-[levels/musik.md](levels/musik.md)). Solange sie fehlt, bleibt der Musik-Knopf
-ausgeblendet und es erscheint keine Namensnennung. Datei nach
-`game/media/musik-loop.mp3` legen – mehr ist nicht nötig.
-
-Kurzfassung: `<audio loop>` bei Lautstärke 0,22 (Effekte liegen bei 0,08–0,18 und
-bleiben klar darüber; während vorgelesen wird, sinkt die Musik auf 0,07). Eigener
-🎵-Knopf oben rechts neben dem Ton-Knopf, auf allen Bildschirmen, Zustand über
-Symbol **und** `aria-pressed`. **🔊 bleibt der Hauptschalter** und schaltet die Musik
-mit stumm. Einstellung in `localStorage` unter `nexusdata.music`. Start erst nach der
-ersten Nutzeraktion (Autoplay-Regel der Browser).
+## Hintergrundmusik & Audio
+**Status:** Aktiviert (Endlosschleife / Loop bei 22% Lautstärke).
+**Musikdatei:** game/media/musik-loop.mp3
+**Details:** Siehe vollständige Spezifikation in [musik.md](story/levels/musik.md).
