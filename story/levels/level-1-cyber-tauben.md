@@ -611,3 +611,10 @@ nichts.
 > ist der letzte Bildschirm des Levels. Solange die Bonusfrage offen ist, steht der
 > Hinweis „💡 In der Info wartet noch eine Bonusfrage (+150 Punkte)" daneben.
 > Der Knopf ist ab v0.12.0 orange und pulsiert (siehe [../allgemein.md](../allgemein.md)).
+
+
+## Verbesserung bei den ?Was bedeutet das?-Button
+Bei dem ?Was bedeutet das?-Button bei Level 1 bei der Aufgabe 1 URL/ Zieladresse sollte  der Begriff Uniform Resource Locator (Abk. URL; englisch) genauer erläutert werden. 
+Statt nur : Eine URL ist wie die Postadresse eines Servers. Damit die Cyber-Taube weiß, wo genau sie die offenen Daten abholen soll, muss die korrekte Zieladresse ausgewählt werden.
+
+Sollte das stehen: Eine URL steht für Uniform Resource Locator – also einen einheitlichen Finder für Datenquellen – und funktioniert wie die Postadresse im Internet: Sie zeigt exakt, an welchem eindeutigen Ort im weltweiten Netz eine bestimmte Datei oder Webseite liegt und wie sie abgerufen werden kann.

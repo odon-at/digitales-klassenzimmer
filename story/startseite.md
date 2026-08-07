@@ -67,3 +67,73 @@ Als Hintergrund für die Startseite wird ab sofort exakt das Bild aus Startseite
 > eingebrannte Mitte verschwindet, und die echten HTML-Elemente (mit Flacker-
 > Animation, Tastaturbedienung und Screenreader-Text) erscheinen nur einmal.
 > Ein Bild **ohne** eingebrannte UI wäre die sauberere Lösung.
+
+
+##  Beschreibung für das Über uns Fenster im Spiel Nexus Data
+
+## Übersicht
+Diese Beschreibung erklärt den Aufbau, die Gestaltung und die Funktionsweise des neuen Elements für die Startseite.
+
+---
+
+
+
+## 1. Der Über uns Knopf auf der Startseite
+
+### Positionierung
+Der Knopf für Über uns befindet sich zentriert direkt oberhalb der beiden Hauptschaltflächen Neues Spiel und Weiterspielen.
+
+### Visuelles Erscheinungsbild
+Der Knopf ist bewusst dezent gestaltet, damit er den Hauptfokus nicht vom Spiel ablenkt:
+Transparenter Hintergrund ohne auffällige Füllung.
+Ein schmaler, leicht leuchtender Rahmen.
+Eine zurückhaltende graue Schriftfarbe.
+Abgerundete Ecken für ein modernes Design.
+
+### Interaktion beim Drüberfahren mit der Maus
+Sobald der Mauszeiger über den Knopf bewegt wird, reagiert dieser sanft:
+Die Schriftfarbe und der Rahmen wechseln zu einem hellen Blauton.
+Ein feiner Leuchteffekt erscheint um den Knopf herum.
+
+---
+
+## 2. Das Pop-up Fenster
+
+### Erscheinungsbild und Platzierung
+Wenn der Knopf angeklickt wird, öffnet sich ein Fenster genau in der Mitte des Bildschirms:
+Der gesamte Hintergrund hinter dem Fenster wird abgedunkelt und leicht unscharf gemacht.
+Das Fenster hat einen dunklen Hintergrund, der zum Design des Spiels passt.
+Der Rand des Fensters ist mit einer hellen, leuchtenden Linie hervorgehoben.
+
+### Inhalt des Fensters
+Das Fenster ist übersichtlich strukturiert und enthält folgende Elemente von oben nach unten:
+X (oben rechts): Schließen Knopf: Ein Zeichen in der oberen rechten Ecke zum Schließen des Fensters.
+X (zentriert): Hauptüberschrift: Hinter den Kulissen: Wer steckt hinter dem Spiel?
+X (zentriert) ---> HIER STEHT EUER TEXT <--- :
+  Dieses Spiel ist im Rahmen eines 3-wöchigen Praktikums bei ODON (Offene Daten für Offene Nutzung) entstanden.
+  Die Schwestern Sarah und Chiara Hamedinger hatten ein klares Ziel: Komplexe Open Data greifbar zu machen und in ein spannendes, interaktives Spielerlebnis zu verwandeln.
+  „Wir wollten zeigen, dass offene Daten alles andere als trocken sind – sondern richtig Spaß machen können, wenn man sie spielerisch entdeckt!“ — Sarah & Chiara
+
+  Link: https://www.linkedin.com/company/odon-at/
+
+  Außerdem haben sie fachliches Feedback von Mimikama und wertvolle Tipps erhalten, um die Inhalte noch präziser und lehrreicher zu gestalten.
+
+  Tauche ein und erlebe, wie viel Spaß der Umgang mit Daten machen kann!
+  [ Jetzt spielen! ]
+
+Logobereich :
+! [ODON Logo] (odon.png)
+! [Mimikama Logo] (mimikama.png)
+
+
+Das Mimikama Logo, als auch das Odon Logo befindet sich unter story/images.
+
+## 3. Funktionsweise im Spiel
+
+### Öffnen des Fensters
+Ein Klick auf den Knopf Über uns lässt das Fenster auf dem Bildschirm erscheinen.
+
+### Schließen des Fensters
+Das Fenster kann auf zwei Arten wieder geschlossen werden:
+Durch einen Klick auf das Schließen Symbol oben rechts im Fenster.
+Durch einen Klick auf den abgedunkelten Bereich außerhalb des Fensters.
