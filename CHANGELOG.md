@@ -15,6 +15,79 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.13.0] – 2026-08-07 – Klick in der Cyber-Stadt repariert, ein Ablageziel, „Über uns"
+
+Snapshot: [`releases/v0.13.0/`](releases/v0.13.0/). Setzt die Spec-Commits
+`1a8e86c „Änderung von Level 4"` und `4ac3b86 „Logos hinzugefügt"` um
+(`levels/level-4-…`, `levels/level-1-…`, `startseite.md`).
+
+### Spec (`story/`)
+- **`level-4-…`** – Fehlermeldung: Ein Klick auf einen leuchtenden Kreis dreht die
+  Kamera, statt die Frage zu öffnen · die doppelt aufgeführten Diagrammarten unter den
+  Daten sollen einer Sprechblase weichen · „geprüft" → „besucht" · echte Gebäudenamen ·
+  neuer Stadt-Text · die Tastaturbedienung soll erhalten bleiben.
+- **`level-1-…`** – die Hilfe zu „URL / Zieladresse" soll *Uniform Resource Locator*
+  ausschreiben und ausführlicher erklären.
+- **`startseite.md`** – neuer Knopf **„Über uns"** über den Hauptschaltflächen plus
+  Pop-up mit Überschrift, Praktikums-Text, Zitat, LinkedIn-Link, „[ Jetzt spielen! ]"
+  und den Logos von ODON und Mimikama.
+
+### Game (`game/`)
+- **Der Klick auf ein Gebäude öffnet endlich die Aufgabe.** Der gemeldete Fehler hatte
+  **vier** sich überlagernde Ursachen, alle behoben:
+  1. `setPointerCapture` lief schon bei `pointerdown` und leitete den folgenden `click`
+     vom Hotspot weg – jetzt wird der Zeiger erst nach **6 px** Bewegung eingefangen.
+  2. Der `focus`-Handler drehte die Kamera bereits beim Mausdruck – jetzt dreht nur
+     noch der **Tastatur**-Fokus (`:focus-visible`).
+  3. Ohne Bewegungsschwelle und mit geklemmtem `dt` ergab ein 20-px-Zucken rund 400°
+     Drehung („die 360-Grad-Drehung") – jetzt echtes `dt` und Höchstwert 6°/Frame,
+     gemessener Nachlauf ~75° statt ~400°.
+  4. Die zweite Kachel-Kopie war ab Blickrichtung 262° der sichtbare Hotspot, hatte
+     aber `pointer-events: none` – dort ging jeder Klick garantiert ins Leere.
+  Zusätzlich: nur die linke Maustaste dreht, `touch-action: none` auf dem Viewport.
+- **Level 4, Phase A: ein einziges Ablageziel.** Die zweite Reihe mit denselben drei
+  Diagrammnamen ist entfallen; der oben gewählte Diagramm-Knopf wird selbst zum
+  leuchtenden Ziel, die anderen beiden werden blass. Darunter die geforderte
+  **Sprechblase** („Ziehe die Daten … zum ausgewählten Diagramm …"). Das Banner in
+  Schritt 2 meldet nur noch den Zustand, statt die Blase zu wiederholen.
+  Ziehen, Anklicken, „Taste 1/2/3" und die **Punktzahl (16 Einheiten, 2500) unverändert**.
+- **Cyber-Stadt:** „0 / 10 **besucht**" · kurzer Satz vor dem Betreten · dauerhafte
+  Anweisung „🖱 Klicke auf ein Gebäude …" oben in der Stadt · alle zehn Marker mit
+  echten Gebäudenamen (Fitnessstudio · Bank · Messstation · Parkbank · Bushaltestelle ·
+  Wohnhaus · Parkplatz · Krankenhaus · Stadtplan-Terminal · Wohnungstür) · neue
+  Screenreader-Ansage.
+- **Level 1:** Der Hilfetext zu „URL / Zieladresse" schreibt *Uniform Resource Locator*
+  aus und erklärt ihn ausführlich; der Aufgabenbezug bleibt als zweiter Absatz.
+- **Startseite:** Knopf **„Über uns"** (dezent, Schein per `filter: drop-shadow`) und
+  das Overlay `#aboutscreen` – ✕ / Klick auf den Rand / **Escape** schließen,
+  „Jetzt spielen!" nimmt denselben Weg wie „SPIEL STARTEN" (neue Funktion
+  `startNewGame()`), LinkedIn-Link mit `target="_blank" rel="noopener noreferrer"`,
+  beide Logos als `media/odon.png` und `media/mimikama.png`.
+- **Tests:** 17 Suiten grün. `tcity` sichert den Klick-Fehler mit der echten
+  Ereigniskette ab (Panel geht auf, Kamera steht still, ab 6 px wird gedreht ohne zu
+  öffnen, Zweitkopie klickbar, Nachlauf < halbe Umdrehung); `t4` prüft das neue
+  Ablageziel und die Sprechblase; **`tui13` neu** für „Über uns", URL-Hilfe und
+  Stadt-Texte.
+
+### Bewusste Abweichungen
+- **Tabulator und Enter bleiben in der Cyber-Stadt.** Die Spec fordert das in diesem
+  Abschnitt selbst („für Leute, die keine Maus besitzen"). Beides ist normale
+  Browserbedienung, kein Tastenkürzel – und ohne sie wäre das letzte Level und damit
+  Finale, Award und Zertifikat ohne Maus unerreichbar.
+- **Wortlaut der Stadt-Anweisung.** Die Spec schlägt „… um in die Stadt einzutreten"
+  vor, der Satz steht aber **in** der Stadt. Umgesetzt ist „… um die Aufgabe zu
+  öffnen", weil genau das der Klick bewirkt.
+- **Heller Streifen hinter den Logos.** Beide Dateien sind dunkel getönt und für helle
+  Untergründe gezeichnet; auf dem dunklen Panel verlieren sie jede Kontur. Ein heller
+  Streifen zeigt die Marken in ihren echten Farben, statt sie umzufärben.
+
+### Hinweis, nicht angefasst
+`releases/v0.11.0/story/levels/mimikama.png` ist beim Logo-Commit versehentlich in
+einen **bereits veröffentlichten** Snapshot geraten. Veröffentlichte Snapshots werden
+nachträglich nicht verändert – die Datei bleibt, wo sie ist, und ist hier nur vermerkt.
+
+---
+
 ## [0.12.0] – 2026-08-07 – Vorlesen vereinheitlicht, Einleitung vertont, oranger Info-Knopf
 
 Snapshot: [`releases/v0.12.0/`](releases/v0.12.0/). Setzt die Spec-Commits
