@@ -108,6 +108,9 @@ Nach gelösten Level 4 : Die lebendige Cyber-Stadt (360°-Erkundungs-Modul)
 
 ---
 
+
+
+
 ## 1. Detaillierte Umgebungs- und KI-Beschreibung (Die Cyber-Stadt)
 
 **Die Kulisse:** Eine hochmoderne, wunderschöne und klimafreundliche Metropole, in der High-Tech und Natur perfekt verschmelzen. 
@@ -507,3 +510,31 @@ steht in **1,25 rem, fett und orange** (`--orange`) mit dezentem Schein – vorh
 sie nur fett und in derselben Farbe wie der Beschreibungstext darüber. Sie wird
 zusätzlich in der Screenreader-Ansage mitgesprochen. Das Panel ist dunkel, der
 Orangeton kontrastiert also kräftig (die helle Tag-Stadt liegt dahinter).
+
+
+### Verbesserung der Daten Metropole:
+
+Problemstellung: Nachdem die richtige Diagrammart ausgewählt wurde, entsteht eine Verwirrung für den User, den dieser weiß nicht, wo er die Daten z.B. Feinstaub-Messreihe hinziehen soll. 
+Denn unter die Daten sind nochmals alle Diagrammarteb aufgelistet und weiß nicht wo man die Daten hinziehen soll. Das ist sehr unklar. Deshalb sollen unter die Daten wie Feinstaub-Messwerte oder Müllaufkommen 5 Stadtteile nicht nochmal die die Diagrammarten aufgelistet werden. Sondern es kommt eine Sprechblase in der steht: Ziehe die Daten (z.B. Feinstaub Messreihe) zum ausgewählten Diagramm, um die Daten in die Diagrammart zu konventieren.
+
+
+Bitte entferne also die exakt identischen Diagrammarten unter den Daten, die man wohin ziehen muss.
+
+### Verbesserung der Cyber-Stadt
+
+* statt z.b 0/10 geprüft soll dort stehen 0/10 besucht
+
+
+* statt : Das Bürger-Portal läuft. Jetzt geh hinaus und prüfe, welche Daten in der Stadt wirklich offen sein dürfen – und welche streng privat bleiben müssen. Drehe dich mit der Maus – ziehen oder die Pfeil-Knöpfe am Rand anklicken – um 360° und klicke die leuchtenden Punkte an.
+  soll dort stehen: Klicke auf ein Gebäude in der Stadt, um in die Stadt einzutreten
+
+
+* statt die Namen der Gebäude wie Zahlungsdaten oder Umweltsensor, sollten alle Gebäuder der Stadt von wirkliche Gebäudenamen ersetzt werden also z.B. von Fitnessstatistik zu Fitnessstudio oder Parkleitsystem zu Parkplatz oder von Krankenakte zu Krankenhaus
+
+* Problemstellung: Es funktionert noch immer nicht, dass man mit der Maus einen leuchtenden Punkt auswählt wie z.B. Zahlungsdaten-> Bank, dass die Aufgabe erscheint, weshalb die Personen, die das Spiel spielen nie die Aufgabenstellung sehen können deshalb soll man die Aufgabenstellung ganz einfach so sehen können:
+
+In dem man mit der linken Maustaste auf einen runden blinkenden Kreis klickt und sich dann sofort die Fragestellung öffnet, danach klickt man auf freigeben oder sperren, dann auf weiter und dann klickt man wieder auf einen blinkenden Kreis, um eine neue Fragestellung zu öffnen. 
+
+Jetzt ist es so, wenn man mit der linken Maustaste auf einen leuchetenden Kreis klickt, dass man sich 360 Grad dreht und dass sollte korrigiert werden. 
+
+Allerdings soll es auch die Möglichkeit geben für Leute, die keine Maus besitzen, dass sie mit den Tasten die leuchtenden Kreise auswählen können und somit auch die Fragen lesen können, allerdings soll dies auch unbedingt mit der Maus gehen.!
