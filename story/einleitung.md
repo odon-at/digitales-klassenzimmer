@@ -59,3 +59,20 @@ Motivation aufbauen: Warum retten wir Open Data? Der Text liefert das „Warum�
   „Die lautlosen Boten“, „Das Labyrinth der Lügen“, „Licht aus der Dunkelheit“) –
   siehe jeweilige Level-Spec.
 - 🟡 Einleitung optional erneut abrufbar (z. B. Button „Story nochmal ansehen“).
+
+### Verbesserung von der Einleitung:
+
+Der Inhalt also die luvvoice.com-20260805-MomwB7, welches unter story/audio gespeichert wurde soll unabhängig vom Avatar laut vorgelesen werden.
+
+## Inhalt (Kanon – wörtlich) ✅
+
+> Es passierte um Punkt 03:00 Uhr nachts. Ein mysteriöser Cyber-Angriff – bekannt als
+> „Der große Nebel“ – hat die Kontrolle über die digitale Infrastruktur der Stadt
+> übernommen. Die städtischen Datenbanken wurden gesperrt, Ampeln spielen verrückt, und
+> die offiziellen Systeme sind tot. Die Stadt ist im digitalen Koma. Eine alte,
+> vergessene Backup-Meldung taucht auf den Bildschirmen der Stadt auf:
+
+**Hervorgehobenes Zitat:**
+> „Wenn das System fällt, vertraut den Open Data Archiven. Sie liegen außerhalb der
+> Kontrolle des Hackers. Hole die Fragmente zurück.“
+
