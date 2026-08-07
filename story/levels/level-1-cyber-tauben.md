@@ -550,43 +550,39 @@ nicht im Info-Fenster:
 Tipps, Hilfe-Fenster und Info-Fenster haben **einen** Vorlese-Knopf, der nur auf
 Knopfdruck startet – siehe [../stimme.md](../stimme.md).
 
-### Übersicht als Buch
-Glossar, sowie sollten nicht einfach so mehr da stehen, sollte in einem Buch lesbar sein, sodass die Spieler erkenn können, dass es sich nicht mehr um eine Aufgabe handelt. 
-"Nach  Geschafft – die Daten sind lesbar", Sollte ein Buch erscheinen, indem auf dem Cover des Buchs stehen soll:  Dieses Buch dient deinem Verständnis. Hier musst du KEINE Aufgabe mehr lösen.
+## Anforderung: UI-Anpassung für Level 1 - Schritt 3 (Daten-Auswertung und Infoseite)
 
-Nachdem aufklappen des Buches sollte man lesen können: Das Glossar, die Maschinen-Ansicht (JSON),  Menschen-Ansicht (Dashboard), die Tabelle und jeweils dessen Inhalt. 
+## 1. Problembeschreibung
+Der dritte Schritt von Level 1 wirkt auf den Spieler überladen und unübersichtlich. Aktuell werden im dritten Schritt weiterhin die obere Aufgabenstellung, die Checkliste und der Punktestand aus den ersten beiden Schritten angezeigt. 
 
-  # Konzept und Prompt: Wissensbuch fuer Level 1 (Nexus Data)
+Da im dritten Schritt jedoch keine aktiven Konfigurationsaufgaben mehr stattfinden, sondern die Auswertung und der Vergleich der Daten im Vordergrund stehen, lenken diese Elemente ab und überfordern die visuelle Wahrnehmung (Cognitive Load).
 
-## Uebersicht
-Dieses Dokument enthaelt die fertige Formulierung und Struktur, um einer KI, einem Web-Designer oder einem Entwickler genau zu erklaeren, wie das Wissensbuch nach Level 1 umgesetzt werden soll.
+## 2. Zielsetzung
+Im dritten Schritt soll das Layout klar strukturiert werden:
+Entfernung aller nicht mehr benötigten Aufgaben- und Checklisten-Elemente.
+Einbau eines klaren Hinweistextes, dass es sich nur noch um eine Informationsansicht handelt.
+Fokus auf den Vergleich zwischen der Maschinen-Ansicht (JSON) und der Menschen-Ansicht (Dashboard).
 
----
+## 3. Konkrete Änderungen im Detail
 
-## Kopiervorlage / Prompt fuer die KI und Entwicklung
+### A. Entfernen alter Elemente
+Obere Aufgaben-Box ("AUFGABEN - der Reihe nach") inklusive Checkliste komplett ausblenden.
+Visuelle Elemente, die auf eine aktive Aufgabe hinweisen (wie Punktestand-Abzüge oder Aufgaben-Tipps), entfernen.
 
-Auftrag:
-Erstelle fuer Level 1 ein interaktives Wissensbuch, das sich aufklappt, sobald die Meldung "Geschafft - die Daten sind lesbar" erscheint.
+### B. Neuer Hinweistext / Überschrift
+Ganz oben an der Stelle der vorherigen Aufgaben-Box wird eine neue Info-Zeile platziert mit folgendem Wortlaut:
 
-Wichtig fuer die UX (User Experience):
-Die Spieler muessen sofort auf den ersten Blick verstehen, dass hier keine neue Aufgabe geloest werden muss, sondern der Inhalt nur zum Verstaendnis dient.
+ Aufmerksam durchlesen - nur für dein Verständnis, keine Aufgabe.
 
----
+### C. Inhaltlicher Fokus
+Der restliche Seiteninhalt rückt weiter nach oben und wird strukturiert dargestellt:
+1. Gegenüberstellung von Maschinen-Ansicht (JSON) und Menschen-Ansicht (Dashboard).
+2. Vergleichstabelle zwischen JSON und Dashboard (Kriterium, JSON, Dashboard).
+3. Erklärungsabschnitt "Warum JSON?".
+4. Abschließender Aktions-Button: "DATEN GESICHERT" / "LEVEL ABSCHLIESSEN".
 
-### Aufbau und Inhalt des Buches:
-
-1. Kopfzeile (ueber dem Buch):
-   WISSENSBUCH GEÖFFNET: Aufmerksam durchlesen! (Nur fuer dein Verstaendnis - keine Aufgabe).
-
-2. Linke Buchseite (Seite 1: Vergleich der Ansichten):
-   - Einleitung: "Beide Ansichten zeigen dieselben Daten - aber fuer ganz verschiedene Augen:"
-   - Eine saubere Vergleichstabelle:
-     * Kriterien: Zielgruppe, Darstellung, Hauptaufgabe, Beispiel
-     * JSON (Maschine): Computer/Server | Text, Klammern { } | Sichere Uebertragung | "status": "aktiv"
-     * Dashboard (Mensch): Menschen/Schueler | Grafiken, Farben, Icons | Schnelle Info-Aufnahme | System aktiv
-
-3. Rechte Buchseite (Seite 2: Warum JSON?):
-   - Das Problem: Im unstrukturierten Rohtext (...Tagesverbrauch1Notrufzentrale0...) weiss der Computer nicht, wo eine Zahl endet und ein Begriff beginnt.
-   - Die Loesung: JSON beschriftet jede Information eindeutig als "Schluessel": Wert.
-   - Das Ergebnis: Dadurch liest und verarbeitet der Computer die Daten innerhalb
-
+## 4. Akzeptanzkriterien
+Schritt 1 und Schritt 2 behalten ihre bisherige Aufgaben-Box und Checkliste unverändert bei.
+In Schritt 3 ist die Aufgaben-Box nicht mehr sichtbar.
+In Schritt 3 ist der neue Hinweistext gut lesbar als zentrale Überschrift platziert.
+Das Gesamtbild im dritten Schritt wirkt aufgeräumt, übersichtlich und ohne ablenkende Spielelemente.

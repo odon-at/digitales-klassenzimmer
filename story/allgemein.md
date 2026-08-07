@@ -167,3 +167,35 @@ Andere Sounds (z. B. Effekte, Menü-Klicks, Geräusche) müssen immer klar und d
 **Status:** Aktiviert (Endlosschleife / Loop bei 22% Lautstärke).
 **Musikdatei:** game/media/musik-loop.mp3
 **Details:** Siehe vollständige Spezifikation in [musik.md](story/levels/musik.md).
+
+## Anforderung: Nutzung der Browser-Stimme für die Vorlesefunktion (Text-to-Speech)
+
+## Kurzbeschreibung
+Beim Klick auf die Schaltfläche "VORLESEN" im Info-Fenster soll der Inhalt bei allen Avataren ausnahmslos über die native Browser-Stimme (Web Speech API) vorgelesen werden und nicht über eine hinterlegte MP3-Audiodatei.
+
+## Detailbeschreibung und Verhalten
+Kontext: Der Nutzer befindet sich im Info-Dialog eines Avatars.
+Auslöser: Klick auf den Button "VORLESEN".
+Erwartetes Verhalten:
+  - Der jeweilige Info-Text wird dynamisch per Browser-Synthesizer (Web Speech API / native Browser-Stimme) ausgegeben.
+  - Es wird keine vordefinierte MP3-Datei abgespielt.
+  - Diese Anforderung gilt global und einheitlich für sämtliche Avatare im Spiel.
+
+## Akzeptanzkriterien
+1. Der Klick auf "VORLESEN" triggert bei jedem Avatar die native Browser-Text-to-Speech-Funktion.
+2. MP3-Audiodateien sind für diese Funktion vollständig entfernt bzw. deaktiviert.
+3. Die Ausgabe funktioniert zuverlässig auf allen gängigen Zielbrowsern (Chrome, Firefox, Safari, Edge).
+
+
+## Anpassung des Info Buttons
+ ### Ziel der Aenderung
+ Der Info Button soll in allen Leveln des Spiels deutlich hervorgehoben werden. Da er derzeit leicht uebersehen wird, soll er durch ein auffaelliges oranges Leuchten und Blinken die Aufmerksamkeit der Spieler auf sich ziehen.
+
+ ### Visuelle Gestaltung
+ Der Button erhaelt eine kraeftige orangefarbene Grundtonelementierung. Der Rand und der Hintergrund leuchten in einem warmen Orangeton, was ihn sofort vom dunklen, gruenlich-blauen Design des Spiels abhebt.
+
+###  Effekt und Animation
+ Das Blinken erfolgt ueber einen stufenlosen, pulsierenden Uebergang. Dabei wechselt die Farbe periodisch zwischen einem normalen Dunkelorange und einem intensiveren, helleren Orangerot. Gleichzeitig dehnt sich ein orangefarbener Lichtschein um den Button aus und zieht sich wieder zusammen. Dieser Pulsieren-Effekt wiederholt sich endlos, solange das Level aktiv ist.
+ ### Platzierung und Interaktion
+ 
+ Der Button behaelt seine gewohnte Position in der Kopfzeile der Aufgabenstellung. Sobald der Spieler auf den Info Button klickt oder mit der Maus darueberfaehrt, bleibt die Sichtbarkeit durch das stetige Leuchten garantiert, sodass die Zusatzinformationen jederzeit leicht zugaenglich sind.
