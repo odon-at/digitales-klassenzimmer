@@ -26,6 +26,7 @@ Siehe [../VERSIONING.md](../VERSIONING.md) (Build-Loop, Schritt 4).
 | v0.5.0  | 2026-08-03 | Level 1↔2 getauscht: Cyber-Tauben (Terminal/Flug/JSON) als L1, Schattenarchiv + Pause als L2 |
 | v0.6.0  | 2026-08-04 | Level 3 neu (belegt/unklar/widerlegt + Labyrinth-Navigation), Info-/Tipp-System mit Bonusfragen, Level-1-Intro-Sequenz |
 | v0.7.0  | 2026-08-04 | Level 4 neu (Diagrammwahl + Drag & Drop, 360°-Stadt mit Open Data vs. DSGVO), Großes Finale mit Zeremonie, Pokal und Badge |
+| v0.12.0 | 2026-08-07 | VORLESEN immer per Browser-Stimme (MP3-Vorrang entfernt), Einleitung wird vertont vorgelesen, oranger pulsierender Info-Knopf, Avatar-Karte ohne „AUSWÄHLEN"-Knopf (mit Tastaturweg), Level 1 Schritt 3 aufgeräumt, Cyber-Stadt nur noch mit der Maus, Musik als AAC (214 KB statt 2,2 MB) |
 | v0.11.0 | 2026-08-06 | pH-Frage in Level 2 groß und mit gleichwertigen Optionen (die richtige leuchtete vorher), Phantom-Tastenkürzel in Level 4 entfernt und „Taste 1/2/3" wirklich gebaut, Hintergrundmusik mit eigenem Knopf und CC-BY-Credits |
 | v0.10.0 | 2026-08-06 | Ein Vorlese-Knopf für alle (Zuordnungstabelle Text→MP3, nichts startet automatisch), Avatar-Lerntypen mit ⓘ-Erklärung, Band „AUSGEWÄHLT" repariert, Level-1-Begriffe + Hilfe-Knöpfe + Glossar, Level-2-Ansage |
 | v0.9.0  | 2026-08-05 | Stimme der Bürger-KI (MP3 + Vorlesen per Sprachsynthese), nummerierte Aufgabenübersicht mit Hilfe daneben, Info-Knoten der Reihe nach, Finale-Button repariert (Stacking-Context) und hervorgehoben |

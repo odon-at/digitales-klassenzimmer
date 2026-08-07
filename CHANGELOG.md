@@ -15,6 +15,81 @@ _Noch keine Änderungen._
 
 ---
 
+## [0.12.0] – 2026-08-07 – Vorlesen vereinheitlicht, Einleitung vertont, oranger Info-Knopf
+
+Snapshot: [`releases/v0.12.0/`](releases/v0.12.0/). Setzt die Spec-Commits
+`93fdc8c` … `7d930ed „Version 12.0"` um (`allgemein.md`, `avatar.md`, `einleitung.md`,
+`levels/level-1-…`, `levels/level-4-…`, `levels/musik.md`).
+
+### Spec (`story/`)
+- **`allgemein.md`** – „VORLESEN" nutzt **immer** die Browser-Stimme, nie eine MP3 ·
+  Info-Knopf in allen Leveln orange, leuchtend, pulsierend · Musik-Status.
+- **`einleitung.md`** – der Einleitungstext soll **laut vorgelesen** werden,
+  unabhängig vom Avatar.
+- **`avatar.md`** – der separate „AUSWÄHLEN"-Knopf entfällt.
+- **`level-1-…`** – Schritt 3 aufräumen: Aufgaben-Box weg, neue Hinweiszeile.
+- **`level-4-…`** – 360°-Stadt: reines Maus-Verhalten · die Frage fett und orange.
+- **`musik.md`** – Musik-Spezifikation.
+- Ergänzt: Umsetzungsvermerke in allen sechs Dateien; `stimme.md` und
+  `audio/stimme.md` **beschrieben das Gegenteil** und sind umgeschrieben;
+  `avatar.md` widersprach sich selbst (Knopf gleichzeitig „vorhanden ✅" und
+  „entfernt") – bereinigt; `ctx.showTasks` in `levels/README.md`.
+
+### Game (`game/`)
+- **VORLESEN spricht ausnahmslos die Browser-Stimme.** Die MP3-Vorrangschaltung aus
+  v0.10.0 ist samt `clipKey` und Zuordnungstabelle entfernt – aus `ui.js`,
+  `screens.js`, `infosystem.js`, `level1.js`, `level3.js`. Am Erlebnis ändert das
+  nichts (die Tabelle war leer, es sprach ohnehin immer die Browser-Stimme); entfernt
+  wurde toter Code und eine irreführende Beschreibung.
+- **Die Einleitung wird vorgelesen.** Die gelieferte Aufnahme vertont laut Spec den
+  Einleitungstext – damit ist der seit v0.10.0 offene Punkt „Was sagt die Aufnahme?"
+  beantwortet. Sie liegt jetzt als `media/einleitung.mp3` (vorher der nach der
+  Klärung falsche Name `buerger-ki-stimme.mp3`) und startet automatisch mit dem
+  Einleitungs-Bildschirm, **unabhängig vom Avatar**; ein Knopf stoppt und wiederholt.
+  Bildschirmwechsel, Stummschaltung und fehlende Datei enden jeweils sauber.
+- **Oranger Info-Knopf** (`.btn-info`) in allen Leveln: kräftiger Rahmen, warmer
+  Grund, Puls zwischen `--orange #ff8c1a` und `--orange-hot #ff5e1a` mit wachsendem
+  und schrumpfendem Lichtschein. Der Schein läuft über `filter: drop-shadow()` –
+  ein `box-shadow` würde vom `clip-path` auf `.btn` abgeschnitten. Bei
+  `prefers-reduced-motion` bleibt ein statischer Schein.
+- **Avatar-Karte ohne „AUSWÄHLEN"-Knopf**: ein Klick auf die Karte genügt. Damit der
+  Bildschirm ohne Maus bedienbar bleibt, ist die Karte selbst zum Bedienelement
+  geworden (`role="button"`, `tabindex`, `aria-pressed`, Enter/Leertaste, sichtbarer
+  Fokusring); die Panels „FÄHIGKEITEN"/„INFO" folgen jetzt auch dem Tastatur-Fokus.
+- **Level 1, Schritt 3 aufgeräumt**: Aufgaben-Box, Checkliste, Tipp-Knopf und Banner
+  verschwinden; stattdessen die Zeile „📖 Aufmerksam durchlesen – nur für dein
+  Verständnis, keine Aufgabe." Neu im Level-Contract: `ctx.showTasks(bool)`, beim
+  Betreten eines Levels immer zurückgesetzt.
+- **Level 4, 360°-Stadt: reines Maus-Verhalten** – die Pfeiltasten-Drehung ist
+  entfernt, gedreht wird per Maus-Ziehen und über die ‹ ›-Knöpfe. Die Frage nach dem
+  Klick steht jetzt in **1,25 rem, fett und orange** mit ❓-Symbol und wird in der
+  Screenreader-Ansage mitgesprochen.
+- **Hintergrundmusik komprimiert**: Die gelieferte Datei ist trotz `.mp3`-Endung eine
+  unkomprimierte **WAV** (13,3 s, 2,2 MB). Ausgeliefert wird die daraus erzeugte
+  AAC-Fassung `media/musik-loop.m4a` (**214 KB**, gleiche Länge, Rate und Kanäle);
+  das Original bleibt im Repo.
+
+### Bewusste Abweichungen von der Spec
+- **Tabulator und Enter bleiben in der 360°-Stadt.** Die Spec verlangt „Tastatur-
+  Shortcuts komplett deaktiviert"; Tabulator und Enter sind aber keine Kürzel, sondern
+  die normale Browserbedienung – und der einzige Zugang ohne Maus. Ohne sie wäre
+  Level 4 nicht abschließbar und damit Finale, Award und Zertifikat unerreichbar.
+- **Der INFO-Knopf überlebt in Level 1, Schritt 3.** Streng nach Spec wäre er mit der
+  Aufgaben-Box verschwunden – dann käme aber niemand mehr an die 150 Bonuspunkte, denn
+  Schritt 3 ist der letzte Bildschirm des Levels. Er steht jetzt in der neuen
+  Hinweiszeile.
+- **Die Avatar-Karte hat einen Tastaturweg bekommen**, obwohl die Spec nur vom
+  Entfernen des Knopfes spricht: Der Knopf war der einzige Weg zur Auswahl ohne Maus.
+- **Die Musik wird als AAC ausgeliefert**, nicht als gelieferte WAV – ein Zehntel der
+  Größe bei gleicher Länge. Ein Encoder für echtes MP3 stand nicht zur Verfügung.
+- **Der Puls des Info-Knopfes nutzt `drop-shadow` statt `box-shadow`** – anders wäre
+  der geforderte „Lichtschein um den Button" wegen des `clip-path` kaum sichtbar.
+- **Nicht betroffen vom Orange:** die Stations-Hilfe-Knöpfe in Level 1 und der
+  ⓘ-Knopf auf der Avatar-Auswahl. Die Spec spricht vom Info-Knopf „in allen Leveln";
+  mehrere pulsierende Orangetöne nebeneinander wären Lärm statt Hinweis.
+
+---
+
 ## [0.11.0] – 2026-08-06 – Die pH-Frage, ehrliche Tastenkürzel & Hintergrundmusik
 
 Snapshot: [`releases/v0.11.0/`](releases/v0.11.0/). Setzt den Merge-Commit
