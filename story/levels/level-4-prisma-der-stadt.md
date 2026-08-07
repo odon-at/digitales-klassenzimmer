@@ -249,7 +249,7 @@ Zum Abschied öffnet sich das voll funktionsfähige Bürger-Portal, durch das di
 Nach erfolgreicher Dashboard-Befüllung wechselt das System nahtlos in die **helle 360°-Stadtansicht**.
 
 #### Aufgabenstellung & UI-Formulierung
- **Erkunden & Entscheiden:** Drehe dich mit den Pfeiltasten oder per Maus-Drag um 360° und klicke einen leuchtenden Datenpunkt direkt an.
+ **Erkunden & Entscheiden:** Drehe dich nur mit der Maus um 360° und klicke einen leuchtenden Datenpunkt direkt an.
  Entscheide für jeden Datenpunkt: Darf er als **offene Daten (FREIGEBEN)** bereitgestellt werden oder muss er als **private Daten (SPERREN)** geschützt bleiben?
 
 #### Interaktions-Logik & UX-Spezifikation
@@ -429,13 +429,6 @@ In Level 4 ("Cyberstadt - 360° Stadt") soll die Steuerung für die Bearbeitung 
 
 ## 2. Neues Steuerungs- und Interaktionskonzept
 
-### A. 360°-Umschau mit den Pfeiltasten
-* **Funktionalität:** Der Spieler bewegt sich frei in der 360°-Panorama-Ansicht der Cyberstadt.
-* **Tastenbelegung:**
-  * **Pfeiltaste links ($\leftarrow$):** Dreht die Ansicht nach links.
-  * **Pfeiltaste rechts ($\rightarrow$):** Dreht die Ansicht nach rechts.
-* **Hinweis:** Andere Tastenbefehle zur direkten Menü- oder Objektanwahl sind in dieser Ansicht deaktiviert, um Fehlbedienungen zu vermeiden.
-
 ### B. Maus-Interaktion mit den Stations-Kreisen
 * **Visualisierung:** In der 360°-Ansicht sind verschiedene Stationen (z. B. *Fitness*, *Statistik*, *Smart Home*) durch interaktive **Kreise / Marker** direkt im Stadtraum gekennzeichnet.
 * **Aktion:** 1. Der Spieler dreht sich mit den Pfeiltasten so lange, bis der gewünschte Kreis im Sichtfeld erscheint.
@@ -468,19 +461,6 @@ drehen (Halten dreht weiter), und ein Linksklick auf einen der Kreis-Marker
 (`.city-spot-ring`, 38 px, weißer Ring, Icon innen) öffnet sofort den
 Entscheidungs-Dialog – ohne Laufweg des Avatars.
 
-**Was tatsächlich fehlte, war Ehrlichkeit bei den Tastenkürzeln.** Die
-Entscheidungs-Knöpfe trugen `aria-keyshortcuts="f"` und `"s"` – **Kürzel, die es nie
-gegeben hat**. Screenreader lasen sie vor, gedrückt passierte nichts. Sie sind
-entfernt; dazu die undokumentierte `Home`-Taste. In der 360°-Ansicht wirken damit
-**nur noch die Pfeiltasten**, genau wie die Spec es verlangt.
-
-> **Bewusste Abweichung:** Tabulator und Enter bleiben. Wörtlich genommen würde
-> „andere Tastenbefehle sind deaktiviert" auch sie treffen – dann wäre die Stadt
-> ausschließlich mit der Maus spielbar und für Kinder ohne Maus (motorische
-> Einschränkung, defektes Touchpad) gesperrt. Tabulator ist kein Kürzel zur
-> „Objektanwahl", sondern der normale Browser-Weg; der Ansagetext des Levels nennt ihn
-> bereits.
-
 **Zwei Nebenbefunde mitbehoben:**
 
 * In Phase A stand sichtbar „Taste 1", „Taste 2", „Taste 3" unter den Diagramm-Knöpfen –
@@ -493,11 +473,11 @@ entfernt; dazu die undokumentierte `Home`-Taste. In der 360°-Ansicht wirken dam
 
 # 🖱️ Reines Maus-Verhalten (Keine Tastatur / Keine Shortcuts)
 
-**Ausschließlich mit der Maus:** Die Bedienung erfolgt zu 100 % per Mausklick. Tastatur-Shortcuts, Tastenkombinationen oder Tasten-Tools sind komplett deaktiviert und funktionieren hier nicht.
+**Nur  mit der Maus:** Die Bedienung erfolgt zu 100 % per Mausklick. Tastatur-Shortcuts, Tastenkombinationen oder Tasten-Tools sind komplett deaktiviert und funktionieren hier nicht.
 **Direktes Öffnen:** Ein einfacher Klick mit der linken Maustaste auf die leuchtenden Punkte öffnet sofort die Frage.
 **Seitliche Pfeile:** Auch die Steuerung über die seitlichen Pfeile wird ausschließlich mit der Maus bedient.
 
-### Verbesserung der Sichtbarkeit von den Fragen bei der Cyber-City:
+### Verbesserung der Sichtbarkeit von den Fragen bei der Cyber-City: !!!!
 
 # 🎛️ Gestaltung der Frage nach dem Mausklick
 

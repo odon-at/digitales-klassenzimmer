@@ -139,3 +139,19 @@ schwang – bei `top: 22px` also über die obere Kartenkante, und `.avatar-card`
 `overflow: hidden`. Das Band sitzt jetzt tiefer (`top: 40px`), etwas weiter innen
 (`right: -46px`) und ist mit 200 px breiter und größer gesetzt. Das ganze Wort ist
 sichtbar; ein Test prüft die Geometrie, damit es nicht zurückfällt.
+
+
+### Verbesserung bei den Button Auswählen:
+
+# Avatar-Auswahl
+
+Wähle deinen gewünschten Avatar aus der Übersicht aus. Durch einen Klick auf das Bild markierst du ihn als aktiv. Bestätige deine Auswahl anschließend oben über den Bestätigungs-Button.
+
+### Verfügbare Avatare
+
+**[ Avatar 1 ]** * Beschreibung: Klickbar – wählt den Avatar direkt aus.
+**[ Avatar 2 ]** * Beschreibung: Klickbar – wählt den Avatar direkt aus.
+**[ Avatar 3 ]** * Beschreibung: Klickbar – wählt den Avatar direkt aus.
+
+---
+ **Hinweis:** Der separate "Auswählen"-Button wurde entfernt. Ein einfacher Klick auf den Avatar reicht nun völlig aus, um ihn zu aktivieren und den Bestätigungsprozess zu starten.
