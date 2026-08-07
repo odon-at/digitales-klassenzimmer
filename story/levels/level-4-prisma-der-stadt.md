@@ -477,7 +477,7 @@ Entscheidungs-Dialog – ohne Laufweg des Avatars.
 **Direktes Öffnen:** Ein einfacher Klick mit der linken Maustaste auf die leuchtenden Punkte öffnet sofort die Frage.
 **Seitliche Pfeile:** Auch die Steuerung über die seitlichen Pfeile wird ausschließlich mit der Maus bedient.
 
-### Verbesserung der Sichtbarkeit von den Fragen bei der Cyber-City: !!!!
+### !!!!!!Verbesserung der Sichtbarkeit von den Fragen bei der Cyber-City: !!!!
 
 # 🎛️ Gestaltung der Frage nach dem Mausklick
 
